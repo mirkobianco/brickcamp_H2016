@@ -36,7 +36,8 @@ uses
   System.Classes,
   Vcl.SvcMgr,
   Spring.Logging,
-  BrickCamp.services, BrickCamp.translationsSynchronizer.impl, BrickCamp.translationsSynchronizer.interf;
+  BrickCamp.services, BrickCamp.translationsSynchronizer.impl, BrickCamp.translationsSynchronizer.interf,
+  BrickCamp.Repositories.Employee.Impl;
 
 { TCbdService }
 
@@ -89,7 +90,8 @@ begin
   GlobalContainer.RegisterType<TCbdDB>;
   GlobalContainer.RegisterType<TCbdTransSynchronizer>;
   GlobalContainer.RegisterType<TEmployee>;
-  GlobalContainer.RegisterType<TMockEmployeeRepository>('mock');
+  GlobalContainer.RegisterType<TRepEmployee>;
+//  GlobalContainer.RegisterType<TMockEmployeeRepository>('mock');
   GlobalContainer.Build;
 end;
 

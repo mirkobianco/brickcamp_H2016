@@ -26,10 +26,10 @@ type
   protected
   public
     [GET, Path('/{Id}')]
-    function GetOne(const [PathParam] Id: Integer): TEmployee;
+    function GetOne(const [PathParam] Id: Integer): IEmployee;
 
     [GET, Path('/GetList')]
-    function GetList: IList<TEmployee>;
+    function GetList: IList<IEmployee>;
   end;
 
 implementation
@@ -40,12 +40,12 @@ uses
 
 { THelloWorldResource }
 
-function TEmployeeResource.GetOne(const Id: Integer): TEmployee;
+function TEmployeeResource.GetOne(const Id: Integer): IEmployee;
 begin
   Result := FRepository.GetOne(Id);
 end;
 
-function TEmployeeResource.GetList: IList<TEmployee>;
+function TEmployeeResource.GetList: IList<IEmployee>;
 begin
   result := FRepository.GetList;
 end;

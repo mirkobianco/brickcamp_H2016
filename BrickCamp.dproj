@@ -120,6 +120,7 @@
         <DCCReference Include="Interfaces\BrickCamp.Repositories.Employee.Intf.pas"/>
         <DCCReference Include="REST\BrickCamp.Resources.Employee.pas"/>
         <DCCReference Include="Mocks\BrickCamp.Repositories.Employee.Mock.pas"/>
+        <DCCReference Include="Classes\BrickCamp.Repositories.Employee.Impl.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -195,7 +196,7 @@
                     <Source Name="MainSource">BrickCamp.dpr</Source>
                 </Source>
             </Delphi.Personality>
-            <Deployment Version="3">
+            <Deployment Version="2">
                 <DeployFile LocalName="Win32\Debug Console\BrickCamp.exe" Configuration="Debug Console" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>BrickCamp.exe</RemoteName>
@@ -337,6 +338,12 @@
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeX86File">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\x86</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>

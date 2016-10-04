@@ -15,7 +15,8 @@ uses
   BrickCamp.Model.Employee in 'Models\BrickCamp.Model.Employee.pas',
   BrickCamp.Repositories.Employee.Intf in 'Interfaces\BrickCamp.Repositories.Employee.Intf.pas',
   BrickCamp.Resources.Employee in 'REST\BrickCamp.Resources.Employee.pas',
-  BrickCamp.Repositories.Employee.Mock in 'Mocks\BrickCamp.Repositories.Employee.Mock.pas';
+  BrickCamp.Repositories.Employee.Mock in 'Mocks\BrickCamp.Repositories.Employee.Mock.pas',
+  BrickCamp.Repositories.Employee.Impl in 'Classes\BrickCamp.Repositories.Employee.Impl.pas';
 
 {$R *.RES}
 
