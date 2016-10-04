@@ -8,6 +8,9 @@ uses
   BrickCamp.Model.Employee,
   BrickCamp.Repositories.Employee.Intf;
 
+uses
+	BrickCamp.Model.Employee.Inter;
+
 type
   TMockEmployeeRepository = class(TInterfacedObject, IEmployeeRepository)
   public

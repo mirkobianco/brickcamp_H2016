@@ -1,4 +1,4 @@
-unit BrickCamp.Model.Employee;
+unit BrickCamp.Model.Employee.Impl;
 
 interface
 

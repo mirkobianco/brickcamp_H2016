@@ -24,7 +24,8 @@ type
 implementation
 
 uses
-	Spring.Persistence.Criteria, Spring.Persistence.Criteria.Properties, Spring.Reflection;
+  Spring.Persistence.Criteria, Spring.Persistence.Criteria.Properties, Spring.Reflection,
+  BrickCamp.Model.Employee.Impl;
 
 { TEmployeeRepository }
 
