@@ -31,10 +31,10 @@ type
     FRepository: IEmployeeRepository;
   protected
   public
-    [GET, Path('/{Id}')]
+    [GET, Path('/getone/{Id}')]
     function GetOne(const [PathParam] Id: Integer): TEmployee;
 
-    [GET, Path('/getlist')]
+    [GET, Path('/getlist/')]
     function GetList: IList<TEmployee>;
   end;
 
