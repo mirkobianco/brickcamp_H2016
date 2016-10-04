@@ -3,8 +3,9 @@ unit BrickCamp.Repositories.Employee.Impl;
 interface
 
 uses
- BrickCamp.Model.Employee, Spring.Collections,
-  BrickCamp.db.interf, Spring.Container.Injection, Spring.Container.Common, BrickCamp.Repositories.Employee.Intf;
+  Spring.Collections,
+  BrickCamp.db.interf, Spring.Container.Injection, Spring.Container.Common, BrickCamp.Repositories.Employee.Intf,
+  BrickCamp.Model.Employee.Inter;
 
 type
   TRepEmployee = class(TInterfacedObject, IEmployeeRepository)
@@ -19,7 +20,8 @@ type
 implementation
 
 uses
-	Spring.Persistence.Criteria, Spring.Persistence.Criteria.Properties, Spring.Reflection;
+  Spring.Persistence.Criteria, Spring.Persistence.Criteria.Properties, Spring.Reflection,
+  BrickCamp.Model.Employee.Impl;
 
 { TCdbRepEmployee }
 

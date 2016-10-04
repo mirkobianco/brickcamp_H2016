@@ -1,10 +1,10 @@
-unit BrickCamp.Model.Employee;
+unit BrickCamp.Model.Employee.Impl;
 
 interface
 
 uses
   Spring,
-  Spring.Persistence.Mapping.Attributes, BrickCamp.Repositories.Employee.Intf;
+  Spring.Persistence.Mapping.Attributes, BrickCamp.Repositories.Employee.Intf, BrickCamp.Model.Employee.Inter;
 
 type
   [Entity]

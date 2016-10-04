@@ -9,14 +9,14 @@ uses
   BrickCamp.db.interf in 'Interfaces\BrickCamp.db.interf.pas',
   BrickCamp.settings.impl in 'Classes\BrickCamp.settings.impl.pas',
   BrickCamp.db.impl in 'Classes\BrickCamp.db.impl.pas',
-  BrickCamp.translationsSynchronizer.interf in 'Interfaces\BrickCamp.translationsSynchronizer.interf.pas',
-  BrickCamp.translationsSynchronizer.impl in 'Classes\BrickCamp.translationsSynchronizer.impl.pas',
   BrickCamp.services in 'BrickCamp.services.pas',
-  BrickCamp.Model.Employee in 'Models\BrickCamp.Model.Employee.pas',
   BrickCamp.Repositories.Employee.Intf in 'Interfaces\BrickCamp.Repositories.Employee.Intf.pas',
-  BrickCamp.Resources.Employee in 'REST\BrickCamp.Resources.Employee.pas',
   BrickCamp.Repositories.Employee.Mock in 'Mocks\BrickCamp.Repositories.Employee.Mock.pas',
-  BrickCamp.Repositories.Employee.Impl in 'Classes\BrickCamp.Repositories.Employee.Impl.pas';
+  BrickCamp.Repositories.Employee.Impl in 'Classes\BrickCamp.Repositories.Employee.Impl.pas',
+  BrickCamp.Model.AvailableProducts.interf in 'Models\interface\BrickCamp.Model.AvailableProducts.interf.pas',
+  BrickCamp.Model.AvailableProducts.Impl in 'Models\implementation\BrickCamp.Model.AvailableProducts.Impl.pas',
+  BrickCamp.Model.Employee.Impl in 'Models\implementation\BrickCamp.Model.Employee.Impl.pas',
+  BrickCamp.Model.Employee.Inter in 'Models\interface\BrickCamp.Model.Employee.Inter.pas';
 
 {$R *.RES}
 

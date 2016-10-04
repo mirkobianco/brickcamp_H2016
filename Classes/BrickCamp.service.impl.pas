@@ -6,7 +6,7 @@ uses
   BrickCamp.service.interf,
   BrickCamp.Repositories.Employee.Intf,
   BrickCamp.Repositories.Employee.Mock,
-  BrickCamp.Model.Employee,
+  BrickCamp.Model.Employee.Impl,
   Spring.Persistence.Adapters.FireDac;
 
 type
@@ -36,7 +36,7 @@ uses
   System.Classes,
   Vcl.SvcMgr,
   Spring.Logging,
-  BrickCamp.services, BrickCamp.translationsSynchronizer.impl, BrickCamp.translationsSynchronizer.interf,
+  BrickCamp.services,
   BrickCamp.Repositories.Employee.Impl;
 
 { TCbdService }
@@ -88,7 +88,6 @@ procedure TCbdService.RegisterClasses;
 begin
   GlobalContainer.RegisterType<TCbdSettings>;
   GlobalContainer.RegisterType<TCbdDB>;
-  GlobalContainer.RegisterType<TCbdTransSynchronizer>;
   GlobalContainer.RegisterType<TEmployee>;
   GlobalContainer.RegisterType<TRepEmployee>;
 //  GlobalContainer.RegisterType<TMockEmployeeRepository>('mock');
@@ -104,7 +103,6 @@ end;
 
 procedure TCbdService.StartSynchronization;
 begin
-  GlobalContainer.Resolve<ITranslationSynchronizer>.Synchronize;
 end;
 
 end.

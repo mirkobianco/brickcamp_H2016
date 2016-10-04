@@ -9,6 +9,9 @@ uses
 
 implementation
 
+uses
+	BrickCamp.Model.Employee.Inter;
+
 type
   TMockEmployeeRepository = class(TInterfacedObject, IEmployeeRepository)
   public
