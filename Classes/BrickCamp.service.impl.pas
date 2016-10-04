@@ -7,7 +7,7 @@ uses
   BrickCamp.Repositories.Employee.Intf,
   BrickCamp.Repositories.Employee.Mock,
   BrickCamp.Model.Employee,
-  Spring.Persistence.Adapters.Oracle;
+  Spring.Persistence.Adapters.FireDac;
 
 type
   TCbdService = class(TInterfacedObject, IBrickCampService)
@@ -34,7 +34,8 @@ uses
   System.Classes,
   Vcl.SvcMgr,
   Spring.Logging,
-  BrickCamp.services;
+  BrickCamp.services, BrickCamp.translationsSynchronizer.impl, BrickCamp.translationsSynchronizer.interf,
+  BrickCamp.Repositories.Employee.Impl;
 
 { TCbdService }
 
@@ -86,7 +87,8 @@ begin
   GlobalContainer.RegisterType<TCbdSettings>;
   GlobalContainer.RegisterType<TCbdDB>;
   GlobalContainer.RegisterType<TEmployee>;
-  GlobalContainer.RegisterType<TMockEmployeeRepository>('mock');
+  GlobalContainer.RegisterType<TRepEmployee>;
+//  GlobalContainer.RegisterType<TMockEmployeeRepository>('mock');
   GlobalContainer.Build;
 end;
 

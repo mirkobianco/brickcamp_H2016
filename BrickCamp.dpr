@@ -14,6 +14,7 @@ uses
   BrickCamp.db.impl in 'Classes\BrickCamp.db.impl.pas',
   BrickCamp.service.impl in 'Classes\BrickCamp.service.impl.pas',
   BrickCamp.settings.impl in 'Classes\BrickCamp.settings.impl.pas';
+  BrickCamp.Repositories.Employee.Impl in 'Classes\BrickCamp.Repositories.Employee.Impl.pas';
 
 {$R *.RES}
 

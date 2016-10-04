@@ -27,7 +27,8 @@ type
 implementation
 
 uses
-  BrickCamp.services, Spring.Collections, BrickCamp.Model.Employee, Spring.Persistence.Criteria.Properties;
+  BrickCamp.services, Spring.Collections, BrickCamp.Model.Employee, Spring.Persistence.Criteria.Properties,
+  BrickCamp.Repositories.Employee.Intf;
 
 { TCbdTransSynchronizer }
 
@@ -38,14 +39,14 @@ end;
 
 procedure TCbdTransSynchronizer.LoadTranslationFromDB;
 var
-  FEmployees: IList<TEmployee>;
+  Employees: IEmployeeRepository;
   Status: Prop;
+  Empl: IEmployee;
 begin
-  Status := Prop.Create('EMP_NO');
-
-  FEmployees := FDb.GetSession.FindWhere<TEmployee>(Status = 2);
-  CbLog.Info('Loaded %d', [FEmployees.Count]);
-  CbLog.Info('translation %s', [FEmployees.Last.FirstName + ' ' + FEmployees.Last.LastName]);
+  Employees := GlobalContainer.Resolve<IEmployeeRepository>;
+  CbLog.Info('Loaded %d', [Employees.GetList.Count]);
+  Empl := Employees.GetOne(2);
+  CbLog.Info('translation %s', [Empl.GetFirstName + ' ' + Empl.GetLastName]);
 end;
 
 procedure TCbdTransSynchronizer.Synchronize;
