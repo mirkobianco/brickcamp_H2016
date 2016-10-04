@@ -4,7 +4,7 @@ interface
 
 uses
   BrickCamp.service.interf,
-  Spring.Persistence.Adapters.Oracle;
+  Spring.Persistence.Adapters.FireDac;
 
 type
   TCbdService = class(TInterfacedObject, IBrickCampService)
