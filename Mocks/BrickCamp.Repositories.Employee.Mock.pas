@@ -4,10 +4,8 @@ interface
 
 uses
   System.JSON,
-  Generics.Collections,
-  Spring.Collections,
   Spring.Container,
-  BrickCamp.Model.Employee,
+  BrickCamp.Model.Employee.Impl,
   BrickCamp.Repositories.Employee.Intf;
 
 type
@@ -15,34 +13,40 @@ type
   public
     //IEmployeeRepository
     function GetOne(const Id: Integer): TEmployee;
-    function GetListAsJsonArray: TJSONArray;
-    function GetList: IList<TEmployee>;
+    function GetList: TJSONArray;
     procedure Insert(const Employee: TEmployee);
+    procedure Update(const Employee: TEmployee);
+    procedure Delete(const Id: Integer);
   end;
 
 implementation
 
 { TMockEmployeeRepository }
 
-function TMockEmployeeRepository.GetList: IList<TEmployee>;
+procedure TMockEmployeeRepository.Delete(const Id: Integer);
 begin
-  Result := nil;
+  //
 end;
 
-function TMockEmployeeRepository.GetListAsJsonArray: TJSONArray;
+function TMockEmployeeRepository.GetList: TJSONArray;
 begin
-  Result := TJSONArray.Create;
+  result := TJSONArray.Create;
 end;
 
 function TMockEmployeeRepository.GetOne(const Id: Integer): TEmployee;
 begin
-  Result := GlobalContainer.Resolve<TEmployee>([Id]);
+  result := GlobalContainer.Resolve<TEmployee>([Id]);
   //result.Id := Id;
 end;
 
 procedure TMockEmployeeRepository.Insert(const Employee: TEmployee);
 begin
-  // I do anothing...
+  //
+end;
+
+procedure TMockEmployeeRepository.Update(const Employee: TEmployee);
+begin
+  //
 end;
 
 end.

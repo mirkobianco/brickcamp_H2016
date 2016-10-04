@@ -6,16 +6,8 @@ uses
   Spring;
 
 type
-  IToObject = interface(IInterface)
-  ['{1C1E682F-CB60-40C6-A668-805D479EE079}']
-    function ToObject: TObject;
-  end;
-
-  IEmployee = interface(IToObject)
+  IEmployee = interface(IInterface)
   ['{E31612DC-EB02-4576-B119-575696111EF6}']
-
-    //IToObject
-    function ToObject: TObject;
 
     function GetDepartmentNumber: string;
     function GetFirstName: string;
@@ -37,8 +29,6 @@ type
     procedure SetPhoneExt(const Value: Nullable<string>);
     procedure SetSalary(const Value: Extended);
   end;
-
-
 
 implementation
 

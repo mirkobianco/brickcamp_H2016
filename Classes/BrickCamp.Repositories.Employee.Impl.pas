@@ -4,14 +4,10 @@ interface
 
 uses
  System.JSON,
- Generics.Collections,
- Spring.Collections,
  Spring.Container.Injection,
  Spring.Container.Common,
- MARS.Core.Utils,
- BrickCamp.Model.Employee,
- BrickCamp.db.interf,
- BrickCamp.Model.Employee.Intf,
+ BrickCamp.db.intf,
+ BrickCamp.Model.Employee.Impl,
  BrickCamp.Repositories.Employee.Intf;
 
 type
@@ -21,32 +17,38 @@ type
     FDb: IBrickCampDb;
   public
     function GetOne(const Id: Integer): TEmployee;
-    function GetListAsJsonArray: TJSONArray;
-    function GetList: IList<TEmployee>;
-
+    function GetList: TJSONArray;
     procedure Insert(const Employee: TEmployee);
+    procedure Update(const Employee: TEmployee);
+    procedure Delete(const Id: Integer);
   end;
 
 implementation
 
 uses
-	Spring.Persistence.Criteria, Spring.Persistence.Criteria.Properties, Spring.Reflection;
+	Spring.Collections,
+  MARS.Core.Utils;
 
 { TEmployeeRepository }
-function TEmployeeRepository.GetList: IList<TEmployee>;
+
+procedure TEmployeeRepository.Delete(const Id: Integer);
+var
+  Employee: TEmployee;
 begin
-  Result := FDb.GetSession.FindAll<TEmployee>;
+  Employee := FDb.GetSession.FindOne<TEmployee>(Id);
+  if Assigned(Employee) then
+    FDb.GetSession.Delete(Employee);
 end;
 
-function TEmployeeRepository.GetListAsJsonArray: TJSONArray;
+function TEmployeeRepository.GetList: TJSONArray;
 var
-  List: IList<TEmployee>;
-  Item: TObject;
+  LList: IList<TEmployee>;
+  LItem: TEmployee;
 begin
-  List := GetList;
-  Result := TJSONArray.Create;
-  for Item in List do
-    Result.Add(ObjectToJson(Item));
+  LList := FDb.GetSession.FindAll<TEmployee>;
+  result := TJSONArray.Create;
+  for LItem in LList do
+    Result.Add(ObjectToJson(LItem));
 end;
 
 function TEmployeeRepository.GetOne(const Id: Integer): TEmployee;
@@ -56,7 +58,12 @@ end;
 
 procedure TEmployeeRepository.Insert(const Employee: TEmployee);
 begin
+  FDb.GetSession.Insert(Employee);
+end;
 
+procedure TEmployeeRepository.Update(const Employee: TEmployee);
+begin
+  FDb.GetSession.Update(Employee);
 end;
 
 end.

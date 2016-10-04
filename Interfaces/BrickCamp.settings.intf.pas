@@ -1,4 +1,4 @@
-unit BrickCamp.settings.interf;
+unit BrickCamp.settings.intf;
 
 interface
 

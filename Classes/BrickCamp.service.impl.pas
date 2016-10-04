@@ -7,12 +7,7 @@ uses
   MARS.http.Server.Indy,
   MARS.Core.Application,
 
-  Spring.Persistence.Adapters.FireDac,
-
-  BrickCamp.service.interf,
-  BrickCamp.Repositories.Employee.Intf,
-  BrickCamp.Repositories.Employee.Mock,
-  BrickCamp.Model.Employee;
+  BrickCamp.service.intf;
 
 type
   TCbdService = class(TInterfacedObject, IBrickCampService)
@@ -34,23 +29,20 @@ type
 implementation
 
 uses
+  System.SysUtils,
+  System.Classes,
   Spring.Container,
-  BrickCamp.settings.impl,
-  BrickCamp.db.impl,
+  Spring.Logging,
   Spring.Logging.Loggers,
   Spring.Logging.Controller,
   Spring.Logging.Appenders,
-  System.SysUtils,
   Spring.Logging.Configuration,
-  System.Classes,
-  Vcl.SvcMgr,
-  Spring.Logging,
+  BrickCamp.settings.impl,
+  BrickCamp.db.impl,
   BrickCamp.services,
   BrickCamp.Repositories.Employee.Impl,
-  BrickCamp.Resources.Employee,
-  MARS.Core.MessageBodyWriter,
-  MARS.Core.MessageBodyWriters,
-  MARS.Core.URL,
+  BrickCamp.Resources.Employee.Impl,
+  BrickCamp.Model.Employee.Impl,
   MARS.Utils.Parameters.IniFile
   ;
 

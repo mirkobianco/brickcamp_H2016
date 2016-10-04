@@ -3,8 +3,11 @@ unit BrickCamp.db.impl;
 interface
 
 uses
-	BrickCamp.db.interf, Spring.Persistence.Adapters.FireDac, BrickCamp.settings.interf, Spring.Container.Common,
-  Spring.Persistence.Core.Session, FireDAC.Phys;
+	Spring.Persistence.Adapters.FireDac,
+  Spring.Container.Common,
+  Spring.Persistence.Core.Session,
+  BrickCamp.db.intf,
+  BrickCamp.settings.intf;
 
 type
   TCbdDB = class(TInterfacedObject, IBrickCampDb)
@@ -24,9 +27,15 @@ type
 implementation
 
 uses
-	Spring.Container, Data.Win.ADODB, Spring.Persistence.Core.ListSession,
-  Spring.Collections, FireDAC.Comp.Client, FireDAC.Phys.IBDef, FireDAC.Phys.IBWrapper,
-  FireDAC.Phys.IBBase, FireDAC.Phys.IB, FireDAC.Phys.FB;
+	Spring.Container,
+  Spring.Persistence.Core.ListSession,
+  Spring.Collections,
+  FireDAC.Comp.Client,
+  FireDAC.Phys.IBDef,
+  FireDAC.Phys.IBWrapper,
+  FireDAC.Phys.IBBase,
+  FireDAC.Phys.IB,
+  FireDAC.Phys.FB;
 
 { TCbdDB }
 
@@ -34,7 +43,6 @@ procedure TCbdDB.InitializeDbConnection;
 begin
   if FCon <> nil then
     Exit;
-
 
   FCon := TFireDACConnectionAdapter.Create(TFDConnection.Create(nil));
   FCon.Connection.ConnectionString := FSettings.GetDBStringConnection;
@@ -46,7 +54,6 @@ end;
 
 destructor TCbdDB.Destroy;
 begin
-  //FCon.Free;
   inherited;
 end;
 

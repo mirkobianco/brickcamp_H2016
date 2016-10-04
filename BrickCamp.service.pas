@@ -3,10 +3,14 @@ unit BrickCamp.service;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.SvcMgr, Vcl.Dialogs,
-  BrickCamp.service.impl,
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Classes,
+  Vcl.SvcMgr,
   Spring.Container,
-  Spring.Logging;
+  BrickCamp.service.impl;
+
 
 type
   TsrvBrickCamp = class(TService)

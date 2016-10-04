@@ -3,7 +3,8 @@ unit BrickCamp.settings.impl;
 interface
 
 uses
-	BrickCamp.settings.interf, System.IniFiles;
+	BrickCamp.settings.intf,
+  System.IniFiles;
 
 type
   TCbdSettings = class(TInterfacedObject, IBrickCampSettings)

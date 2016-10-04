@@ -3,8 +3,8 @@ unit BrickCamp.services;
 interface
 
 uses
-  Spring.Container,
-	Spring.Logging;
+	Spring.Logging,
+  Spring.Container;
 
   function CbLog: ILogger; inline;
 

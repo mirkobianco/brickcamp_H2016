@@ -3,19 +3,20 @@ program BrickCamp;
 uses
   Vcl.SvcMgr,
   BrickCamp.service in 'BrickCamp.service.pas' {srvBrickCamp: TService},
-  BrickCamp.service.interf in 'Interfaces\BrickCamp.service.interf.pas',
-  BrickCamp.settings.interf in 'Interfaces\BrickCamp.settings.interf.pas',
-  BrickCamp.db.interf in 'Interfaces\BrickCamp.db.interf.pas',
+  BrickCamp.service.intf in 'Interfaces\BrickCamp.service.intf.pas',
+  BrickCamp.settings.intf in 'Interfaces\BrickCamp.settings.intf.pas',
+  BrickCamp.db.intf in 'Interfaces\BrickCamp.db.intf.pas',
   BrickCamp.services in 'BrickCamp.services.pas',
-  BrickCamp.Model.Employee in 'Models\BrickCamp.Model.Employee.pas',
+  BrickCamp.Model.Employee.Impl in 'Classes\BrickCamp.Model.Employee.Impl.pas',
   BrickCamp.Repositories.Employee.Intf in 'Interfaces\BrickCamp.Repositories.Employee.Intf.pas',
-  BrickCamp.Resources.Employee in 'REST\BrickCamp.Resources.Employee.pas',
+  BrickCamp.Resources.Employee.Impl in 'Classes\BrickCamp.Resources.Employee.Impl.pas',
   BrickCamp.Repositories.Employee.Mock in 'Mocks\BrickCamp.Repositories.Employee.Mock.pas',
   BrickCamp.db.impl in 'Classes\BrickCamp.db.impl.pas',
   BrickCamp.service.impl in 'Classes\BrickCamp.service.impl.pas',
   BrickCamp.settings.impl in 'Classes\BrickCamp.settings.impl.pas',
   BrickCamp.Repositories.Employee.Impl in 'Classes\BrickCamp.Repositories.Employee.Impl.pas',
-  BrickCamp.Model.Employee.Intf in 'Interfaces\BrickCamp.Model.Employee.Intf.pas';
+  BrickCamp.Model.Employee.Intf in 'Interfaces\BrickCamp.Model.Employee.Intf.pas',
+  BrickCamp.Resources.Employee.Intf in 'Interfaces\BrickCamp.Resources.Employee.Intf.pas';
 
 {$R *.RES}
 

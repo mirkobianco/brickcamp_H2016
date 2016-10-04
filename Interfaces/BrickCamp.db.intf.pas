@@ -1,9 +1,9 @@
-unit BrickCamp.db.interf;
+unit BrickCamp.db.intf;
 
 interface
 
 uses
-	Spring.Persistence.Adapters.Firedac, Spring.Persistence.Core.Session;
+	Spring.Persistence.Core.Session;
 
 type
   IBrickCampDb =  interface
