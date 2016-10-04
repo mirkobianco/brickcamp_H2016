@@ -19,6 +19,7 @@ type
   public
     function GetOne(const Id: Integer): TEmployee;
     function GetList: IList<TEmployee>;
+    procedure Insert(const Employee: TEmployee);
   end;
 
 implementation
@@ -30,15 +31,17 @@ uses
 
 function TEmployeeRepository.GetList: IList<TEmployee>;
 begin
-  Result := Spring.Collections.TCollections.CreateList<TEmployee>;
+  result := FDb.GetSession.FindAll<TEmployee>;
 end;
 
 function TEmployeeRepository.GetOne(const Id: Integer): TEmployee;
-var
-  Employee: TEmployee;
 begin
-  Employee := FDb.GetSession.FindOne<TEmployee>(Id);
-  result := Employee;
+  result := FDb.GetSession.FindOne<TEmployee>(Id);
+end;
+
+procedure TEmployeeRepository.Insert(const Employee: TEmployee);
+begin
+
 end;
 
 end.

@@ -14,6 +14,7 @@ type
     //IEmployeeRepository
     function GetOne(const Id: Integer): TEmployee;
     function GetList: IList<TEmployee>;
+    procedure Insert(const Employee: TEmployee);
   end;
 
 implementation
@@ -30,6 +31,11 @@ function TMockEmployeeRepository.GetOne(const Id: Integer): TEmployee;
 begin
   result := GlobalContainer.Resolve<TEmployee>([Id]);
   //result.Id := Id;
+end;
+
+procedure TMockEmployeeRepository.Insert(const Employee: TEmployee);
+begin
+  // I do anothing...
 end;
 
 end.
