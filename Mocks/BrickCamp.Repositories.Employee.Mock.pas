@@ -5,9 +5,8 @@ interface
 uses
   Spring.Collections,
   Spring.Container,
+  BrickCamp.Model.Employee,
   BrickCamp.Repositories.Employee.Intf;
-
-implementation
 
 uses
 	BrickCamp.Model.Employee.Inter;
@@ -20,16 +19,20 @@ type
     function GetList: IList<IEmployee>;
   end;
 
+implementation
+
 { TMockEmployeeRepository }
 
 function TMockEmployeeRepository.GetList: IList<IEmployee>;
 begin
-  result := nil;
+  result := Spring.Collections.TCollections.CreateList<IEmployee>();
+  Result.Add(GetOne(-1));
 end;
 
 function TMockEmployeeRepository.GetOne(const Id: Integer): IEmployee;
 begin
-  result := nil;
+  result := GlobalContainer.Resolve<IEmployee>([Id]);
+  //result.Id := Id;
 end;
 
 end.

@@ -4,7 +4,6 @@ uses
   Vcl.SvcMgr,
   BrickCamp.service in 'BrickCamp.service.pas' {srvBrickCamp: TService},
   BrickCamp.service.interf in 'Interfaces\BrickCamp.service.interf.pas',
-  BrickCamp.service.impl in 'Classes\BrickCamp.service.impl.pas',
   BrickCamp.settings.interf in 'Interfaces\BrickCamp.settings.interf.pas',
   BrickCamp.db.interf in 'Interfaces\BrickCamp.db.interf.pas',
   BrickCamp.settings.impl in 'Classes\BrickCamp.settings.impl.pas',
@@ -16,7 +15,12 @@ uses
   BrickCamp.Model.AvailableProducts.interf in 'Models\interface\BrickCamp.Model.AvailableProducts.interf.pas',
   BrickCamp.Model.AvailableProducts.Impl in 'Models\implementation\BrickCamp.Model.AvailableProducts.Impl.pas',
   BrickCamp.Model.Employee.Impl in 'Models\implementation\BrickCamp.Model.Employee.Impl.pas',
-  BrickCamp.Model.Employee.Inter in 'Models\interface\BrickCamp.Model.Employee.Inter.pas';
+  BrickCamp.Model.Employee.Inter in 'Models\interface\BrickCamp.Model.Employee.Inter.pas',
+  BrickCamp.db.impl in 'Classes\BrickCamp.db.impl.pas',
+  BrickCamp.service.impl in 'Classes\BrickCamp.service.impl.pas',
+  BrickCamp.settings.impl in 'Classes\BrickCamp.settings.impl.pas',
+  BrickCamp.Repositories.Employee.Impl in 'Classes\BrickCamp.Repositories.Employee.Impl.pas',
+  BrickCamp.MARS.Writers.Employee in 'MARS\BrickCamp.MARS.Writers.Employee.pas';
 
 {$R *.RES}
 

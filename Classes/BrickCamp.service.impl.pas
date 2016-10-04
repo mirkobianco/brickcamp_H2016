@@ -3,6 +3,12 @@ unit BrickCamp.service.impl;
 interface
 
 uses
+  MARS.Core.Engine,
+  MARS.http.Server.Indy,
+  MARS.Core.Application,
+
+  Spring.Persistence.Adapters.FireDac,
+
   BrickCamp.service.interf,
   BrickCamp.Repositories.Employee.Intf,
   BrickCamp.Repositories.Employee.Mock,
@@ -12,13 +18,17 @@ uses
 type
   TCbdService = class(TInterfacedObject, IBrickCampService)
   private
+    FEngine: TMARSEngine;
+    FServer: TMARShttpServerIndy;
+
     procedure RegisterClasses;
 
     procedure InitLogger;
-    procedure StartSynchronization;
-
+    procedure InitREST;
     function GetLoggerFileName: string;
   public
+    destructor Destroy; override;
+
     procedure Run;
   end;
 
@@ -37,9 +47,21 @@ uses
   Vcl.SvcMgr,
   Spring.Logging,
   BrickCamp.services,
-  BrickCamp.Repositories.Employee.Impl;
+  BrickCamp.Repositories.Employee.Impl,
+  MARS.Core.MessageBodyWriter,
+  MARS.Core.MessageBodyWriters,
+  MARS.Core.URL,
+  MARS.Utils.Parameters.IniFile
+  ;
 
 { TCbdService }
+
+destructor TCbdService.Destroy;
+begin
+  FServer.Free;
+  FEngine.Free;
+  inherited;
+end;
 
 function TCbdService.GetLoggerFileName: string;
 var
@@ -84,25 +106,48 @@ begin
   Spring.Logging.Loggers.TLogger(CbLog).EntryTypes := LOG_ALL_ENTRY_TYPES;
 end;
 
+procedure TCbdService.InitREST;
+begin
+  // MARS-Curiosity Engine
+  FEngine := TMARSEngine.Create;
+  try
+    FEngine.Parameters.LoadFromIniFile;
+    FEngine.AddApplication('DefaultApp', '/cb', ['BrickCamp.Resources.*']);
+
+    // http server implementation
+    FServer := TMARShttpServerIndy.Create(FEngine);
+    try
+      FServer.Active := True;
+    except
+      FServer.Free;
+      raise;
+    end;
+  except
+    FEngine.Free;
+    raise;
+  end;
+end;
+
 procedure TCbdService.RegisterClasses;
 begin
   GlobalContainer.RegisterType<TCbdSettings>;
   GlobalContainer.RegisterType<TCbdDB>;
   GlobalContainer.RegisterType<TEmployee>;
-  GlobalContainer.RegisterType<TRepEmployee>;
-//  GlobalContainer.RegisterType<TMockEmployeeRepository>('mock');
+  GlobalContainer.RegisterType<TEmployeeRepository>;
+  GlobalContainer.RegisterType<TMARSEngine>;
+  GlobalContainer.RegisterType<TMARShttpServerIndy>;
   GlobalContainer.Build;
 end;
 
 procedure TCbdService.Run;
 begin
+  InitREST;
   InitLogger;
   RegisterClasses;
-  StartSynchronization;
-end;
 
 procedure TCbdService.StartSynchronization;
 begin
 end;
+
 
 end.

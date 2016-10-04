@@ -8,7 +8,7 @@ uses
 type
   IBrickCampDb =  interface
   ['{E0B403C3-425B-4298-8697-ACED510B6F5F}']
-    function GetDbConnection: TFireDACConnectionAdapter;
+    procedure InitializeDbConnection;
     function GetSession: TSession;
   end;
 

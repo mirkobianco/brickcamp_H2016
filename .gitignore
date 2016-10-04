@@ -37,3 +37,5 @@ Tests/Bin/
 
 # TestInsight files
 TestInsightSettings.ini
+/*.res
+/Test/Win32/Debug/*.exe
