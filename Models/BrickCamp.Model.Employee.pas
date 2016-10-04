@@ -1,4 +1,4 @@
-unit BrickCamp.Model.Employee.Impl;
+unit BrickCamp.Model.Employee;
 
 interface
 
@@ -73,6 +73,14 @@ type
 
 implementation
 
+uses
+  Classes, SysUtils, Rtti
+  , Generics.Collections
+  , MARS.Core.Attributes
+  , MARS.Core.Declarations
+  , MARS.Core.MediaType
+  , MARS.Core.MessageBodyWriter
+  ;
 { TEmployee }
 
 constructor TEmployee.Create(const Id: integer);

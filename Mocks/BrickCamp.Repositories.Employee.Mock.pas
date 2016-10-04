@@ -3,9 +3,11 @@ unit BrickCamp.Repositories.Employee.Mock;
 interface
 
 uses
+  System.JSON,
+  Generics.Collections,
   Spring.Collections,
   Spring.Container,
-  BrickCamp.Model.Employee.Impl,
+  BrickCamp.Model.Employee,
   BrickCamp.Repositories.Employee.Intf;
 
 type
@@ -13,7 +15,7 @@ type
   public
     //IEmployeeRepository
     function GetOne(const Id: Integer): TEmployee;
-    function GetList: IList<TEmployee>;
+    function GetList: TJSONArray;
     procedure Insert(const Employee: TEmployee);
   end;
 
@@ -21,10 +23,9 @@ implementation
 
 { TMockEmployeeRepository }
 
-function TMockEmployeeRepository.GetList: IList<TEmployee>;
+function TMockEmployeeRepository.GetList: TJSONArray;
 begin
-  result := Spring.Collections.TCollections.CreateList<TEmployee>();
-  Result.Add(GetOne(-1));
+  result := TJSONArray.Create;
 end;
 
 function TMockEmployeeRepository.GetOne(const Id: Integer): TEmployee;

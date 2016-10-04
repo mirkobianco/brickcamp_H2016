@@ -10,9 +10,9 @@ uses
   Spring.Persistence.Adapters.FireDac,
 
   BrickCamp.service.interf,
-  BrickCamp.Model.Employee.Intf,
+  BrickCamp.Repositories.Employee.Intf,
   BrickCamp.Repositories.Employee.Mock,
-  BrickCamp.Model.Employee.Impl;
+  BrickCamp.Model.Employee;
 
 type
   TCbdService = class(TInterfacedObject, IBrickCampService)
@@ -145,6 +145,8 @@ begin
   InitREST;
   InitLogger;
   RegisterClasses;
+
 end;
+
 
 end.

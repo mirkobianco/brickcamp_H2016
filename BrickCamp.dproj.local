@@ -17,6 +17,8 @@
     <Transaction>2016/10/04 20:52:03.000.800,C:\Dev\Delphi\hackaton2016\MARS\BrickCamp.MARS.Writers.Employee.pas=</Transaction>
     <Transaction>2016/10/04 20:57:47.000.293,=C:\Dev\Delphi\hackaton2016\Unit1.pas</Transaction>
     <Transaction>2016/10/04 20:59:16.000.481,C:\Dev\Delphi\hackaton2016\Unit1.pas=C:\Dev\Delphi\hackaton2016\Interfaces\BrickCamp.Model.Employee.Intf.pas</Transaction>
-    <Transaction>2016/10/04 22:10:27.027,=C:\Dev\Delphi\hackathon\hackaton2016\REST\BrickCamp.Resources.Employee.pas</Transaction>
+    <Transaction>2016/10/04 22:11:33.000.090,=C:\Dev\Delphi\hackaton2016\Unit1.pas</Transaction>
+    <Transaction>2016/10/04 22:26:30.015,=C:\Dev\Delphi\hackaton2016\Classes\BrickCamp.Lists.MessageBodyWriters.pas</Transaction>
+    <Transaction>2016/10/04 22:58:08.392,C:\Dev\Delphi\hackaton2016\Classes\BrickCamp.Lists.MessageBodyWriters.pas=</Transaction>
   </Transactions>
 </BorlandProject>

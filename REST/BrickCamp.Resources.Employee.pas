@@ -3,7 +3,8 @@ unit BrickCamp.Resources.Employee;
 interface
 
 uses
-  Classes, SysUtils
+  Classes, SysUtils,
+  System.Generics.Collections
 
   , MARS.Core.Registry
   , MARS.Core.Attributes
@@ -15,7 +16,7 @@ uses
   , Spring.Collections
   , BrickCamp.Repositories.Employee.Intf
   , BrickCamp.Model.Employee.Intf
-  , BrickCamp.Model.Employee.Impl
+  , BrickCamp.Model.Employee
   , Spring.Container
   ;
 
@@ -35,7 +36,7 @@ type
     function GetOne(const [PathParam] Id: Integer): TEmployee;
 
     [GET, Path('/getlist/')]
-    function GetList: IList<TEmployee>;
+    function GetList: TJSONArray;
   end;
 
 implementation
@@ -54,9 +55,12 @@ begin
   Result := Rep.GetOne(Id); //FRepository.GetOne(Id);
 end;
 
-function TEmployeeResource.GetList: IList<TEmployee>;
+function TEmployeeResource.GetList: TJSONArray;
+var
+  Rep: IEmployeeRepository;
 begin
-  result := FRepository.GetList;
+  Rep := GlobalContainer.Resolve<IEmployeeRepository>;
+  result := Rep.GetList;
 end;
 
 initialization
