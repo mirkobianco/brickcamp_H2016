@@ -46,7 +46,7 @@ end;
 
 destructor TCbdDB.Destroy;
 begin
-  FCon.Free;
+  //FCon.Free;
   inherited;
 end;
 

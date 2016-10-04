@@ -47,6 +47,7 @@ uses
   Spring.Logging,
   BrickCamp.services,
   BrickCamp.Repositories.Employee.Impl,
+  BrickCamp.Resources.Employee,
   MARS.Core.MessageBodyWriter,
   MARS.Core.MessageBodyWriters,
   MARS.Core.URL,
@@ -131,6 +132,7 @@ procedure TCbdService.RegisterClasses;
 begin
   GlobalContainer.RegisterType<TCbdSettings>;
   GlobalContainer.RegisterType<TCbdDB>;
+  GlobalContainer.RegisterType<TEmployeeResource>;
   GlobalContainer.RegisterType<TEmployee>;
   GlobalContainer.RegisterType<TEmployeeRepository>;
   GlobalContainer.RegisterType<TMARSEngine>;

@@ -3,17 +3,22 @@ unit BrickCamp.Repositories.Employee.Impl;
 interface
 
 uses
- BrickCamp.Model.Employee, Spring.Collections,
-  BrickCamp.db.interf, Spring.Container.Injection, Spring.Container.Common, BrickCamp.Repositories.Employee.Intf;
+ Spring.Collections,
+ Spring.Container.Injection,
+ Spring.Container.Common,
+ BrickCamp.Model.Employee,
+ BrickCamp.db.interf,
+ BrickCamp.Model.Employee.Intf,
+ BrickCamp.Repositories.Employee.Intf;
 
 type
   TEmployeeRepository = class(TInterfacedObject, IEmployeeRepository)
-  private
+  protected
     [Inject]
     FDb: IBrickCampDb;
   public
-    function GetOne(const Id: Integer): IEmployee;
-    function GetList: IList<IEmployee>;
+    function GetOne(const Id: Integer): TEmployee;
+    function GetList: IList<TEmployee>;
   end;
 
 implementation
@@ -23,14 +28,17 @@ uses
 
 { TEmployeeRepository }
 
-function TEmployeeRepository.GetList: IList<IEmployee>;
+function TEmployeeRepository.GetList: IList<TEmployee>;
 begin
-  Result := FDb.GetSession.FindAll<TEmployee> as IList<IEmployee>;
+  Result := Spring.Collections.TCollections.CreateList<TEmployee>;
 end;
 
-function TEmployeeRepository.GetOne(const Id: Integer): IEmployee;
+function TEmployeeRepository.GetOne(const Id: Integer): TEmployee;
+var
+  Employee: TEmployee;
 begin
-  Result := FDb.GetSession.FindOne<TEmployee>(Id);
+  Employee := FDb.GetSession.FindOne<TEmployee>(Id);
+  result := Employee;
 end;
 
 end.

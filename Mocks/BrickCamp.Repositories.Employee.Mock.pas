@@ -12,23 +12,23 @@ type
   TMockEmployeeRepository = class(TInterfacedObject, IEmployeeRepository)
   public
     //IEmployeeRepository
-    function GetOne(const Id: Integer): IEmployee;
-    function GetList: IList<IEmployee>;
+    function GetOne(const Id: Integer): TEmployee;
+    function GetList: IList<TEmployee>;
   end;
 
 implementation
 
 { TMockEmployeeRepository }
 
-function TMockEmployeeRepository.GetList: IList<IEmployee>;
+function TMockEmployeeRepository.GetList: IList<TEmployee>;
 begin
-  result := Spring.Collections.TCollections.CreateList<IEmployee>();
+  result := Spring.Collections.TCollections.CreateList<TEmployee>();
   Result.Add(GetOne(-1));
 end;
 
-function TMockEmployeeRepository.GetOne(const Id: Integer): IEmployee;
+function TMockEmployeeRepository.GetOne(const Id: Integer): TEmployee;
 begin
-  result := GlobalContainer.Resolve<IEmployee>([Id]);
+  result := GlobalContainer.Resolve<TEmployee>([Id]);
   //result.Id := Id;
 end;
 
