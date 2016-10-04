@@ -1,6 +1,38 @@
-*.~*~
-/Win32/Debug Console/*.dcu
-/Win32/Debug Console/*.exe
-/*.stat
-/*.res
-/Win32/Debug Console/*.rsm
+# IDE files
+*.~*
+*.cbk
+*.dsk
+*.identcache
+*.local
+*.skincfg
+*.stat
+*.tvsconfig
+__history/
+__recovery/
+
+# Delphi Compiler output files
+*.dcu
+*.drc
+*.jdbg
+*.map
+*.plist
+*.rsm
+*.tds
+
+# 64bit Delphi files
+*.o
+
+# Added in XE8
+*.stat
+
+# Spring4D files
+*.bak
+*.ficfg
+*.mes
+Library/
+Logs/
+Samples/**/*.exe
+Tests/Bin/
+
+# TestInsight files
+TestInsightSettings.ini
