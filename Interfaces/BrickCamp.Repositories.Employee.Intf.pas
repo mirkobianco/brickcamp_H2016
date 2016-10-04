@@ -1,4 +1,4 @@
-unit BrickCamp.Repository.Intf;
+unit BrickCamp.Repositories.Employee.Intf;
 
 interface
 

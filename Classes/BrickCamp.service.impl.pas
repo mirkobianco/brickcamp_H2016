@@ -4,6 +4,9 @@ interface
 
 uses
   BrickCamp.service.interf,
+  BrickCamp.Repositories.Employee.Intf,
+  BrickCamp.Repositories.Employee.Mock,
+  BrickCamp.Model.Employee,
   Spring.Persistence.Adapters.Oracle;
 
 type
@@ -85,6 +88,8 @@ begin
   GlobalContainer.RegisterType<TCbdSettings>;
   GlobalContainer.RegisterType<TCbdDB>;
   GlobalContainer.RegisterType<TCbdTransSynchronizer>;
+  GlobalContainer.RegisterType<TEmployee>;
+  GlobalContainer.RegisterType<TMockEmployeeRepository>('mock');
   GlobalContainer.Build;
 end;
 

@@ -13,8 +13,9 @@ uses
   BrickCamp.translationsSynchronizer.impl in 'Classes\BrickCamp.translationsSynchronizer.impl.pas',
   BrickCamp.services in 'BrickCamp.services.pas',
   BrickCamp.Model.Employee in 'Models\BrickCamp.Model.Employee.pas',
-  BrickCamp.Repository.Intf in 'Interfaces\BrickCamp.Repository.Intf.pas',
-  BrickCamp.Resources.Employee in 'REST\BrickCamp.Resources.Employee.pas';
+  BrickCamp.Repositories.Employee.Intf in 'Interfaces\BrickCamp.Repositories.Employee.Intf.pas',
+  BrickCamp.Resources.Employee in 'REST\BrickCamp.Resources.Employee.pas',
+  BrickCamp.Repositories.Employee.Mock in 'Mocks\BrickCamp.Repositories.Employee.Mock.pas';
 
 {$R *.RES}
 

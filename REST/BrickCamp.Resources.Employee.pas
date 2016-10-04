@@ -11,8 +11,9 @@ uses
   , MARS.Core.JSON
   , MARS.Core.MessageBodyWriters
   , MARS.Core.MessageBodyReaders
+  , Spring
   , Spring.Collections
-  , BrickCamp.Repository.Intf
+  , BrickCamp.Repositories.Employee.Intf
   , BrickCamp.Model.Employee
   ;
 

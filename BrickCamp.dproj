@@ -117,8 +117,9 @@
         <DCCReference Include="Classes\BrickCamp.translationsSynchronizer.impl.pas"/>
         <DCCReference Include="BrickCamp.services.pas"/>
         <DCCReference Include="Models\BrickCamp.Model.Employee.pas"/>
-        <DCCReference Include="Interfaces\BrickCamp.Repository.Intf.pas"/>
+        <DCCReference Include="Interfaces\BrickCamp.Repositories.Employee.Intf.pas"/>
         <DCCReference Include="REST\BrickCamp.Resources.Employee.pas"/>
+        <DCCReference Include="Mocks\BrickCamp.Repositories.Employee.Mock.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
