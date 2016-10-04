@@ -1,0 +1,42 @@
+program BrickCamp;
+
+uses
+  Vcl.SvcMgr,
+  BrickCamp.service in 'BrickCamp.service.pas' {srvBrickCamp: TService},
+  BrickCamp.service.interf in 'Interfaces\BrickCamp.service.interf.pas',
+  BrickCamp.service.impl in 'Classes\BrickCamp.service.impl.pas',
+  BrickCamp.settings.interf in 'Interfaces\BrickCamp.settings.interf.pas',
+  BrickCamp.db.interf in 'Interfaces\BrickCamp.db.interf.pas',
+  BrickCamp.settings.impl in 'Classes\BrickCamp.settings.impl.pas',
+  BrickCamp.db.impl in 'Classes\BrickCamp.db.impl.pas',
+  BrickCamp.translationsSynchronizer.interf in 'Interfaces\BrickCamp.translationsSynchronizer.interf.pas',
+  BrickCamp.translationsSynchronizer.impl in 'Classes\BrickCamp.translationsSynchronizer.impl.pas',
+  BrickCamp.services in 'BrickCamp.services.pas',
+  BrickCamp.Employee.Model in 'Models\BrickCamp.Employee.Model.pas';
+
+{$R *.RES}
+
+begin
+  // Windows 2003 Server requires StartServiceCtrlDispatcher to be
+  // called before CoRegisterClassObject, which can be called indirectly
+  // by Application.Initialize. TServiceApplication.DelayInitialize allows
+  // Application.Initialize to be called from TService.Main (after
+  // StartServiceCtrlDispatcher has been called).
+  //
+  // Delayed initialization of the Application object may affect
+  // events which then occur prior to initialization, such as
+  // TService.OnCreate. It is only recommended if the ServiceApplication
+  // registers a class object with OLE and is intended for use with
+  // Windows 2003 Server.
+  //
+  // Application.DelayInitialize := True;
+  //
+  if not Application.DelayInitialize or Application.Installing then
+    Application.Initialize;
+
+  Application.CreateForm(TsrvBrickCamp, srvBrickCamp);
+  {$IFDEF CONSOLE}
+  srvBrickCamp.Initialize;
+  {$ENDIF}
+  Application.Run;
+end.
