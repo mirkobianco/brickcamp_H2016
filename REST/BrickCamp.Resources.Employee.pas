@@ -18,7 +18,7 @@ uses
   ;
 
 type
-  [Path('/Employee'), Produces(TMediaType.APPLICATION_JSON_UTF8)]
+  [Path('/employee'), Produces(TMediaType.APPLICATION_JSON_UTF8)]
   TEmployeeResource = class
   private
     [Inject]
@@ -28,7 +28,7 @@ type
     [GET, Path('/{Id}')]
     function GetOne(const [PathParam] Id: Integer): IEmployee;
 
-    [GET, Path('/GetList')]
+    [GET, Path('/getlist')]
     function GetList: IList<IEmployee>;
   end;
 

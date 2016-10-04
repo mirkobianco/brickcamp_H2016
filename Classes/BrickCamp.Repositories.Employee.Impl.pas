@@ -7,7 +7,7 @@ uses
   BrickCamp.db.interf, Spring.Container.Injection, Spring.Container.Common, BrickCamp.Repositories.Employee.Intf;
 
 type
-  TRepEmployee = class(TInterfacedObject, IEmployeeRepository)
+  TEmployeeRepository = class(TInterfacedObject, IEmployeeRepository)
   private
     [Inject]
     FDb: IBrickCampDb;
@@ -21,14 +21,14 @@ implementation
 uses
 	Spring.Persistence.Criteria, Spring.Persistence.Criteria.Properties, Spring.Reflection;
 
-{ TCdbRepEmployee }
+{ TEmployeeRepository }
 
-function TRepEmployee.GetList: IList<IEmployee>;
+function TEmployeeRepository.GetList: IList<IEmployee>;
 begin
   Result := FDb.GetSession.FindAll<TEmployee> as IList<IEmployee>;
 end;
 
-function TRepEmployee.GetOne(const Id: Integer): IEmployee;
+function TEmployeeRepository.GetOne(const Id: Integer): IEmployee;
 begin
   Result := FDb.GetSession.FindOne<TEmployee>(Id);
 end;

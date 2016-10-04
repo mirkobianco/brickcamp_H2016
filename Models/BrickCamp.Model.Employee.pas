@@ -44,6 +44,7 @@ type
     procedure SetPhoneExt(const Value: Nullable<string>);
     procedure SetSalary(const Value: Extended);
   public
+    constructor Create(const Id: integer); reintroduce;
     property ID: Integer read GetId;
 
     [Column('FIRST_NAME', [cpNotNull])]
@@ -69,6 +70,11 @@ type
 implementation
 
 { TEmployee }
+
+constructor TEmployee.Create(const Id: integer);
+begin
+  FId := Id;
+end;
 
 function TEmployee.GetDepartmentNumber: string;
 begin

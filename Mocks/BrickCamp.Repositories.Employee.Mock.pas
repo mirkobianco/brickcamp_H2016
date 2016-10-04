@@ -23,12 +23,12 @@ implementation
 function TMockEmployeeRepository.GetList: IList<IEmployee>;
 begin
   result := Spring.Collections.TCollections.CreateList<IEmployee>();
-  Result.Add(TEmployee.Create);
+  Result.Add(GetOne(-1));
 end;
 
 function TMockEmployeeRepository.GetOne(const Id: Integer): IEmployee;
 begin
-  result := GlobalContainer.Resolve<IEmployee>;
+  result := GlobalContainer.Resolve<IEmployee>([Id]);
   //result.Id := Id;
 end;
 

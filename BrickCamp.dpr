@@ -13,8 +13,9 @@ uses
   BrickCamp.Repositories.Employee.Mock in 'Mocks\BrickCamp.Repositories.Employee.Mock.pas',
   BrickCamp.db.impl in 'Classes\BrickCamp.db.impl.pas',
   BrickCamp.service.impl in 'Classes\BrickCamp.service.impl.pas',
-  BrickCamp.settings.impl in 'Classes\BrickCamp.settings.impl.pas';
-  BrickCamp.Repositories.Employee.Impl in 'Classes\BrickCamp.Repositories.Employee.Impl.pas';
+  BrickCamp.settings.impl in 'Classes\BrickCamp.settings.impl.pas',
+  BrickCamp.Repositories.Employee.Impl in 'Classes\BrickCamp.Repositories.Employee.Impl.pas',
+  BrickCamp.MARS.Writers.Employee in 'MARS\BrickCamp.MARS.Writers.Employee.pas';
 
 {$R *.RES}
 

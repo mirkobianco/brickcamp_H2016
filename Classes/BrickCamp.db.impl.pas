@@ -15,7 +15,9 @@ type
     FCon: TFireDACConnectionAdapter;
     FSession: TSession;
   public
-    function GetDbConnection: TFireDACConnectionAdapter;
+    destructor Destroy; override;
+
+    procedure InitializeDbConnection;
     function GetSession: TSession;
   end;
 
@@ -28,7 +30,7 @@ uses
 
 { TCbdDB }
 
-function TCbdDB.GetDbConnection: TFireDACConnectionAdapter;
+procedure TCbdDB.InitializeDbConnection;
 begin
   if FCon <> nil then
     Exit;
@@ -40,12 +42,17 @@ begin
   FCon.Connect;
 
   FSession := TSession.Create(FCon);
-  result := FCon;
+end;
+
+destructor TCbdDB.Destroy;
+begin
+  FCon.Free;
+  inherited;
 end;
 
 function TCbdDB.GetSession: TSession;
 begin
-  GetDbConnection;
+  InitializeDbConnection;
   Result := FSession;
 end;
 

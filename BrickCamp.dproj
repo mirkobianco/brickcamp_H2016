@@ -118,6 +118,8 @@
         <DCCReference Include="Classes\BrickCamp.db.impl.pas"/>
         <DCCReference Include="Classes\BrickCamp.service.impl.pas"/>
         <DCCReference Include="Classes\BrickCamp.settings.impl.pas"/>
+        <DCCReference Include="Classes\BrickCamp.Repositories.Employee.Impl.pas"/>
+        <DCCReference Include="MARS\BrickCamp.MARS.Writers.Employee.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
