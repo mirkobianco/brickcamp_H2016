@@ -27,8 +27,7 @@ type
 
   [Path('/employee'), Produces(TMediaType.APPLICATION_JSON_UTF8)]
   TEmployeeResource = class(TInterfacedObject, IEmployeeResurce)
-  protected var
-    [Inject]
+  protected
     FRepository: IEmployeeRepository;
   protected
   public
@@ -52,7 +51,7 @@ var
   Rep: IEmployeeRepository;
 begin
   Rep := GlobalContainer.Resolve<IEmployeeRepository>;
-  Result := Rep.GetOne(Id); //FRepository.GetOne(Id);
+  Result := Rep.GetOne(Id);
 end;
 
 function TEmployeeResource.GetList: TJSONArray;
@@ -60,7 +59,7 @@ var
   Rep: IEmployeeRepository;
 begin
   Rep := GlobalContainer.Resolve<IEmployeeRepository>;
-  result := Rep.GetList;
+  Result := Rep.GetListAsJsonArray;
 end;
 
 initialization

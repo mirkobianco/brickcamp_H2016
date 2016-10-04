@@ -21,7 +21,9 @@ type
     FDb: IBrickCampDb;
   public
     function GetOne(const Id: Integer): TEmployee;
-    function GetList: TJSONArray;
+    function GetListAsJsonArray: TJSONArray;
+    function GetList: IList<TEmployee>;
+
     procedure Insert(const Employee: TEmployee);
   end;
 
@@ -31,16 +33,20 @@ uses
 	Spring.Persistence.Criteria, Spring.Persistence.Criteria.Properties, Spring.Reflection;
 
 { TEmployeeRepository }
-
-function TEmployeeRepository.GetList: TJSONArray;
-var
-  LList: IList<TEmployee>;
-  LItem: TEmployee;
+function TEmployeeRepository.GetList: IList<TEmployee>;
 begin
-  LList := FDb.GetSession.FindAll<TEmployee>;
-  result := TJSONArray.Create;
-  for LItem in LList do
-    Result.Add(ObjectToJson(LItem));
+  Result := FDb.GetSession.FindAll<TEmployee>;
+end;
+
+function TEmployeeRepository.GetListAsJsonArray: TJSONArray;
+var
+  List: IList<TEmployee>;
+  Item: TObject;
+begin
+  List := GetList;
+  Result := TJSONArray.Create;
+  for Item in List do
+    Result.Add(ObjectToJson(Item));
 end;
 
 function TEmployeeRepository.GetOne(const Id: Integer): TEmployee;

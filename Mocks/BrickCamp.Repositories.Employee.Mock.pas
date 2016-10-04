@@ -15,7 +15,8 @@ type
   public
     //IEmployeeRepository
     function GetOne(const Id: Integer): TEmployee;
-    function GetList: TJSONArray;
+    function GetListAsJsonArray: TJSONArray;
+    function GetList: IList<TEmployee>;
     procedure Insert(const Employee: TEmployee);
   end;
 
@@ -23,14 +24,19 @@ implementation
 
 { TMockEmployeeRepository }
 
-function TMockEmployeeRepository.GetList: TJSONArray;
+function TMockEmployeeRepository.GetList: IList<TEmployee>;
 begin
-  result := TJSONArray.Create;
+  Result := nil;
+end;
+
+function TMockEmployeeRepository.GetListAsJsonArray: TJSONArray;
+begin
+  Result := TJSONArray.Create;
 end;
 
 function TMockEmployeeRepository.GetOne(const Id: Integer): TEmployee;
 begin
-  result := GlobalContainer.Resolve<TEmployee>([Id]);
+  Result := GlobalContainer.Resolve<TEmployee>([Id]);
   //result.Id := Id;
 end;
 
