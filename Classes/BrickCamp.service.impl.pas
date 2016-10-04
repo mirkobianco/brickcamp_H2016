@@ -15,8 +15,6 @@ type
     procedure RegisterClasses;
 
     procedure InitLogger;
-    procedure StartSynchronization;
-
     function GetLoggerFileName: string;
   public
     procedure Run;
@@ -36,7 +34,7 @@ uses
   System.Classes,
   Vcl.SvcMgr,
   Spring.Logging,
-  BrickCamp.services, BrickCamp.translationsSynchronizer.impl, BrickCamp.translationsSynchronizer.interf;
+  BrickCamp.services;
 
 { TCbdService }
 
@@ -87,7 +85,6 @@ procedure TCbdService.RegisterClasses;
 begin
   GlobalContainer.RegisterType<TCbdSettings>;
   GlobalContainer.RegisterType<TCbdDB>;
-  GlobalContainer.RegisterType<TCbdTransSynchronizer>;
   GlobalContainer.RegisterType<TEmployee>;
   GlobalContainer.RegisterType<TMockEmployeeRepository>('mock');
   GlobalContainer.Build;
@@ -97,12 +94,8 @@ procedure TCbdService.Run;
 begin
   InitLogger;
   RegisterClasses;
-  StartSynchronization;
+
 end;
 
-procedure TCbdService.StartSynchronization;
-begin
-  GlobalContainer.Resolve<ITranslationSynchronizer>.Synchronize;
-end;
 
 end.

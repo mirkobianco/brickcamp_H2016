@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{44E8B29F-B9D3-4AD2-B016-EFC208B1068B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BrickCamp.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\BrickCampTestsProject.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BrickCamp">
+        <MSBuild Projects="BrickCamp.dproj"/>
+    </Target>
+    <Target Name="BrickCamp:Clean">
+        <MSBuild Projects="BrickCamp.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BrickCamp:Make">
+        <MSBuild Projects="BrickCamp.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BrickCampTestsProject">
+        <MSBuild Projects="Test\BrickCampTestsProject.dproj"/>
+    </Target>
+    <Target Name="BrickCampTestsProject:Clean">
+        <MSBuild Projects="Test\BrickCampTestsProject.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BrickCampTestsProject:Make">
+        <MSBuild Projects="Test\BrickCampTestsProject.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BrickCamp;BrickCampTestsProject"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BrickCamp:Clean;BrickCampTestsProject:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BrickCamp:Make;BrickCampTestsProject:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

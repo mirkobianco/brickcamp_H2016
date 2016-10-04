@@ -8,8 +8,6 @@ uses
   BrickCamp.Model.Employee,
   BrickCamp.Repositories.Employee.Intf;
 
-implementation
-
 type
   TMockEmployeeRepository = class(TInterfacedObject, IEmployeeRepository)
   public
@@ -18,16 +16,20 @@ type
     function GetList: IList<TEmployee>;
   end;
 
+implementation
+
 { TMockEmployeeRepository }
 
 function TMockEmployeeRepository.GetList: IList<TEmployee>;
 begin
-  result := nil;
+  result := Spring.Collections.TCollections.CreateList();
+  Result.Add(TEmployee.Create);
 end;
 
 function TMockEmployeeRepository.GetOne(const Id: Integer): TEmployee;
 begin
-  result := nil;
+  result := TEmployee.Create;
+  //result.Id := Id;
 end;
 
 end.

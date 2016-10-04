@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2016/10/04 17:52:21.644,C:\Dev\Delphi\hackaton2016\BrickCampTests.groupproj=C:\Dev\Delphi\hackaton2016\Test\BrickCampTests.groupproj</Transaction>
+  </Transactions>
+	<Default.Personality>
+		<Projects ActiveProject="C:\Dev\Delphi\hackaton2016\Test\BrickCampTestsProject.dproj"/>
+	</Default.Personality>
+</BorlandProject>
