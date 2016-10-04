@@ -44,7 +44,7 @@ end;
 
 procedure TestTMockEmployeeRepository.TestGetOne_ReturnsOne_Success;
 var
-  ReturnValue: TEmployee;
+  ReturnValue: IEmployee;
   Id: Integer;
 begin
   // TODO: Setup method call parameters
@@ -54,7 +54,7 @@ end;
 
 procedure TestTMockEmployeeRepository.TestGetList;
 var
-  ReturnValue: IList<TEmployee>;
+  ReturnValue: IList<IEmployee>;
 begin
   ReturnValue := FMockEmployeeRepository.GetList;
   // TODO: Validate method results

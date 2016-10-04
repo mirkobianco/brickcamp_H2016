@@ -2,8 +2,9 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2016/10/04 17:52:21.644,C:\Dev\Delphi\hackaton2016\BrickCampTests.groupproj=C:\Dev\Delphi\hackaton2016\Test\BrickCampTests.groupproj</Transaction>
+    <Transaction>2016/10/04 17:53:53.606,C:\Dev\Delphi\hackaton2016\BrickCampGroup.groupproj=C:\Dev\Delphi\hackaton2016\BrickCampTests.groupproj</Transaction>
   </Transactions>
 	<Default.Personality>
-		<Projects ActiveProject="C:\Dev\Delphi\hackaton2016\Test\BrickCampTestsProject.dproj"/>
+		<Projects ActiveProject="C:\Dev\Delphi\hackaton2016\Test\BrickCampTests.dproj"/>
 	</Default.Personality>
 </BorlandProject>

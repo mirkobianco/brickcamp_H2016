@@ -6,7 +6,7 @@
         <Projects Include="BrickCamp.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Test\BrickCampTestsProject.dproj">
+        <Projects Include="Test\BrickCampTests.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -26,23 +26,23 @@
     <Target Name="BrickCamp:Make">
         <MSBuild Projects="BrickCamp.dproj" Targets="Make"/>
     </Target>
-    <Target Name="BrickCampTestsProject">
-        <MSBuild Projects="Test\BrickCampTestsProject.dproj"/>
+    <Target Name="BrickCampTests">
+        <MSBuild Projects="Test\BrickCampTests.dproj"/>
     </Target>
-    <Target Name="BrickCampTestsProject:Clean">
-        <MSBuild Projects="Test\BrickCampTestsProject.dproj" Targets="Clean"/>
+    <Target Name="BrickCampTests:Clean">
+        <MSBuild Projects="Test\BrickCampTests.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="BrickCampTestsProject:Make">
-        <MSBuild Projects="Test\BrickCampTestsProject.dproj" Targets="Make"/>
+    <Target Name="BrickCampTests:Make">
+        <MSBuild Projects="Test\BrickCampTests.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="BrickCamp;BrickCampTestsProject"/>
+        <CallTarget Targets="BrickCamp;BrickCampTests"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="BrickCamp:Clean;BrickCampTestsProject:Clean"/>
+        <CallTarget Targets="BrickCamp:Clean;BrickCampTests:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="BrickCamp:Make;BrickCampTestsProject:Make"/>
+        <CallTarget Targets="BrickCamp:Make;BrickCampTests:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
