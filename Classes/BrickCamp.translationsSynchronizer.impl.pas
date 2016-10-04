@@ -27,7 +27,7 @@ type
 implementation
 
 uses
-  BrickCamp.services, Spring.Collections, BrickCamp.Employee.Model, Spring.Persistence.Criteria.Properties;
+  BrickCamp.services, Spring.Collections, BrickCamp.Model.Employee, Spring.Persistence.Criteria.Properties;
 
 { TCbdTransSynchronizer }
 
