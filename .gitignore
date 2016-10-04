@@ -18,6 +18,7 @@ __recovery/
 *.plist
 *.rsm
 *.tds
+*Coolnection*
 
 # 64bit Delphi files
 *.o
