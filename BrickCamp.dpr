@@ -12,7 +12,10 @@ uses
   BrickCamp.translationsSynchronizer.interf in 'Interfaces\BrickCamp.translationsSynchronizer.interf.pas',
   BrickCamp.translationsSynchronizer.impl in 'Classes\BrickCamp.translationsSynchronizer.impl.pas',
   BrickCamp.services in 'BrickCamp.services.pas',
-  BrickCamp.Employee.Model in 'Models\BrickCamp.Employee.Model.pas';
+  BrickCamp.Model.Employee in 'Models\BrickCamp.Model.Employee.pas',
+  BrickCamp.Repositories.Employee.Intf in 'Interfaces\BrickCamp.Repositories.Employee.Intf.pas',
+  BrickCamp.Resources.Employee in 'REST\BrickCamp.Resources.Employee.pas',
+  BrickCamp.Repositories.Employee.Mock in 'Mocks\BrickCamp.Repositories.Employee.Mock.pas';
 
 {$R *.RES}
 
