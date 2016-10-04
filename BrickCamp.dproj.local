@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject>
-	<Transactions>
-    <Transaction>2016/10/04 16:54:34.000.235,=C:\rodrigo\programacao\delphi\hackaton2016\Unit1.pas</Transaction>
-    <Transaction>2016/10/04 16:54:53.000.670,C:\rodrigo\programacao\delphi\hackaton2016\Classes\BrickCamp.Repositories.Employee.Impl.pas=C:\rodrigo\programacao\delphi\hackaton2016\Unit1.pas</Transaction>
-  </Transactions>
-</BorlandProject>
