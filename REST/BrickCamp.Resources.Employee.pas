@@ -15,7 +15,7 @@ uses
   , Spring.Collections
   , BrickCamp.Repositories.Employee.Intf
   , BrickCamp.Model.Employee.Intf
-  , BrickCamp.Model.Employee
+  , BrickCamp.Model.Employee.Impl
   , Spring.Container
   ;
 

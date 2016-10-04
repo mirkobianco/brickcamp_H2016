@@ -4,7 +4,7 @@ interface
 
 uses
   Spring.Collections,
-  BrickCamp.Model.Employee.Inter;
+  BrickCamp.Model.Employee.Impl;
 
 type
   IEmployeeRepository = interface(IInterface)

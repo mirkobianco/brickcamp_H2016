@@ -6,7 +6,7 @@ uses
  Spring.Collections,
  Spring.Container.Injection,
  Spring.Container.Common,
- BrickCamp.Model.Employee,
+ BrickCamp.Model.Employee.Impl,
  BrickCamp.db.interf,
  BrickCamp.Model.Employee.Intf,
  BrickCamp.Repositories.Employee.Intf;
@@ -25,8 +25,7 @@ type
 implementation
 
 uses
-  Spring.Persistence.Criteria, Spring.Persistence.Criteria.Properties, Spring.Reflection,
-  BrickCamp.Model.Employee.Impl;
+  Spring.Persistence.Criteria, Spring.Persistence.Criteria.Properties, Spring.Reflection;
 
 { TEmployeeRepository }
 

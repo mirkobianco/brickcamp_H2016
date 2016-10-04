@@ -16,11 +16,9 @@ uses
   BrickCamp.Model.AvailableProducts.Impl in 'Models\implementation\BrickCamp.Model.AvailableProducts.Impl.pas',
   BrickCamp.Model.Employee.Impl in 'Models\implementation\BrickCamp.Model.Employee.Impl.pas',
   BrickCamp.Model.Employee.Inter in 'Models\interface\BrickCamp.Model.Employee.Inter.pas',
-  BrickCamp.db.impl in 'Classes\BrickCamp.db.impl.pas',
   BrickCamp.service.impl in 'Classes\BrickCamp.service.impl.pas',
-  BrickCamp.settings.impl in 'Classes\BrickCamp.settings.impl.pas',
-  BrickCamp.Repositories.Employee.Impl in 'Classes\BrickCamp.Repositories.Employee.Impl.pas',
-  BrickCamp.Model.Employee.Intf in 'Interfaces\BrickCamp.Model.Employee.Intf.pas';
+  BrickCamp.Model.Employee.Intf in 'Interfaces\BrickCamp.Model.Employee.Intf.pas',
+  BrickCamp.Resources.Employee in 'REST\BrickCamp.Resources.Employee.pas';
 
 {$R *.RES}
 

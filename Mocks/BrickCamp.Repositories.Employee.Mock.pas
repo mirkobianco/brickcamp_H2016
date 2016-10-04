@@ -5,11 +5,8 @@ interface
 uses
   Spring.Collections,
   Spring.Container,
-  BrickCamp.Model.Employee,
+  BrickCamp.Model.Employee.Impl,
   BrickCamp.Repositories.Employee.Intf;
-
-uses
-	BrickCamp.Model.Employee.Inter;
 
 type
   TMockEmployeeRepository = class(TInterfacedObject, IEmployeeRepository)

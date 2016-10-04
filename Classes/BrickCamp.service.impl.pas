@@ -12,8 +12,7 @@ uses
   BrickCamp.service.interf,
   BrickCamp.Model.Employee.Intf,
   BrickCamp.Repositories.Employee.Mock,
-  BrickCamp.Model.Employee.Impl,
-  Spring.Persistence.Adapters.FireDac;
+  BrickCamp.Model.Employee.Impl;
 
 type
   TCbdService = class(TInterfacedObject, IBrickCampService)
@@ -146,10 +145,6 @@ begin
   InitREST;
   InitLogger;
   RegisterClasses;
-
-procedure TCbdService.StartSynchronization;
-begin
 end;
-
 
 end.
