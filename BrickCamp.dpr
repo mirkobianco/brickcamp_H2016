@@ -16,7 +16,8 @@ uses
   BrickCamp.TSettings in 'Classes\BrickCamp.TSettings.pas',
   BrickCamp.Repositories.TEmployee in 'Classes\BrickCamp.Repositories.TEmployee.pas',
   BrickCamp.Resources.IEmployee in 'Interfaces\BrickCamp.Resources.IEmployee.pas',
-  BrickCamp.Model.IEmployee in 'Interfaces\BrickCamp.Model.IEmployee.pas';
+  BrickCamp.Model.IEmployee in 'Interfaces\BrickCamp.Model.IEmployee.pas',
+  Brickcamp.Repository.Redis in 'repository\redis\Brickcamp.Repository.Redis.pas';
 
 {$R *.RES}
 

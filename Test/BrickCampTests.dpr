@@ -24,7 +24,8 @@ uses
   BrickCamp.Repositories.Employee.Intf in '..\Interfaces\BrickCamp.Repositories.Employee.Intf.pas',
   BrickCamp.service.interf in '..\Interfaces\BrickCamp.service.interf.pas',
   BrickCamp.settings.interf in '..\Interfaces\BrickCamp.settings.interf.pas',
-  BrickCamp.translationsSynchronizer.interf in '..\Interfaces\BrickCamp.translationsSynchronizer.interf.pas';
+  BrickCamp.translationsSynchronizer.interf in '..\Interfaces\BrickCamp.translationsSynchronizer.interf.pas',
+  TestBrickCamp.Repository.Redis in 'repository\TestBrickCamp.Repository.Redis.pas';
 
 {$R *.RES}
 
