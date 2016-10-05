@@ -37,13 +37,16 @@ uses
   Spring.Logging.Controller,
   Spring.Logging.Appenders,
   Spring.Logging.Configuration,
+  MARS.Utils.Parameters.IniFile,
   BrickCamp.TSettings,
   BrickCamp.TDB,
   BrickCamp.services,
   BrickCamp.Repositories.TEmployee,
   BrickCamp.Resources.TEmployee,
   BrickCamp.Model.TEmployee,
-  MARS.Utils.Parameters.IniFile
+  BrickCamp.Repositories.TProduct,
+  BrickCamp.Resources.TProduct,
+  BrickCamp.Model.TProduct
   ;
 
 { TCbdService }
@@ -127,6 +130,9 @@ begin
   GlobalContainer.RegisterType<TEmployeeResource>;
   GlobalContainer.RegisterType<TEmployee>;
   GlobalContainer.RegisterType<TEmployeeRepository>;
+  GlobalContainer.RegisterType<TProductResource>;
+  GlobalContainer.RegisterType<TProduct>;
+  GlobalContainer.RegisterType<TProductRepository>;
   GlobalContainer.RegisterType<TMARSEngine>;
   GlobalContainer.RegisterType<TMARShttpServerIndy>;
   GlobalContainer.Build;
