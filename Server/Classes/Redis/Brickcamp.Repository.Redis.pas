@@ -8,7 +8,7 @@ uses  Redis.Client,
       Spring.Container.Injection,
       Spring.Container.Common,
       BrickCamp.ISettings,
-      BrickCamp.IRedisEmployeeRepository,
+      BrickCamp.IRedisRepository,
       BrickCamp.IRedisClientProvider;
 
 type
@@ -26,12 +26,15 @@ type
     procedure Initialise;
   end;
 
-  TRedisEmployeeRepository = class(TInterfacedObject,IRedisEmployeeRepository)
+  TRedisRepository = class(TInterfacedObject,IRedisRepository)
   protected var
     [Inject]
-    FRedis : IRedisClientProvider;
+    FRedisClientProvider : IRedisClientProvider;
+    FRedisClient : IRedisClient;
   public
-    procedure Connnect;
+    function Connnect : Boolean;
+    function SetValue(Keyname : String; Value : String) : Boolean;
+    function GetValue(Keyname : String; var Value : String) : Boolean;
   end;
 
 implementation
@@ -39,10 +42,13 @@ implementation
 
 { TRedisEmployeeRepository }
 
-procedure TRedisEmployeeRepository.Connnect;
+function TRedisRepository.Connnect : boolean;
 begin
-  //FRedis := NewRedisClient('localhost');
+  FRedisClientProvider.Initialise;
+  FRedisClient := FRedisClientProvider.NewRedisClient();
+  Result := Assigned(FRedisClient);
 end;
+
 
 { TRedisClientProvider }
 
@@ -54,6 +60,16 @@ end;
 function TRedisClientProvider.NewRedisClient: IRedisClient;
 begin
   result := Redis.Client.NewRedisClient(FIpV4Address);
+end;
+
+function TRedisRepository.GetValue(Keyname: String; var Value: String): Boolean;
+begin
+  result := FRedisClient.&GET(Keyname,Value);
+end;
+
+function TRedisRepository.SetValue(Keyname : String; Value: String): Boolean;
+begin
+  result := FRedisClient.&SET(Keyname,Value);
 end;
 
 end.
