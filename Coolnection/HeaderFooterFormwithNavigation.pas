@@ -203,11 +203,11 @@ end;
 procedure TmCoolnection.LoadQuestions;
 var
   Brick: TBrickCampRemoteInterface;
+  ProductId: Integer;
 begin
   Brick := TBrickCampRemoteInterface.Create;
   try
-    FUserId := Brick.LoginUser(Login);
-    bndProducts.DataSet := FProductDataSet;
+    bndProducts.DataSet := Brick.GetQuestionsByProduct(ProductId);
   finally
     Brick.Free;
   end;

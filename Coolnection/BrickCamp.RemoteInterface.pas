@@ -11,7 +11,7 @@ type
   public
     function LoginUser(const Name: string): Integer;
     function GetProductDataset: TClientDataset;
-    function GetQuestionsForProduct(ProductId: Integer): TClientDataSet;
+    function GetQuestionsByProduct(ProductId: Integer): TClientDataSet;
   end;
 
 implementation
@@ -31,10 +31,12 @@ uses
 const
   USERBASEURL: string = 'http://localhost:8080/rest/cb/user';
   PRODUCTBASEURL: string = 'http://localhost:8080/rest/cb/product';
+  QUESTIONBASEURL: string = 'http://localhost:8080/rest/cb/question';
 
   GET_USER_ONEBYNAME: string = '/getonebyname';
 
   GET_PRODUCT_GETLIST: string = '/getlist';
+  GET_QUESTION_GETLISTBYPRODUCT: string = '/getlistbyproduct';
 
 { TBrickCampRemoteInterface }
 
@@ -52,7 +54,33 @@ begin
   Result := TClientDataSet.Create(nil);
   try
     Request.Client := RestClient;
-    //Request.Resource := GET_USER_ONEBYNAME;
+    Request.Response := Response;
+    Request.Method := rmGET;
+    DataSetAdapter.Response := Response;
+    DataSetAdapter.Dataset := Result;
+    Request.Execute;
+  finally
+    DataSetAdapter.Free;
+    Response.Free;
+    Request.Free;
+    RestClient.Free;
+  end;
+end;
+
+function TBrickCampRemoteInterface.GetQuestionsByProduct(ProductId: Integer): TClientDataSet;
+var
+  RestClient: TRESTClient;
+  Request: TRESTRequest;
+  Response: TRESTResponse;
+  DataSetAdapter: TRESTResponseDataSetAdapter;
+begin
+  RestClient := TRESTClient.Create(QUESTIONBASEURL + GET_QUESTION_GETLISTBYPRODUCT + '/' + IntToStr(ProductId));
+  Request := TRESTRequest.Create(nil);
+  Response := TRESTResponse.Create(nil);
+  DataSetAdapter := TRESTResponseDataSetAdapter.Create(nil);
+  Result := TClientDataSet.Create(nil);
+  try
+    Request.Client := RestClient;
     Request.Response := Response;
     Request.Method := rmGET;
     DataSetAdapter.Response := Response;
@@ -79,7 +107,6 @@ begin
   Response := TRESTResponse.Create(nil);
   try
     Request.Client := RestClient;
-    //Request.Resource := GET_USER_ONEBYNAME;
     Request.Response := Response;
     Request.Method := rmGET;
     Request.Execute;
