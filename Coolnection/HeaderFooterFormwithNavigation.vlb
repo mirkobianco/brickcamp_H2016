@@ -1,32 +1,40 @@
 ﻿[tbProduct]
-Coordinates=375,354,62,33
+Coordinates=563,482,62,33
+Visible=False
 
 [btnLogin]
-Coordinates=285,354,58,33
+Coordinates=158,482,58,33
+Visible=False
 
 [ToolBarLabel]
-Coordinates=395,270,80,51
+Coordinates=10,398,80,33
+Visible=False
 
 [TitleAction]
 Coordinates=190,173,67,33
 
 [TopToolBar]
-Coordinates=595,270,72,33
+Coordinates=10,544,72,33
+Visible=False
 
 [PreviousTabAction1]
 Coordinates=321,56,113,33
 
 [btnBack]
-Coordinates=189,270,54,51
+Coordinates=122,270,54,33
+Visible=False
 
 [tbcMain]
-Coordinates=10,354,53,33
+Coordinates=201,544,53,33
+Visible=False
 
 [tbLogin]
-Coordinates=512,270,52,33
+Coordinates=118,544,52,33
+Visible=False
 
 [btnNext]
-Coordinates=10,270,52,51
+Coordinates=566,270,52,33
+Visible=False
 
 [NextTabAction1]
 Coordinates=321,166,92,33
@@ -35,13 +43,15 @@ Coordinates=321,166,92,33
 Coordinates=321,221,70,33
 
 [BottomToolBar]
-Coordinates=471,354,89,33
+Coordinates=437,482,89,33
+Visible=False
 
 [edtUserName]
-Coordinates=276,270,80,51
+Coordinates=209,270,80,33
+Visible=False
 
 [lvProducts]
-Coordinates=10,10,116,195
+Coordinates=173,10,116,195
 Visible=True
 
 []
@@ -57,26 +67,83 @@ ModelLayerNames=test;adaps
 Coordinates=297,496,69,33
 
 [imgLogin]
-Coordinates=455,10,60,51
+Coordinates=241,398,60,33
+Visible=False
 
 [Panel1]
-Coordinates=205,354,47,33
+Coordinates=584,398,47,33
+Visible=False
 
 [styCool]
 Coordinates=297,606,52,33
 
 [bndProducts]
-Coordinates=229,76,77,87
+Coordinates=392,76,77,87
 
 [bndList]
 Coordinates=130,197,51,33
 
 [tbQuestions]
-Coordinates=96,354,74,33
+Coordinates=328,482,74,33
+Visible=False
 
 [lblBottom]
-Coordinates=95,270,62,51
+Coordinates=328,270,62,33
+Visible=False
 
 [lblProductId]
-Coordinates=168,1,74,51
+Coordinates=10,98,74,51
+
+[lblCreateYes]
+Coordinates=127,398,76,33
+Visible=False
+
+[lblCreateNo]
+Coordinates=334,398,72,33
+Visible=False
+
+[pnlCancel]
+Coordinates=659,482,63,33
+Visible=False
+
+[dsQuestionsID]
+Coordinates=524,155,87,33
+
+[dsQuestionstext]
+Coordinates=560,210,95,33
+
+[pnlYes]
+Coordinates=248,482,48,33
+Visible=False
+
+[mmoAskQuestion]
+Coordinates=651,270,102,33
+Visible=False
+
+[lblCreateQuestion]
+Coordinates=422,270,103,33
+Visible=False
+
+[dsQuestions]
+Coordinates=110,290,76,33
+Visible=False
+
+[pnlCreateQuestion]
+Coordinates=10,482,106,33
+Visible=False
+
+[pnlCreateQuestionYesNo]
+Coordinates=664,398,138,33
+Visible=False
+
+[lvQuestions]
+Coordinates=270,300,89,141
+Visible=True
+
+[tbCreateQuestion]
+Coordinates=443,398,100,33
+Visible=False
+
+[bnd1]
+Coordinates=110,290,63,105
 

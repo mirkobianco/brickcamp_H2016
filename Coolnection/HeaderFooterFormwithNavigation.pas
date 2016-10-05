@@ -13,7 +13,8 @@ uses
   REST.Response.Adapter, Data.Bind.DBScope, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, FMX.ScrollBox, FMX.Memo, Datasnap.DBClient, FMX.Ani;
+  FireDAC.Comp.Client, FMX.ScrollBox, FMX.Memo, Datasnap.DBClient, FMX.Ani,
+  Data.DB;
 
 type
   TmCoolnection = class(TForm)
@@ -51,6 +52,12 @@ type
     lblCreateNo: TLabel;
     lblCreateYes: TLabel;
     mmoAskQuestion: TMemo;
+    lvQuestions: TListView;
+    dsQuestions: TClientDataSet;
+    dsQuestionsID: TIntegerField;
+    dsQuestionstext: TStringField;
+    bnd1: TBindSourceDB;
+    lnkPrNam1: TLinkFillControlToField;
     procedure FormCreate(Sender: TObject);
     procedure TitleActionUpdate(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
@@ -60,6 +67,7 @@ type
       const AItem: TListViewItem);
     procedure pnlCreateQuestionClick(Sender: TObject);
     procedure pnlCancelClick(Sender: TObject);
+    procedure pnlYesClick(Sender: TObject);
   private
     FUserId: Integer;
     FName: string;
@@ -86,7 +94,7 @@ var
 implementation
 
 uses
-  System.JSON, BrickCamp.RemoteInterface, Data.DB, System.UITypes,
+  System.JSON, BrickCamp.RemoteInterface, System.UITypes,
   System.UIConsts,
   BrickCamp.Model;
 
@@ -247,7 +255,6 @@ begin
   finally
     Brick.Free;
   end;
-
 end;
 
 procedure TmCoolnection.lvProductsItemClick(const Sender: TObject;
@@ -260,6 +267,7 @@ begin
   FProductName := FProductDataSet.FieldByName('NAME').AsString;
 
   tbcMain.ActiveTab := tbQuestions;
+  LoadQuestions;
 end;
 
 procedure TmCoolnection.pnlCancelClick(Sender: TObject);
@@ -270,6 +278,25 @@ end;
 procedure TmCoolnection.pnlCreateQuestionClick(Sender: TObject);
 begin
   tbcMain.ActiveTab := tbCreateQuestion;
+end;
+
+procedure TmCoolnection.pnlYesClick(Sender: TObject);
+var
+  Brick: TBrickCampRemoteInterface;
+  ProductId: Integer;
+  JsonObject: TJSONObject;
+begin
+  Brick := TBrickCampRemoteInterface.Create;
+  try
+    JsonObject := TJSONObject.Create;
+    JsonObject.AddPair('TEXT', mmoAskQuestion.Text);
+    JsonObject.AddPair('PRODUCT_ID', IntToStr(FProductId));
+    JsonObject.AddPair('USER_ID', IntToStr(FUserId));
+    JsonObject.AddPair('ISOPEN', IntToStr(0));
+    Brick.Post(rQuestion, JsonObject);
+  finally
+    Brick.Free;
+  end;
 end;
 
 procedure TmCoolnection.tbcMainChange(Sender: TObject);
