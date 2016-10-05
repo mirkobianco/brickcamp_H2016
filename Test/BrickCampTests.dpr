@@ -24,7 +24,7 @@ uses
   TestBrickCamp.Repository.Redis in 'repository\TestBrickCamp.Repository.Redis.pas',
   Brickcamp.Repository.Redis in '..\Server\Classes\Redis\Brickcamp.Repository.Redis.pas',
   BrickCamp.IRedisClientProvider in '..\Server\Interfaces\Redis\BrickCamp.IRedisClientProvider.pas',
-  BrickCamp.IRedisEmployeeRepository in '..\Server\Interfaces\Redis\BrickCamp.IRedisEmployeeRepository.pas',
+  BrickCamp.IRedisRepository in '..\Server\Interfaces\Redis\BrickCamp.IRedisRepository.pas',
   BrickCamp.Model.TAnswer in '..\Model\Classes\BrickCamp.Model.TAnswer.pas',
   BrickCamp.Model.TProduct in '..\Model\Classes\BrickCamp.Model.TProduct.pas',
   BrickCamp.Model.TQuestion in '..\Model\Classes\BrickCamp.Model.TQuestion.pas',

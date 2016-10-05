@@ -15,6 +15,7 @@ uses
   MARS.Core.MessageBodyReaders,
   BrickCamp.Repositories.IProduct,
   BrickCamp.Resources.IProduct,
+  BrickCamp.Model,
   BrickCamp.Model.IProduct,
   BrickCamp.Model.TProduct;
 
@@ -34,7 +35,7 @@ type
     [PUT]
     procedure Update(const [BodyParam] Product: TProduct);
 
-    [GET, Path('/delete/{Id}')]
+    [DELETE, Path('/{Id}')]
     procedure Delete(const [PathParam] Id: Integer);
   end;
 
