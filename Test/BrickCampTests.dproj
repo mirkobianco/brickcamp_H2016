@@ -98,17 +98,6 @@
         <DCCReference Include="TestBrickCamp.Repositories.Employee.pas"/>
         <DCCReference Include="..\Mocks\BrickCamp.Repositories.TEmployee.Mock.pas"/>
         <DCCReference Include="..\Model\Classes\BrickCamp.Model.TEmployee.pas"/>
-        <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IEmployee.pas"/>
-        <DCCReference Include="..\Server\Classes\BrickCamp.Repositories.TEmployee.pas"/>
-        <DCCReference Include="..\Server\Classes\BrickCamp.Resources.TEmployee.pas"/>
-        <DCCReference Include="..\Server\Classes\BrickCamp.TDB.pas"/>
-        <DCCReference Include="..\Server\Classes\BrickCamp.TService.pas"/>
-        <DCCReference Include="..\Server\Classes\BrickCamp.TSettings.pas"/>
-        <DCCReference Include="..\Server\Interfaces\BrickCamp.IDB.pas"/>
-        <DCCReference Include="..\Server\Interfaces\BrickCamp.IService.pas"/>
-        <DCCReference Include="..\Server\Interfaces\BrickCamp.ISettings.pas"/>
-        <DCCReference Include="..\Server\Interfaces\BrickCamp.Repositories.IEmployee.pas"/>
-        <DCCReference Include="..\Server\Interfaces\BrickCamp.Resources.IEmployee.pas"/>
         <DCCReference Include="..\Server\BrickCamp.service.pas">
             <Form>srvBrickCamp</Form>
             <FormType>dfm</FormType>
@@ -119,6 +108,41 @@
         <DCCReference Include="..\Server\Classes\Redis\Brickcamp.Repository.Redis.pas"/>
         <DCCReference Include="..\Server\Interfaces\Redis\BrickCamp.IRedisClientProvider.pas"/>
         <DCCReference Include="..\Server\Interfaces\Redis\BrickCamp.IRedisEmployeeRepository.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TAnswer.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TProduct.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TQuestion.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TUser.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TAnswer.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TProduct.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TQuestion.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TUser.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IAnswer.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IProduct.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IQuestion.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IUser.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Repositories.IAnswer.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Repositories.IProduct.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Repositories.IQuestion.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Repositories.IUser.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IEmployee.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Repositories.IEmployee.pas"/>
+        <DCCReference Include="..\Server\Classes\BrickCamp.Resources.TAnswer.pas"/>
+        <DCCReference Include="..\Server\Classes\BrickCamp.Resources.TEmployee.pas"/>
+        <DCCReference Include="..\Server\Classes\BrickCamp.Resources.TProduct.pas"/>
+        <DCCReference Include="..\Server\Classes\BrickCamp.Resources.TQuestion.pas"/>
+        <DCCReference Include="..\Server\Classes\BrickCamp.Resources.TUser.pas"/>
+        <DCCReference Include="..\Server\Classes\BrickCamp.TDB.pas"/>
+        <DCCReference Include="..\Server\Classes\BrickCamp.TService.pas"/>
+        <DCCReference Include="..\Server\Classes\BrickCamp.TSettings.pas"/>
+        <DCCReference Include="..\Server\Interfaces\BrickCamp.IDB.pas"/>
+        <DCCReference Include="..\Server\Interfaces\BrickCamp.IService.pas"/>
+        <DCCReference Include="..\Server\Interfaces\BrickCamp.ISettings.pas"/>
+        <DCCReference Include="..\Server\Interfaces\BrickCamp.Resources.IAnswer.pas"/>
+        <DCCReference Include="..\Server\Interfaces\BrickCamp.Resources.IEmployee.pas"/>
+        <DCCReference Include="..\Server\Interfaces\BrickCamp.Resources.IProduct.pas"/>
+        <DCCReference Include="..\Server\Interfaces\BrickCamp.Resources.IQuestion.pas"/>
+        <DCCReference Include="..\Server\Interfaces\BrickCamp.Resources.IUser.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TEmployee.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -173,12 +197,27 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
@@ -529,27 +568,12 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
