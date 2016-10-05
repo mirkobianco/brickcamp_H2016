@@ -7,7 +7,7 @@ uses
   BrickCamp.IDB in 'Interfaces\BrickCamp.IDB.pas',
   Brickcamp.Repository.Redis in 'Classes\Redis\Brickcamp.Repository.Redis.pas',
   BrickCamp.IRedisClientProvider in 'Interfaces\Redis\BrickCamp.IRedisClientProvider.pas',
-  BrickCamp.IRedisEmployeeRepository in 'Interfaces\Redis\BrickCamp.IRedisEmployeeRepository.pas',
+  BrickCamp.IRedisRepository in 'Interfaces\Redis\BrickCamp.IRedisRepository.pas',
   BrickCamp.Model.TAnswer in '..\Model\Classes\BrickCamp.Model.TAnswer.pas',
   BrickCamp.Model.TProduct in '..\Model\Classes\BrickCamp.Model.TProduct.pas',
   BrickCamp.Model.TUser in '..\Model\Classes\BrickCamp.Model.TUser.pas',

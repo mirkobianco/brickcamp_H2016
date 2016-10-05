@@ -154,7 +154,7 @@ begin
   GlobalContainer.RegisterType<TMARSEngine>;
   GlobalContainer.RegisterType<TMARShttpServerIndy>;
   GlobalContainer.RegisterType<TRedisClientProvider>;
-  GlobalContainer.RegisterType<TRedisEmployeeRepository>;
+  GlobalContainer.RegisterType<TRedisRepository>;
   GlobalContainer.Build;
 end;
 
