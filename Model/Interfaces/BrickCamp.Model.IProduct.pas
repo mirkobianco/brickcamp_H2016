@@ -12,10 +12,10 @@ type
     function GetId: Integer;
     function GetName: string;
     function GetDescription: string;
-    function GetPrice: Nullable<Extended>;
+    function GetPrice: Extended;
     procedure SetName(const Value: string);
     procedure SetDescription(const Value: string);
-    procedure SetPrice(const Value: Nullable<Extended>);
+    procedure SetPrice(const Value: Extended);
   end;
 
 implementation

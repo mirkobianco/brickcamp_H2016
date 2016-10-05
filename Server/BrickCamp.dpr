@@ -22,7 +22,13 @@ uses
   BrickCamp.Model.TProduct in '..\Model\Classes\BrickCamp.Model.TProduct.pas',
   BrickCamp.Repositories.TProduct in '..\Model\Classes\BrickCamp.Repositories.TProduct.pas',
   BrickCamp.Resources.IProduct in 'Interfaces\BrickCamp.Resources.IProduct.pas',
-  BrickCamp.Resources.TProduct in 'Classes\BrickCamp.Resources.TProduct.pas';
+  BrickCamp.Resources.TProduct in 'Classes\BrickCamp.Resources.TProduct.pas',
+  BrickCamp.Model.IAnswer in '..\Model\Interfaces\BrickCamp.Model.IAnswer.pas',
+  BrickCamp.Model.TAnswer in '..\Model\Classes\BrickCamp.Model.TAnswer.pas',
+  BrickCamp.Repositories.IAnswer in '..\Model\Interfaces\BrickCamp.Repositories.IAnswer.pas',
+  BrickCamp.Repositories.TAnswer in '..\Model\Classes\BrickCamp.Repositories.TAnswer.pas',
+  BrickCamp.Resources.IAnswer in 'Interfaces\BrickCamp.Resources.IAnswer.pas',
+  BrickCamp.Resources.TAnswer in 'Classes\BrickCamp.Resources.TAnswer.pas';
 
 {$R *.RES}
 

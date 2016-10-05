@@ -46,6 +46,9 @@ uses
   BrickCamp.Repositories.TProduct,
   BrickCamp.Resources.TProduct,
   BrickCamp.Model.TProduct,
+  BrickCamp.Repositories.TAnswer,
+  BrickCamp.Resources.TAnswer,
+  BrickCamp.Model.TAnswer,
   Brickcamp.Repository.Redis
   ;
 
@@ -133,6 +136,9 @@ begin
   GlobalContainer.RegisterType<TProductResource>;
   GlobalContainer.RegisterType<TProduct>;
   GlobalContainer.RegisterType<TProductRepository>;
+  GlobalContainer.RegisterType<TAnswerResource>;
+  GlobalContainer.RegisterType<TAnswer>;
+  GlobalContainer.RegisterType<TAnswerRepository>;
   GlobalContainer.RegisterType<TMARSEngine>;
   GlobalContainer.RegisterType<TMARShttpServerIndy>;
   GlobalContainer.RegisterType<TRedisClientProvider>;

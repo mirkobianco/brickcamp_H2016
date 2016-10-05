@@ -131,6 +131,12 @@
         <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TProduct.pas"/>
         <DCCReference Include="Interfaces\BrickCamp.Resources.IProduct.pas"/>
         <DCCReference Include="Classes\BrickCamp.Resources.TProduct.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IAnswer.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TAnswer.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Repositories.IAnswer.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TAnswer.pas"/>
+        <DCCReference Include="Interfaces\BrickCamp.Resources.IAnswer.pas"/>
+        <DCCReference Include="Classes\BrickCamp.Resources.TAnswer.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

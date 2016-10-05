@@ -18,15 +18,15 @@ type
   private
     FName: string;
     FDescription: string;
-    FPrice: Nullable<Extended>;
+    FPrice: Extended;
 
     function GetId: Integer;
     function GetName: string;
     function GetDescription: string;
-    function GetPrice: Nullable<Extended>;
+    function GetPrice: Extended;
     procedure SetName(const Value: string);
     procedure SetDescription(const Value: string);
-    procedure SetPrice(const Value: Nullable<Extended>);
+    procedure SetPrice(const Value: Extended);
   public
     constructor Create(const Id: integer); reintroduce;
 
@@ -36,8 +36,8 @@ type
     property Name: string read GetName write SetName;
     [Column('DESCRIPTION', [cpNotNull])]
     property Description: string read GetDescription write SetDescription;
-    [Column('PRICE')]
-    property Price: Nullable<Extended> read GetPrice write SetPrice;
+    [Column('PRICE', [cpNotNull])]
+    property Price: Extended read GetPrice write SetPrice;
   end;
 
 implementation
@@ -64,7 +64,7 @@ begin
   Result := FId;
 end;
 
-function TProduct.GetPrice: Nullable<Extended>;
+function TProduct.GetPrice: Extended;
 begin
   Result := FPrice;
 end;
@@ -79,7 +79,7 @@ begin
   FName := Value;
 end;
 
-procedure TProduct.SetPrice(const Value: Nullable<Extended>);
+procedure TProduct.SetPrice(const Value: Extended);
 begin
   FPrice := Value;
 end;
