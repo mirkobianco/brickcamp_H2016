@@ -31,6 +31,7 @@ end;
 function TMockEmployeeRepository.GetList: TJSONArray;
 begin
   result := TJSONArray.Create;
+  result.add('{Count,1]');
 end;
 
 function TMockEmployeeRepository.GetOne(const Id: Integer): TEmployee;

@@ -6,7 +6,6 @@ uses
   MARS.Core.Engine,
   MARS.http.Server.Indy,
   MARS.Core.Application,
-
   BrickCamp.IService;
 
 type
@@ -46,7 +45,8 @@ uses
   BrickCamp.Model.TEmployee,
   BrickCamp.Repositories.TProduct,
   BrickCamp.Resources.TProduct,
-  BrickCamp.Model.TProduct
+  BrickCamp.Model.TProduct,
+  Brickcamp.Repository.Redis
   ;
 
 { TCbdService }
@@ -135,6 +135,8 @@ begin
   GlobalContainer.RegisterType<TProductRepository>;
   GlobalContainer.RegisterType<TMARSEngine>;
   GlobalContainer.RegisterType<TMARShttpServerIndy>;
+  GlobalContainer.RegisterType<TRedisClientProvider>;
+  GlobalContainer.RegisterType<TRedisEmployeeRepository>;
   GlobalContainer.Build;
 end;
 

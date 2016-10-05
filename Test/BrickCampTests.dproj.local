@@ -8,10 +8,10 @@
     <Transaction>2016/10/04 17:18:54.000.303,=C:\Dev\Delphi\hackaton2016\Test\TestBrickCamp.Repositories.Employee.pas</Transaction>
     <Transaction>2016/10/04 17:19:40.000.506,=C:\Dev\Delphi\hackaton2016\REST\BrickCamp.Resources.Employee.pas</Transaction>
     <Transaction>2016/10/04 17:20:04.000.897,=C:\Dev\Delphi\hackaton2016\Models\BrickCamp.Model.Employee.pas</Transaction>
-    <Transaction>2016/10/04 17:20:16.000.537,=C:\Dev\Delphi\hackaton2016\Interfaces\BrickCamp.service.interf.pas</Transaction>
-    <Transaction>2016/10/04 17:20:16.000.569,=C:\Dev\Delphi\hackaton2016\Interfaces\BrickCamp.translationsSynchronizer.interf.pas</Transaction>
-    <Transaction>2016/10/04 17:20:16.000.522,=C:\Dev\Delphi\hackaton2016\Interfaces\BrickCamp.Repositories.Employee.Intf.pas</Transaction>
     <Transaction>2016/10/04 17:20:16.000.506,=C:\Dev\Delphi\hackaton2016\Interfaces\BrickCamp.db.Interf.pas</Transaction>
+    <Transaction>2016/10/04 17:20:16.000.537,=C:\Dev\Delphi\hackaton2016\Interfaces\BrickCamp.service.interf.pas</Transaction>
+    <Transaction>2016/10/04 17:20:16.000.522,=C:\Dev\Delphi\hackaton2016\Interfaces\BrickCamp.Repositories.Employee.Intf.pas</Transaction>
+    <Transaction>2016/10/04 17:20:16.000.569,=C:\Dev\Delphi\hackaton2016\Interfaces\BrickCamp.translationsSynchronizer.interf.pas</Transaction>
     <Transaction>2016/10/04 17:20:16.000.553,=C:\Dev\Delphi\hackaton2016\Interfaces\BrickCamp.settings.interf.pas</Transaction>
     <Transaction>2016/10/04 17:20:39.000.959,=C:\Dev\Delphi\hackaton2016\Classes\BrickCamp.db.impl.pas</Transaction>
     <Transaction>2016/10/04 17:21:45.000.796,C:\Dev\Delphi\hackaton2016\Classes\BrickCamp.db.impl.pas=</Transaction>
@@ -25,6 +25,28 @@
     <Transaction>2016/10/05 09:53:21.000.151,=C:\Dev\Delphi\hackaton2016\Model\Interfaces\BrickCamp.Model.IEmployee.pas</Transaction>
     <Transaction>2016/10/05 09:54:38.000.846,C:\Dev\Delphi\hackaton2016\Model\Classes\BrickCamp.Model.TEmployee.pas=</Transaction>
     <Transaction>2016/10/05 09:54:44.000.417,C:\Dev\Delphi\hackaton2016\Model\Interfaces\BrickCamp.Model.IEmployee.pas=</Transaction>
-    <Transaction>2016/10/05 10:06:07.835,=C:\Dev\Delphi\hackaton2016\Mocks\BrickCamp.Repositories.TEmployee.Mock.pas</Transaction>
+    <Transaction>2016/10/05 10:06:07.000.835,=C:\Dev\Delphi\hackaton2016\Mocks\BrickCamp.Repositories.TEmployee.Mock.pas</Transaction>
+    <Transaction>2016/10/05 10:57:16.671,C:\Dev\Delphi\hackathon\hackaton2016\Mocks\BrickCamp.Repositories.TEmployee.Mock.pas=</Transaction>
+    <Transaction>2016/10/05 10:57:16.687,C:\Dev\Delphi\hackathon\hackaton2016\Server\Interfaces\BrickCamp.Repositories.IEmployee.pas=</Transaction>
+    <Transaction>2016/10/05 10:57:16.702,C:\Dev\Delphi\hackathon\hackaton2016\Server\Interfaces\BrickCamp.ISettings.pas=</Transaction>
+    <Transaction>2016/10/05 10:57:16.702,C:\Dev\Delphi\hackathon\hackaton2016\Server\Interfaces\BrickCamp.IDB.pas=</Transaction>
+    <Transaction>2016/10/05 10:57:16.702,C:\Dev\Delphi\hackathon\hackaton2016\Server\Interfaces\BrickCamp.IService.pas=</Transaction>
+    <Transaction>2016/10/05 10:57:33.405,=C:\Dev\Delphi\hackathon\hackaton2016\Mocks\BrickCamp.Repositories.TEmployee.Mock.pas</Transaction>
+    <Transaction>2016/10/05 10:57:40.155,=C:\Dev\Delphi\hackathon\hackaton2016\Model\Classes\BrickCamp.Model.TEmployee.pas</Transaction>
+    <Transaction>2016/10/05 10:58:02.296,=C:\Dev\Delphi\hackathon\hackaton2016\Model\Interfaces\BrickCamp.Model.IEmployee.pas</Transaction>
+    <Transaction>2016/10/05 10:58:11.780,=C:\Dev\Delphi\hackathon\hackaton2016\Server\Classes\BrickCamp.Resources.TEmployee.pas</Transaction>
+    <Transaction>2016/10/05 10:58:11.780,=C:\Dev\Delphi\hackathon\hackaton2016\Server\Classes\BrickCamp.Repositories.TEmployee.pas</Transaction>
+    <Transaction>2016/10/05 10:58:11.796,=C:\Dev\Delphi\hackathon\hackaton2016\Server\Classes\BrickCamp.TDB.pas</Transaction>
+    <Transaction>2016/10/05 10:58:11.812,=C:\Dev\Delphi\hackathon\hackaton2016\Server\Classes\BrickCamp.TService.pas</Transaction>
+    <Transaction>2016/10/05 10:58:11.827,=C:\Dev\Delphi\hackathon\hackaton2016\Server\Classes\BrickCamp.TSettings.pas</Transaction>
+    <Transaction>2016/10/05 10:58:21.202,=C:\Dev\Delphi\hackathon\hackaton2016\Server\Interfaces\BrickCamp.IDB.pas</Transaction>
+    <Transaction>2016/10/05 10:58:21.218,=C:\Dev\Delphi\hackathon\hackaton2016\Server\Interfaces\BrickCamp.IService.pas</Transaction>
+    <Transaction>2016/10/05 10:58:21.233,=C:\Dev\Delphi\hackathon\hackaton2016\Server\Interfaces\BrickCamp.Repositories.IEmployee.pas</Transaction>
+    <Transaction>2016/10/05 10:58:21.233,=C:\Dev\Delphi\hackathon\hackaton2016\Server\Interfaces\BrickCamp.ISettings.pas</Transaction>
+    <Transaction>2016/10/05 10:58:21.249,=C:\Dev\Delphi\hackathon\hackaton2016\Server\Interfaces\BrickCamp.Resources.IEmployee.pas</Transaction>
+    <Transaction>2016/10/05 10:58:34.327,=C:\Dev\Delphi\hackathon\hackaton2016\Server\BrickCamp.service.pas</Transaction>
+    <Transaction>2016/10/05 10:58:34.343,=C:\Dev\Delphi\hackathon\hackaton2016\Server\BrickCamp.services.pas</Transaction>
+    <Transaction>2016/10/05 10:58:53.999,=C:\Dev\Delphi\hackathon\hackaton2016\Repository\Redis\Brickcamp.Repository.Redis.pas</Transaction>
+    <Transaction>2016/10/05 10:59:11.733,=C:\Dev\Delphi\hackathon\hackaton2016\Test\repository\TestBrickCamp.Repository.Redis.pas</Transaction>
   </Transactions>
 </BorlandProject>
