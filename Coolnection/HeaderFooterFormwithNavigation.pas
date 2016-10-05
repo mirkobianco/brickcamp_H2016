@@ -37,23 +37,31 @@ type
     rrqProducts: TRESTRequest;
     bnd1: TBindingsList;
     adpProducts: TRESTResponseDataSetAdapter;
+    lnkPrNam1: TLinkFillControlToField;
+    imgLogin: TImage;
+    Panel1: TPanel;
+    styCool: TStyleBook;
+    flanimLogo: TFloatAnimation;
+    rclLogin: TRESTClient;
+    rrqLogin: TRESTRequest;
+    rrpLogin: TRESTResponse;
     dsProducts: TClientDataSet;
     dsProductsID: TWideStringField;
     dsProductsName: TWideStringField;
     dsProductsDescription: TWideStringField;
     dsProductsPrice: TWideStringField;
     BindSourceDB1: TBindSourceDB;
-    lnkPrNam1: TLinkFillControlToField;
-    imgLogin: TImage;
-    Panel1: TPanel;
-    styCool: TStyleBook;
-    flanimLogo: TFloatAnimation;
     procedure FormCreate(Sender: TObject);
     procedure TitleActionUpdate(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
     procedure btnLoginClick(Sender: TObject);
     procedure tbcMainChange(Sender: TObject);
+    procedure lvProductsItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
   private
+    FLoginId: Integer;
+    FName: string;
+    function GetUserInfos(Login: string): integer;
     procedure ConfigureProductPage;
     { Private declarations }
   public
@@ -66,6 +74,9 @@ var
   mCoolnection: TmCoolnection;
 
 implementation
+
+uses
+  System.JSON;
 
 {$R *.fmx}
 {$R *.LgXhdpiPh.fmx ANDROID}
@@ -84,8 +95,9 @@ end;
 
 procedure TmCoolnection.btnLoginClick(Sender: TObject);
 begin
-  tbcMain.ActiveTab := tbProduct;
+  FLoginId := GetUserInfos(Trim(LowerCase(edtUserName.Text)));
   LoadProducts;
+  tbcMain.ActiveTab := tbProduct;
 end;
 
 procedure TmCoolnection.ConfigureInterfaceForLoginPage;
@@ -123,6 +135,7 @@ begin
   ToolBarLabel.Visible := True;
   TopToolBar.Visible := True;
   BottomToolBar.Visible := True;
+  ToolBarLabel.Text := 'Welcome ' + FName;
 end;
 
 procedure TmCoolnection.FormCreate(Sender: TObject);
@@ -141,9 +154,23 @@ begin
   end;
 end;
 
+function TmCoolnection.GetUserInfos(Login: string): integer;
+begin
+  FName := Login;
+  rclLogin.BaseURL := 'http://localhost:8080/rest/cb/user/getonebyname/' + Login;
+  rrqLogin.Execute;
+  Result := StrToInt((rrpLogin.JSONValue as TJsonObject).GetValue('ID').Value);
+end;
+
 procedure TmCoolnection.LoadProducts;
 begin
   rrqProducts.Execute;
+end;
+
+procedure TmCoolnection.lvProductsItemClick(const Sender: TObject;
+  const AItem: TListViewItem);
+begin
+  AItem.Detail := BindSourceDB1.DataSet.FieldByName('ID').AsString;
 end;
 
 procedure TmCoolnection.tbcMainChange(Sender: TObject);

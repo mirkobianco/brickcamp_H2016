@@ -67,15 +67,19 @@ var
 begin
   NameCriteria := Prop.Create('NAME');
   List := FDb.GetSession.FindWhere<TUser>(NameCriteria = Name);
-  if List.Count>=1 then
-    Result := List.First
+  if (List = nil) or (List.Count > 0) then
+  begin
+    Result := List.First;
+    List.Extract(Result);
+  end
   else
   begin
     Result := GlobalContainer.Resolve<TUser>;
     Result.Name := Name;
     FDb.GetSession.Insert(Result);
-  end;
 
+    Result := GetOneByName(Name);
+  end;
 end;
 
 procedure TUserRepository.Insert(const User: TUser);
