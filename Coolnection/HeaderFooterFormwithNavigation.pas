@@ -3,7 +3,7 @@
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  System.SysUtils, System.Types, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Graphics, FMX.Forms, FMX.Dialogs, FMX.TabControl, System.Actions, FMX.ActnList,
   FMX.Objects, FMX.StdCtrls, FMX.Controls.Presentation, FMX.Edit,
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
@@ -42,6 +42,15 @@ type
     lblBottom: TLabel;
     lblProductId: TLabel;
     LinkFillControlToPropertyText: TLinkFillControlToProperty;
+    pnlCreateQuestion: TPanel;
+    lblCreateQuestion: TLabel;
+    tbCreateQuestion: TTabItem;
+    pnlCreateQuestionYesNo: TPanel;
+    pnlCancel: TPanel;
+    pnlYes: TPanel;
+    lblCreateNo: TLabel;
+    lblCreateYes: TLabel;
+    mmoAskQuestion: TMemo;
     procedure FormCreate(Sender: TObject);
     procedure TitleActionUpdate(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
@@ -49,6 +58,8 @@ type
     procedure tbcMainChange(Sender: TObject);
     procedure lvProductsItemClick(const Sender: TObject;
       const AItem: TListViewItem);
+    procedure pnlCreateQuestionClick(Sender: TObject);
+    procedure pnlCancelClick(Sender: TObject);
   private
     FUserId: Integer;
     FName: string;
@@ -61,6 +72,8 @@ type
     procedure ConfigureProductPage;
     procedure ConfigureLoginPage;
     procedure ConfigurePageQuestions;
+    procedure ConfigureCreateQuestion;
+    procedure ChangeMemoColor(Memo: TMemo);
   public
     procedure LoadProducts;
     procedure LoadQuestions;
@@ -73,7 +86,8 @@ var
 implementation
 
 uses
-  System.JSON, BrickCamp.RemoteInterface, Data.DB;
+  System.JSON, BrickCamp.RemoteInterface, Data.DB, System.UITypes,
+  System.UIConsts;
 
 {$R *.fmx}
 {$R *.LgXhdpiPh.fmx ANDROID}
@@ -95,6 +109,25 @@ begin
   FUserId := GetUserInfos(Trim(LowerCase(edtUserName.Text)));
   LoadProducts;
   tbcMain.ActiveTab := tbProduct;
+end;
+
+procedure TmCoolnection.ConfigureCreateQuestion;
+var
+  IsOnPage: Boolean;
+begin
+  IsOnPage := tbcMain.ActiveTab = tbCreateQuestion;
+  if not IsOnPage then
+    Exit;
+
+  btnBack.Visible := True;
+  btnNext.Visible := False;
+  ToolBarLabel.Visible := True;
+  TopToolBar.Visible := True;
+  BottomToolBar.Visible := True;
+  lblBottom.Visible := True;
+
+  ToolBarLabel.Text := 'How can we help help you ? :D';
+  lblBottom.Text := 'Product ' + FProductName + ' - ' + FProductDesc;
 end;
 
 procedure TmCoolnection.ConfigureLoginPage;
@@ -137,6 +170,7 @@ begin
   ConfigureLoginPage;
   ConfigureProductPage;
   ConfigurePageQuestions;
+  ConfigureCreateQuestion;
 end;
 
 procedure TmCoolnection.ConfigureProductPage;
@@ -161,6 +195,7 @@ procedure TmCoolnection.FormCreate(Sender: TObject);
 begin
   { This defines the default active tab at runtime }
   TbcMain.First(TTabTransition.None);
+  ChangeMemoColor(mmoAskQuestion);
   ConfigurePages;
 end;
 
@@ -206,7 +241,7 @@ var
 begin
   Brick := TBrickCampRemoteInterface.Create;
   try
-    FUserId := Brick.LoginUser(Login);
+//    FUserId := Brick.LoginUser(Login);
     bndProducts.DataSet := FProductDataSet;
   finally
     Brick.Free;
@@ -226,9 +261,38 @@ begin
   tbcMain.ActiveTab := tbQuestions;
 end;
 
+procedure TmCoolnection.pnlCancelClick(Sender: TObject);
+begin
+  tbcMain.ActiveTab := tbQuestions;
+end;
+
+procedure TmCoolnection.pnlCreateQuestionClick(Sender: TObject);
+begin
+  tbcMain.ActiveTab := tbCreateQuestion;
+end;
+
 procedure TmCoolnection.tbcMainChange(Sender: TObject);
 begin
   ConfigurePages;
 end;
+
+procedure TmCoolnection.ChangeMemoColor(Memo: TMemo);
+var Obj: TFmxObject;
+    Rectangle1: TRectangle;
+begin
+     Obj := Memo.FindStyleResource('background');
+     if Obj <> nil then
+     begin
+          TControl(Obj).Margins   := TBounds.Create(TRectF.Create(-2, -2, -2, -2));
+          Rectangle1              := TRectangle.Create(Obj);
+          Obj.AddObject(Rectangle1);
+          Rectangle1.Align        := TAlignLayout.Client;
+          Rectangle1.Fill.Color   := claYellow;
+          Rectangle1.Stroke.Color := claNull;
+          Rectangle1.HitTest      := False;
+          Rectangle1.SendToBack;
+     end;
+end;
+
 
 end.
