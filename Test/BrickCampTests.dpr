@@ -16,16 +16,12 @@ program BrickCampTests;
 
 uses
   DUnitTestRunner,
-  BrickCamp.Repositories.Employee.Mock in '..\Mocks\BrickCamp.Repositories.Employee.Mock.pas',
   TestBrickCamp.Repositories.Employee in 'TestBrickCamp.Repositories.Employee.pas',
-  BrickCamp.Resources.Employee in '..\REST\BrickCamp.Resources.Employee.pas',
-  BrickCamp.Model.Employee in '..\Models\BrickCamp.Model.Employee.pas',
-  BrickCamp.db.Interf in '..\Interfaces\BrickCamp.db.Interf.pas',
-  BrickCamp.Repositories.Employee.Intf in '..\Interfaces\BrickCamp.Repositories.Employee.Intf.pas',
-  BrickCamp.service.interf in '..\Interfaces\BrickCamp.service.interf.pas',
-  BrickCamp.settings.interf in '..\Interfaces\BrickCamp.settings.interf.pas',
-  BrickCamp.translationsSynchronizer.interf in '..\Interfaces\BrickCamp.translationsSynchronizer.interf.pas',
-  TestBrickCamp.Repository.Redis in 'repository\TestBrickCamp.Repository.Redis.pas';
+  BrickCamp.IDB in '..\Server\Interfaces\BrickCamp.IDB.pas',
+  BrickCamp.Repositories.IEmployee in '..\Server\Interfaces\BrickCamp.Repositories.IEmployee.pas',
+  BrickCamp.IService in '..\Server\Interfaces\BrickCamp.IService.pas',
+  BrickCamp.ISettings in '..\Server\Interfaces\BrickCamp.ISettings.pas',
+  BrickCamp.Repositories.TEmployee.Mock in '..\Mocks\BrickCamp.Repositories.TEmployee.Mock.pas';
 
 {$R *.RES}
 

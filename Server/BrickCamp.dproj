@@ -88,8 +88,9 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_3_Win32)'!=''">
+        <DCC_ExeOutput>..\..\bin\$(Platform)\$(Config)</DCC_ExeOutput>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <DCC_UnitSearchPath>C:\Dev\Delphi\delphiredisclient\sources;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_DcuOutput>..\..\dcu\$(Platform)\$(Config)</DCC_DcuOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_ConsoleTarget>true</DCC_ConsoleTarget>
@@ -113,19 +114,15 @@
         <DCCReference Include="Interfaces\BrickCamp.ISettings.pas"/>
         <DCCReference Include="Interfaces\BrickCamp.IDB.pas"/>
         <DCCReference Include="BrickCamp.services.pas"/>
-        <DCCReference Include="Classes\BrickCamp.Model.TEmployee.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TEmployee.pas"/>
         <DCCReference Include="Interfaces\BrickCamp.Repositories.IEmployee.pas"/>
         <DCCReference Include="Classes\BrickCamp.Resources.TEmployee.pas"/>
-        <DCCReference Include="Mocks\BrickCamp.Repositories.TEmployee.Mock.pas"/>
         <DCCReference Include="Classes\BrickCamp.TDB.pas"/>
         <DCCReference Include="Classes\BrickCamp.TService.pas"/>
         <DCCReference Include="Classes\BrickCamp.TSettings.pas"/>
         <DCCReference Include="Classes\BrickCamp.Repositories.TEmployee.pas"/>
         <DCCReference Include="Interfaces\BrickCamp.Resources.IEmployee.pas"/>
-        <DCCReference Include="Interfaces\BrickCamp.Model.IEmployee.pas">
-            <Form>F236359C-71DF-461F-840A-DFF182ACC289</Form>
-        </DCCReference>
-        <DCCReference Include="repository\redis\Brickcamp.Repository.Redis.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IEmployee.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
