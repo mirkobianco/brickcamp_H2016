@@ -115,8 +115,8 @@
             <DesignClass>TService</DesignClass>
         </DCCReference>
         <DCCReference Include="..\Server\BrickCamp.services.pas"/>
-        <DCCReference Include="..\Repository\Redis\Brickcamp.Repository.Redis.pas"/>
         <DCCReference Include="repository\TestBrickCamp.Repository.Redis.pas"/>
+        <DCCReference Include="..\Server\Classes\Redis\Brickcamp.Repository.Redis.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

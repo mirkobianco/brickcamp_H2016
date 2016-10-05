@@ -69,9 +69,10 @@ begin
 end;
 
 initialization
-  // Register any test cases with the test runner
   GlobalContainer.RegisterType<TEmployee>;
   GlobalContainer.Build;
+
+  // Register any test cases with the test runner
   RegisterTest(TestTMockEmployeeRepository.Suite);
 end.
 
