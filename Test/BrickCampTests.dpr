@@ -32,8 +32,8 @@ uses
   BrickCamp.Resources.IEmployee in '..\Server\Interfaces\BrickCamp.Resources.IEmployee.pas',
   BrickCamp.service in '..\Server\BrickCamp.service.pas' {srvBrickCamp: TService},
   BrickCamp.services in '..\Server\BrickCamp.services.pas',
-  Brickcamp.Repository.Redis in '..\Repository\Redis\Brickcamp.Repository.Redis.pas',
-  TestBrickCamp.Repository.Redis in 'repository\TestBrickCamp.Repository.Redis.pas';
+  TestBrickCamp.Repository.Redis in 'repository\TestBrickCamp.Repository.Redis.pas',
+  Brickcamp.Repository.Redis in '..\Server\Classes\Redis\Brickcamp.Repository.Redis.pas';
 
 {$R *.RES}
 
