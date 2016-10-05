@@ -1,4 +1,4 @@
-unit BrickCamp.Repositories.Employee.Impl;
+unit BrickCamp.Repositories.TEmployee;
 
 interface
 
@@ -6,9 +6,9 @@ uses
  System.JSON,
  Spring.Container.Injection,
  Spring.Container.Common,
- BrickCamp.db.intf,
- BrickCamp.Model.Employee.Impl,
- BrickCamp.Repositories.Employee.Intf;
+ BrickCamp.IDB,
+ BrickCamp.Model.TEmployee,
+ BrickCamp.Repositories.IEmployee;
 
 type
   TEmployeeRepository = class(TInterfacedObject, IEmployeeRepository)
@@ -26,7 +26,7 @@ type
 implementation
 
 uses
-	Spring.Collections,
+  Spring.Collections,
   MARS.Core.Utils;
 
 { TEmployeeRepository }

@@ -1,4 +1,4 @@
-unit BrickCamp.service.impl;
+unit BrickCamp.TService;
 
 interface
 
@@ -7,7 +7,7 @@ uses
   MARS.http.Server.Indy,
   MARS.Core.Application,
 
-  BrickCamp.service.intf;
+  BrickCamp.IService;
 
 type
   TCbdService = class(TInterfacedObject, IBrickCampService)
@@ -37,12 +37,12 @@ uses
   Spring.Logging.Controller,
   Spring.Logging.Appenders,
   Spring.Logging.Configuration,
-  BrickCamp.settings.impl,
-  BrickCamp.db.impl,
+  BrickCamp.TSettings,
+  BrickCamp.TDB,
   BrickCamp.services,
-  BrickCamp.Repositories.Employee.Impl,
-  BrickCamp.Resources.Employee.Impl,
-  BrickCamp.Model.Employee.Impl,
+  BrickCamp.Repositories.TEmployee,
+  BrickCamp.Resources.TEmployee,
+  BrickCamp.Model.TEmployee,
   MARS.Utils.Parameters.IniFile
   ;
 

@@ -1,4 +1,4 @@
-unit BrickCamp.service.intf;
+unit BrickCamp.IService;
 
 interface
 

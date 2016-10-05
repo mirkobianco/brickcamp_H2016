@@ -1,4 +1,4 @@
-unit BrickCamp.db.intf;
+unit BrickCamp.IDB;
 
 interface
 

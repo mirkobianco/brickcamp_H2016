@@ -1,4 +1,4 @@
-unit BrickCamp.Resources.Employee.Impl;
+unit BrickCamp.Resources.TEmployee;
 
 interface
 
@@ -13,10 +13,10 @@ uses
   MARS.Core.JSON,
   MARS.Core.MessageBodyWriters,
   MARS.Core.MessageBodyReaders,
-  BrickCamp.Repositories.Employee.Intf,
-  BrickCamp.Resources.Employee.Intf,
-  BrickCamp.Model.Employee.Intf,
-  BrickCamp.Model.Employee.Impl;
+  BrickCamp.Repositories.IEmployee,
+  BrickCamp.Resources.IEmployee,
+  BrickCamp.Model.IEmployee,
+  BrickCamp.Model.TEmployee;
 
 type
   [Path('/employee'), Produces(TMediaType.APPLICATION_JSON_UTF8)]

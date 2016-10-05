@@ -1,13 +1,13 @@
-unit BrickCamp.db.impl;
+unit BrickCamp.TDB;
 
 interface
 
 uses
-	Spring.Persistence.Adapters.FireDac,
+  Spring.Persistence.Adapters.FireDac,
   Spring.Container.Common,
   Spring.Persistence.Core.Session,
-  BrickCamp.db.intf,
-  BrickCamp.settings.intf;
+  BrickCamp.IDB,
+  BrickCamp.ISettings;
 
 type
   TCbdDB = class(TInterfacedObject, IBrickCampDb)
@@ -27,7 +27,7 @@ type
 implementation
 
 uses
-	Spring.Container,
+  Spring.Container,
   Spring.Persistence.Core.ListSession,
   Spring.Collections,
   FireDAC.Comp.Client,

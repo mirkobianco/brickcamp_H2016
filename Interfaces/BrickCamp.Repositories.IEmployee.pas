@@ -1,10 +1,10 @@
-unit BrickCamp.Repositories.Employee.Intf;
+unit BrickCamp.Repositories.IEmployee;
 
 interface
 
 uses
   System.JSON,
-  BrickCamp.Model.Employee.Impl;
+  BrickCamp.Model.TEmployee;
 
 type
   IEmployeeRepository = interface(IInterface)

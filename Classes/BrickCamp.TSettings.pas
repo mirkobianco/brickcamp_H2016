@@ -1,9 +1,9 @@
-unit BrickCamp.settings.impl;
+unit BrickCamp.TSettings;
 
 interface
 
 uses
-	BrickCamp.settings.intf,
+  BrickCamp.ISettings,
   System.IniFiles;
 
 type

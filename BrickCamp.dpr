@@ -3,20 +3,20 @@ program BrickCamp;
 uses
   Vcl.SvcMgr,
   BrickCamp.service in 'BrickCamp.service.pas' {srvBrickCamp: TService},
-  BrickCamp.service.intf in 'Interfaces\BrickCamp.service.intf.pas',
-  BrickCamp.settings.intf in 'Interfaces\BrickCamp.settings.intf.pas',
-  BrickCamp.db.intf in 'Interfaces\BrickCamp.db.intf.pas',
+  BrickCamp.IService in 'Interfaces\BrickCamp.IService.pas',
+  BrickCamp.ISettings in 'Interfaces\BrickCamp.ISettings.pas',
+  BrickCamp.IDB in 'Interfaces\BrickCamp.IDB.pas',
   BrickCamp.services in 'BrickCamp.services.pas',
-  BrickCamp.Model.Employee.Impl in 'Classes\BrickCamp.Model.Employee.Impl.pas',
-  BrickCamp.Repositories.Employee.Intf in 'Interfaces\BrickCamp.Repositories.Employee.Intf.pas',
-  BrickCamp.Resources.Employee.Impl in 'Classes\BrickCamp.Resources.Employee.Impl.pas',
-  BrickCamp.Repositories.Employee.Mock in 'Mocks\BrickCamp.Repositories.Employee.Mock.pas',
-  BrickCamp.db.impl in 'Classes\BrickCamp.db.impl.pas',
-  BrickCamp.service.impl in 'Classes\BrickCamp.service.impl.pas',
-  BrickCamp.settings.impl in 'Classes\BrickCamp.settings.impl.pas',
-  BrickCamp.Repositories.Employee.Impl in 'Classes\BrickCamp.Repositories.Employee.Impl.pas',
-  BrickCamp.Model.Employee.Intf in 'Interfaces\BrickCamp.Model.Employee.Intf.pas',
-  BrickCamp.Resources.Employee.Intf in 'Interfaces\BrickCamp.Resources.Employee.Intf.pas';
+  BrickCamp.Model.TEmployee in 'Classes\BrickCamp.Model.TEmployee.pas',
+  BrickCamp.Repositories.IEmployee in 'Interfaces\BrickCamp.Repositories.IEmployee.pas',
+  BrickCamp.Resources.TEmployee in 'Classes\BrickCamp.Resources.TEmployee.pas',
+  BrickCamp.Repositories.TEmployee.Mock in 'Mocks\BrickCamp.Repositories.TEmployee.Mock.pas',
+  BrickCamp.TDB in 'Classes\BrickCamp.TDB.pas',
+  BrickCamp.TService in 'Classes\BrickCamp.TService.pas',
+  BrickCamp.TSettings in 'Classes\BrickCamp.TSettings.pas',
+  BrickCamp.Repositories.TEmployee in 'Classes\BrickCamp.Repositories.TEmployee.pas',
+  BrickCamp.Resources.IEmployee in 'Interfaces\BrickCamp.Resources.IEmployee.pas',
+  BrickCamp.Model.IEmployee in 'Interfaces\BrickCamp.Model.IEmployee.pas';
 
 {$R *.RES}
 

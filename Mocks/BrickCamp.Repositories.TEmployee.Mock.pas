@@ -1,12 +1,12 @@
-unit BrickCamp.Repositories.Employee.Mock;
+unit BrickCamp.Repositories.TEmployee.Mock;
 
 interface
 
 uses
   System.JSON,
   Spring.Container,
-  BrickCamp.Model.Employee.Impl,
-  BrickCamp.Repositories.Employee.Intf;
+  BrickCamp.Model.TEmployee,
+  BrickCamp.Repositories.IEmployee;
 
 type
   TMockEmployeeRepository = class(TInterfacedObject, IEmployeeRepository)

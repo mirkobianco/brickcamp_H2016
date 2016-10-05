@@ -1,4 +1,4 @@
-unit BrickCamp.settings.intf;
+unit BrickCamp.ISettings;
 
 interface
 

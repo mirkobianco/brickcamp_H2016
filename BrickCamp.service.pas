@@ -9,7 +9,8 @@ uses
   System.Classes,
   Vcl.SvcMgr,
   Spring.Container,
-  BrickCamp.service.impl;
+  Spring.Logging,
+  BrickCamp.TService;
 
 
 type
