@@ -30,10 +30,10 @@ type
     function GetList: TJSONArray;
 
     [POST]
-    procedure Insert(const [BodyParam] Answer: TAnswer);
+    procedure Insert(const [BodyParam] Value: TJSONValue);
 
     [PUT]
-    procedure Update(const [BodyParam] Answer: TAnswer);
+    procedure Update(const [BodyParam] Value: TJSONValue);
 
     [DELETE, Path('/{Id}')]
     procedure Delete(const [PathParam] Id: Integer);
@@ -56,13 +56,35 @@ begin
   GlobalContainer.Resolve<IAnswerRepository>.Delete(Id);
 end;
 
-procedure TAnswerResource.Insert(const Answer: TAnswer);
+procedure TAnswerResource.Insert(const Value: TJSONValue);
+var
+  Answer: TAnswer;
 begin
+  Answer := GlobalContainer.Resolve<TAnswer>;
+  with (TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject) do
+  begin
+    Answer.QuestionId := StrToIntDef(GetValue('QuestionId').Value, -1);
+    Answer.UserId := StrToIntDef(GetValue('UserId').Value, -1);
+    Answer.Text := GetValue('Text').Value;
+    Answer.RankIndex := StrToIntDef(GetValue('RankIndex').Value, -1);
+  end;
+
   GlobalContainer.Resolve<IAnswerRepository>.Insert(Answer);
 end;
 
-procedure TAnswerResource.Update(const Answer: TAnswer);
+procedure TAnswerResource.Update(const Value: TJSONValue);
+var
+  Answer: TAnswer;
 begin
+  Answer := GlobalContainer.Resolve<TAnswer>;
+  with (TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject) do
+  begin
+    Answer.QuestionId := StrToIntDef(GetValue('QuestionId').Value, -1);
+    Answer.UserId := StrToIntDef(GetValue('UserId').Value, -1);
+    Answer.Text := GetValue('Text').Value;
+    Answer.RankIndex := StrToIntDef(GetValue('RankIndex').Value, -1);
+  end;
+
   GlobalContainer.Resolve<IAnswerRepository>.Update(Answer);
 end;
 

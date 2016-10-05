@@ -3,6 +3,7 @@ unit BrickCamp.Resources.TUser;
 interface
 
 uses
+  System.JSON,
   System.Classes,
   System.SysUtils,
   Spring.Container.Common,
@@ -32,10 +33,10 @@ type
     function GetList: TJSONArray;
 
     [POST]
-    procedure Insert(const [BodyParam] User: TUser);
+    procedure Insert(const [BodyParam] Value: TJSONValue {TUser});
 
     [PUT]
-    procedure Update(const [BodyParam] User: TUser);
+    procedure Update(const [BodyParam] Value: TJSONValue);
 
     [DELETE, Path('/{Id}')]
     procedure Delete(const [PathParam] Id: Integer);
@@ -60,13 +61,23 @@ begin
   GlobalContainer.Resolve<IUserRepository>.Delete(Id);
 end;
 
-procedure TUserResource.Insert(const User: TUser);
+procedure TUserResource.Insert(const Value: TJSONValue);
+var
+  User: TUser;
 begin
+  User := GlobalContainer.Resolve<TUser>;
+  with (TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject) do
+    User.Name := GetValue('Name').Value;
   GlobalContainer.Resolve<IUserRepository>.Insert(User);
 end;
 
-procedure TUserResource.Update(const User: TUser);
+procedure TUserResource.Update(const Value: TJSONValue);
+var
+  User: TUser;
 begin
+  User := GlobalContainer.Resolve<TUser>;
+  with (TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject) do
+    User.Name := GetValue('Name').Value;
   GlobalContainer.Resolve<IUserRepository>.Update(User);
 end;
 

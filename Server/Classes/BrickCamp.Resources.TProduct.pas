@@ -30,10 +30,10 @@ type
     function GetList: TJSONArray;
 
     [POST]
-    procedure Insert(const [BodyParam] Product: TProduct);
+    procedure Insert(const [BodyParam] Value: TJSONValue);
 
     [PUT]
-    procedure Update(const [BodyParam] Product: TProduct);
+    procedure Update(const [BodyParam] Value: TJSONValue);
 
     [DELETE, Path('/{Id}')]
     procedure Delete(const [PathParam] Id: Integer);
@@ -53,13 +53,31 @@ begin
   GlobalContainer.Resolve<IProductRepository>.Delete(Id);
 end;
 
-procedure TProductResource.Insert(const Product: TProduct);
+procedure TProductResource.Insert(const Value: TJSONValue);
+var
+  Product: TProduct;
 begin
+  Product := GlobalContainer.Resolve<TProduct>;
+  with (TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject) do
+  begin
+    Product.Name := GetValue('Name').Value;
+    Product.Description := GetValue('Description').Value;
+    Product.Price := StrToFloatDef(GetValue('Price').Value, 0.0);
+  end;
   GlobalContainer.Resolve<IProductRepository>.Insert(Product);
 end;
 
-procedure TProductResource.Update(const Product: TProduct);
+procedure TProductResource.Update(const Value: TJSONValue);
+var
+  Product: TProduct;
 begin
+  Product := GlobalContainer.Resolve<TProduct>;
+  with (TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject) do
+  begin
+    Product.Name := GetValue('Name').Value;
+    Product.Description := GetValue('Description').Value;
+    Product.Price := StrToFloatDef(GetValue('Price').Value, 0.0);
+  end;
   GlobalContainer.Resolve<IProductRepository>.Update(Product);
 end;
 
