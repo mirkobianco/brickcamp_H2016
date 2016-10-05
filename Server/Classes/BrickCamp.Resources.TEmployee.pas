@@ -64,7 +64,7 @@ end;
 
 function TEmployeeResource.GetList: TJSONArray;
 begin
-  result := GlobalContainer.Resolve<IEmployeeRepository>.GetList;
+  Result := GlobalContainer.Resolve<IEmployeeRepository>.GetList;
 end;
 
 initialization

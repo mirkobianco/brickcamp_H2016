@@ -47,8 +47,6 @@ type
   public
     constructor Create(const Id: integer); reintroduce;
 
-    function ToObject: TObject;
-
     property ID: Integer read GetId;
 
     [Column('FIRST_NAME', [cpNotNull])]
@@ -173,11 +171,6 @@ end;
 procedure TEmployee.SetSalary(const Value: Extended);
 begin
   FSalary := Value;
-end;
-
-function TEmployee.ToObject: TObject;
-begin
-  result := Self;
 end;
 
 end.
