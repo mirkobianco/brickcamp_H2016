@@ -44,6 +44,9 @@ uses
   BrickCamp.Resources.IEmployee in 'Interfaces\BrickCamp.Resources.IEmployee.pas',
   BrickCamp.Resources.TProduct in 'Classes\BrickCamp.Resources.TProduct.pas',
   BrickCamp.Model in '..\Model\BrickCamp.Model.pas';
+  BrickCamp.Common.JsonContract in 'Classes\BrickCamp.Common.JsonContract.pas',
+  BrickCamp.Common.Mapping in 'Classes\BrickCamp.Common.Mapping.pas',
+  BrickCamp.JsonUser in '..\Model\JsonEntities\BrickCamp.JsonUser.pas';
 
 {$R *.RES}
 

@@ -6,9 +6,6 @@
         <Projects Include="Server\BrickCamp.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Coolnection\Coolnection.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="Test\BrickCampTests.dproj">
             <Dependencies/>
         </Projects>
@@ -29,15 +26,6 @@
     <Target Name="BrickCamp:Make">
         <MSBuild Projects="Server\BrickCamp.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Coolnection">
-        <MSBuild Projects="Coolnection\Coolnection.dproj"/>
-    </Target>
-    <Target Name="Coolnection:Clean">
-        <MSBuild Projects="Coolnection\Coolnection.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="Coolnection:Make">
-        <MSBuild Projects="Coolnection\Coolnection.dproj" Targets="Make"/>
-    </Target>
     <Target Name="BrickCampTests">
         <MSBuild Projects="Test\BrickCampTests.dproj"/>
     </Target>
@@ -48,13 +36,13 @@
         <MSBuild Projects="Test\BrickCampTests.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="BrickCamp;Coolnection;BrickCampTests"/>
+        <CallTarget Targets="BrickCamp;BrickCampTests"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="BrickCamp:Clean;Coolnection:Clean;BrickCampTests:Clean"/>
+        <CallTarget Targets="BrickCamp:Clean;BrickCampTests:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="BrickCamp:Make;Coolnection:Make;BrickCampTests:Make"/>
+        <CallTarget Targets="BrickCamp:Make;BrickCampTests:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
