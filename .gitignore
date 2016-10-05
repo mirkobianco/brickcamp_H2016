@@ -38,3 +38,6 @@ Tests/Bin/
 TestInsightSettings.ini
 /*.res
 /Test/Win32/Debug/*.exe
+/Coolnection/*.exe
+/Coolnection/*.otares
+/Coolnection/*.ico

@@ -21,12 +21,15 @@ type
     procedure Insert(const Answer: TAnswer);
     procedure Update(const Answer: TAnswer);
     procedure Delete(const Id: Integer);
+    function GetListByQuestionId(const QuestionId: Integer): TJSONArray;
   end;
 
 implementation
 
 uses
   Spring.Collections,
+  Spring.Persistence.Criteria.Interfaces,
+  Spring.Persistence.Criteria.Properties,
   MARS.Core.Utils;
 
 { TAnswerRepository }
@@ -46,6 +49,20 @@ var
   LItem: TAnswer;
 begin
   LList := FDb.GetSession.FindAll<TAnswer>;
+  result := TJSONArray.Create;
+  for LItem in LList do
+    Result.Add(ObjectToJson(LItem));
+end;
+
+function TAnswerRepository.GetListByQuestionId(const QuestionId: Integer): TJSONArray;
+var
+  QuestionIdCriteria: Prop;
+  LList: IList<TAnswer>;
+  LItem: TAnswer;
+begin
+  QuestionIdCriteria := Prop.Create('QuestionId');
+  LList := FDb.GetSession.FindWhere<TAnswer>(QuestionIdCriteria = QuestionId);
+
   result := TJSONArray.Create;
   for LItem in LList do
     Result.Add(ObjectToJson(LItem));

@@ -152,6 +152,7 @@
         <DCCReference Include="Interfaces\BrickCamp.Resources.IEmployee.pas"/>
         <DCCReference Include="Classes\BrickCamp.Resources.TProduct.pas"/>
         <DCCReference Include="Classes\BrickCamp.Common.JsonContract.pas"/>
+        <DCCReference Include="..\Model\BrickCamp.Model.pas"/>
         <DCCReference Include="Classes\BrickCamp.Common.Mapping.pas"/>
         <DCCReference Include="..\Model\JsonEntities\BrickCamp.JsonUser.pas"/>
         <BuildConfiguration Include="Base">

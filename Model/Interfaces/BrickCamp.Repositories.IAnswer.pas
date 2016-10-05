@@ -14,6 +14,7 @@ type
     procedure Insert(const Answer: TAnswer);
     procedure Update(const Answer: TAnswer);
     procedure Delete(const Id: Integer);
+    function GetListByQuestionId(const ProductId: Integer): TJSONArray;
   end;
 
 implementation

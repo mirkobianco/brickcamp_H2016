@@ -34,8 +34,11 @@ type
     [PUT]
     procedure Update(const [BodyParam] Question: TQuestion);
 
-    [GET, Path('/delete/{Id}')]
+    [DELETE, Path('/{Id}')]
     procedure Delete(const [PathParam] Id: Integer);
+
+    [GET, Path('/getlistbyproductid/{ProductId}')]
+    function GetListByProductId(const [PathParam] ProductId: Integer): TJSONArray;
   end;
 
 implementation
@@ -65,6 +68,11 @@ end;
 function TQuestionResource.GetList: TJSONArray;
 begin
   result := GlobalContainer.Resolve<IQuestionRepository>.GetList;
+end;
+
+function TQuestionResource.GetListByProductId(const ProductId: Integer): TJSONArray;
+begin
+  Result := GlobalContainer.Resolve<IQuestionRepository>.GetListByProductId(ProductId);
 end;
 
 initialization
