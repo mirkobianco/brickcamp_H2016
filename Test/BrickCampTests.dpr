@@ -33,7 +33,9 @@ uses
   BrickCamp.service in '..\Server\BrickCamp.service.pas' {srvBrickCamp: TService},
   BrickCamp.services in '..\Server\BrickCamp.services.pas',
   TestBrickCamp.Repository.Redis in 'repository\TestBrickCamp.Repository.Redis.pas',
-  Brickcamp.Repository.Redis in '..\Server\Classes\Redis\Brickcamp.Repository.Redis.pas';
+  Brickcamp.Repository.Redis in '..\Server\Classes\Redis\Brickcamp.Repository.Redis.pas',
+  BrickCamp.IRedisClientProvider in '..\Server\Interfaces\Redis\BrickCamp.IRedisClientProvider.pas',
+  BrickCamp.IRedisEmployeeRepository in '..\Server\Interfaces\Redis\BrickCamp.IRedisEmployeeRepository.pas';
 
 {$R *.RES}
 
