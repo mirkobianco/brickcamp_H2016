@@ -2,7 +2,7 @@
     <PropertyGroup>
         <ProjectGuid>{9AF23D56-4A19-4E06-B454-C64C3F178D89}</ProjectGuid>
         <ProjectVersion>18.1</ProjectVersion>
-        <FrameworkType>None</FrameworkType>
+        <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
@@ -78,10 +78,11 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_UnitSearchPath>C:\Dev\Delphi\delphiredisclient\sources;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <Manifest_File>(None)</Manifest_File>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_ExeOutput>..\..\bin\$(Platform)\$(Config)</DCC_ExeOutput>
-        <DCC_DcuOutput>...\..\dcu\$(Platform)\$(Config)</DCC_DcuOutput>
+        <DCC_ExeOutput>..\..\..\bin\$(Platform)\$(Config)</DCC_ExeOutput>
+        <DCC_DcuOutput>..\..\..\dcu\$(Platform)\$(Config)</DCC_DcuOutput>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -95,11 +96,27 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="TestBrickCamp.Repositories.Employee.pas"/>
+        <DCCReference Include="..\Mocks\BrickCamp.Repositories.TEmployee.Mock.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TEmployee.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IEmployee.pas"/>
+        <DCCReference Include="..\Server\Classes\BrickCamp.Repositories.TEmployee.pas"/>
+        <DCCReference Include="..\Server\Classes\BrickCamp.Resources.TEmployee.pas"/>
+        <DCCReference Include="..\Server\Classes\BrickCamp.TDB.pas"/>
+        <DCCReference Include="..\Server\Classes\BrickCamp.TService.pas"/>
+        <DCCReference Include="..\Server\Classes\BrickCamp.TSettings.pas"/>
         <DCCReference Include="..\Server\Interfaces\BrickCamp.IDB.pas"/>
-        <DCCReference Include="..\Server\Interfaces\BrickCamp.Repositories.IEmployee.pas"/>
         <DCCReference Include="..\Server\Interfaces\BrickCamp.IService.pas"/>
         <DCCReference Include="..\Server\Interfaces\BrickCamp.ISettings.pas"/>
-        <DCCReference Include="..\Mocks\BrickCamp.Repositories.TEmployee.Mock.pas"/>
+        <DCCReference Include="..\Server\Interfaces\BrickCamp.Repositories.IEmployee.pas"/>
+        <DCCReference Include="..\Server\Interfaces\BrickCamp.Resources.IEmployee.pas"/>
+        <DCCReference Include="..\Server\BrickCamp.service.pas">
+            <Form>srvBrickCamp</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TService</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\Server\BrickCamp.services.pas"/>
+        <DCCReference Include="..\Repository\Redis\Brickcamp.Repository.Redis.pas"/>
+        <DCCReference Include="repository\TestBrickCamp.Repository.Redis.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -148,18 +165,33 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\..\bin\Win32\Debug\BrickCampTests.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\..\bin\Win32\Debug\BrickCampTests.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>BrickCampTests.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
@@ -510,27 +542,12 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>

@@ -12,10 +12,12 @@ unit TestBrickCamp.Repositories.Employee;
 interface
 
 uses
+  System.JSON,
   TestFramework,
   Spring.Container,
   Spring.Collections,
   BrickCamp.Model.TEmployee,
+  BrickCamp.Model.IEmployee,
   BrickCamp.Repositories.IEmployee,
   BrickCamp.Repositories.TEmployee.Mock;
 
@@ -48,7 +50,7 @@ end;
 
 procedure TestTMockEmployeeRepository.TestGetOne_ReturnsOne_Success;
 var
-  ReturnValue: IEmployee;
+  ReturnValue: TEmployee;
 begin
   // TODO: Setup method call parameters
   ReturnValue := FMockEmployeeRepository.GetOne(100);
@@ -59,7 +61,7 @@ end;
 
 procedure TestTMockEmployeeRepository.TestGetList;
 var
-  ReturnValue: IList<IEmployee>;
+  ReturnValue: TJsonArray;
 begin
   ReturnValue := FMockEmployeeRepository.GetList;
   // TODO: Validate method results
