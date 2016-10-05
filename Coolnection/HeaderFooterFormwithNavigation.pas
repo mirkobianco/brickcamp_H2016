@@ -31,26 +31,16 @@ type
     tbProduct: TTabItem;
     edtUserName: TEdit;
     btnLogin: TCornerButton;
-    rclProducts: TRESTClient;
     lvProducts: TListView;
-    rrpProducts: TRESTResponse;
-    rrqProducts: TRESTRequest;
-    bnd1: TBindingsList;
-    adpProducts: TRESTResponseDataSetAdapter;
+    bndList: TBindingsList;
     lnkPrNam1: TLinkFillControlToField;
     imgLogin: TImage;
     Panel1: TPanel;
     styCool: TStyleBook;
     flanimLogo: TFloatAnimation;
-    rclLogin: TRESTClient;
-    rrqLogin: TRESTRequest;
-    rrpLogin: TRESTResponse;
-    dsProducts: TClientDataSet;
-    dsProductsID: TWideStringField;
-    dsProductsName: TWideStringField;
-    dsProductsDescription: TWideStringField;
-    dsProductsPrice: TWideStringField;
-    BindSourceDB1: TBindSourceDB;
+    bndProducts: TBindSourceDB;
+    tbQuestions: TTabItem;
+    lblBottom: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure TitleActionUpdate(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
@@ -59,13 +49,18 @@ type
     procedure lvProductsItemClick(const Sender: TObject;
       const AItem: TListViewItem);
   private
-    FLoginId: Integer;
+    FUserId: Integer;
     FName: string;
+    FProductDataSet: TClientDataSet;
+    FProductId: Integer;
+    FProductDesc: string;
+    FProductName: string;
     function GetUserInfos(Login: string): integer;
+
     procedure ConfigureProductPage;
-    { Private declarations }
-  public
     procedure ConfigureInterfaceForLoginPage;
+    procedure ConfigurePageQuestions;
+  public
     procedure LoadProducts;
     procedure ConfigurePages;
   end;
@@ -95,7 +90,7 @@ end;
 
 procedure TmCoolnection.btnLoginClick(Sender: TObject);
 begin
-  FLoginId := GetUserInfos(Trim(LowerCase(edtUserName.Text)));
+  FUserId := GetUserInfos(Trim(LowerCase(edtUserName.Text)));
   LoadProducts;
   tbcMain.ActiveTab := tbProduct;
 end;
@@ -116,10 +111,30 @@ begin
   BottomToolBar.Visible := False;
 end;
 
+procedure TmCoolnection.ConfigurePageQuestions;
+var
+  IsOnPage: Boolean;
+begin
+  IsOnPage := tbcMain.ActiveTab = tbQuestions;
+  if not IsOnPage then
+    Exit;
+
+  btnBack.Visible := True;
+  btnNext.Visible := False;
+  ToolBarLabel.Visible := True;
+  TopToolBar.Visible := True;
+  BottomToolBar.Visible := True;
+  lblBottom.Visible := True;
+
+  ToolBarLabel.Text := 'Product ' + FProductName;
+  lblBottom.Text := FProductDesc;
+end;
+
 procedure TmCoolnection.ConfigurePages;
 begin
   ConfigureInterfaceForLoginPage;
   ConfigureProductPage;
+  ConfigurePageQuestions;
 end;
 
 procedure TmCoolnection.ConfigureProductPage;
@@ -134,7 +149,9 @@ begin
   btnNext.Visible := False;
   ToolBarLabel.Visible := True;
   TopToolBar.Visible := True;
-  BottomToolBar.Visible := True;
+  BottomToolBar.Visible := False;
+  lblBottom.Visible := False;
+
   ToolBarLabel.Text := 'Welcome ' + FName;
 end;
 
@@ -155,22 +172,40 @@ begin
 end;
 
 function TmCoolnection.GetUserInfos(Login: string): integer;
+var
+  Brick: TBrickCampRemoteInterface;
 begin
+  Brick := TBrickCampRemoteInterface.Create;
+  try
+    FUserId := Brick.LoginUser(Login);
+    bndProducts.DataSet := FProductDataSet;
+  finally
+    Brick.Free;
+  end;
   FName := Login;
-  rclLogin.BaseURL := 'http://localhost:8080/rest/cb/user/getonebyname/' + Login;
-  rrqLogin.Execute;
-  Result := StrToInt((rrpLogin.JSONValue as TJsonObject).GetValue('ID').Value);
 end;
 
 procedure TmCoolnection.LoadProducts;
+var
+  Brick: TBrickCampRemoteInterface;
 begin
-  rrqProducts.Execute;
+  Brick := TBrickCampRemoteInterface.Create;
+  try
+    FProductDataSet := Brick.GetProductDataset;
+    bndProducts.DataSet := FProductDataSet;
+  finally
+    Brick.Free;
+  end;
 end;
 
 procedure TmCoolnection.lvProductsItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 begin
-  AItem.Detail := BindSourceDB1.DataSet.FieldByName('ID').AsString;
+  FProductId := FProductDataSet.FieldByName('ID').AsInteger;
+  FProductDesc := FProductDataSet.FieldByName('DESCRIPTION').AsString;
+  FProductName := FProductDataSet.FieldByName('NAME').AsString;
+
+  tbcMain.ActiveTab := tbQuestions;
 end;
 
 procedure TmCoolnection.tbcMainChange(Sender: TObject);
