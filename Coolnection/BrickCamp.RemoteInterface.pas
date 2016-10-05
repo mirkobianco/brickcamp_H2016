@@ -3,22 +3,30 @@ unit BrickCamp.RemoteInterface;
 interface
 
 uses
+  System.JSON,
   Data.DB,
-  Datasnap.DBClient;
+  Datasnap.DBClient,
+  BrickCamp.Model;
 
 type
   TBrickCampRemoteInterface = class
   public
+    function GetDataset(const Resource: TResourceType): TClientDataset;
+    function GetOne(const Resource: TResourceType): TJSONObject;
+    procedure Delete(const Id: Integer);
+    procedure Post(const Resource: TResourceType; const JSONObject: TJSONObject);
+    procedure Put(const Resource: TResourceType; const JSONObject: TJSONObject);
+
     function LoginUser(const Name: string): Integer;
-    function GetProductDataset: TClientDataset;
-    function GetQuestionsByProduct(ProductId: Integer): TClientDataSet;
+
+    function GetQuestionsByProduct(const ProductId: Integer): TClientDataSet;
+    function GetAnswersByQuestion(const QuestionId: Integer): TClientDataSet;
   end;
 
 implementation
 
 uses
   System.SysUtils,
-  System.JSON,
   Data.Bind.EngExt, Data.Bind.Components, Data.Bind.ObjectScope,
   Data.Bind.GenData, IPPeerClient, REST.Client, MARS.Client.Client,
   REST.Response.Adapter, Data.Bind.DBScope, FireDAC.Stan.Intf, REST.Types,
@@ -29,25 +37,38 @@ uses
   ;
 
 const
-  USERBASEURL: string = 'http://localhost:8080/rest/cb/user';
-  PRODUCTBASEURL: string = 'http://localhost:8080/rest/cb/product';
-  QUESTIONBASEURL: string = 'http://localhost:8080/rest/cb/question';
-
-  GET_USER_ONEBYNAME: string = '/getonebyname';
-
-  GET_PRODUCT_GETLIST: string = '/getlist';
-  GET_QUESTION_GETLISTBYPRODUCT: string = '/getlistbyproduct';
-
+  BASEURL: string = 'http://localhost:8080/rest/cb';
 { TBrickCampRemoteInterface }
 
-function TBrickCampRemoteInterface.GetProductDataset: TClientDataset;
+procedure TBrickCampRemoteInterface.Delete(const Id: Integer);
+var
+  RestClient: TRESTClient;
+  Request: TRESTRequest;
+  Response: TRESTResponse;
+begin
+  RestClient := TRESTClient.Create(BASEURL + RESOURCESTRINGS[rQuestion] + DELETE_GENERIC + '/' + IntToStr(Id));
+  Request := TRESTRequest.Create(nil);
+  Response := TRESTResponse.Create(nil);
+  try
+    Request.Client := RestClient;
+    Request.Response := Response;
+    Request.Method := rmDELETE;
+    Request.Execute;
+  finally
+    Response.Free;
+    Request.Free;
+    RestClient.Free;
+  end;
+end;
+
+function TBrickCampRemoteInterface.GetAnswersByQuestion(const QuestionId: Integer): TClientDataSet;
 var
   RestClient: TRESTClient;
   Request: TRESTRequest;
   Response: TRESTResponse;
   DataSetAdapter: TRESTResponseDataSetAdapter;
 begin
-  RestClient := TRESTClient.Create(PRODUCTBASEURL + GET_PRODUCT_GETLIST);
+  RestClient := TRESTClient.Create(BASEURL + RESOURCESTRINGS[rQuestion] + GET_ANSWER_GETLISTBYQUESTION + '/' + IntToStr(QuestionId));
   Request := TRESTRequest.Create(nil);
   Response := TRESTResponse.Create(nil);
   DataSetAdapter := TRESTResponseDataSetAdapter.Create(nil);
@@ -67,14 +88,63 @@ begin
   end;
 end;
 
-function TBrickCampRemoteInterface.GetQuestionsByProduct(ProductId: Integer): TClientDataSet;
+function TBrickCampRemoteInterface.GetDataset(const Resource: TResourceType): TClientDataset;
 var
   RestClient: TRESTClient;
   Request: TRESTRequest;
   Response: TRESTResponse;
   DataSetAdapter: TRESTResponseDataSetAdapter;
 begin
-  RestClient := TRESTClient.Create(QUESTIONBASEURL + GET_QUESTION_GETLISTBYPRODUCT + '/' + IntToStr(ProductId));
+  RestClient := TRESTClient.Create(BASEURL + RESOURCESTRINGS[Resource] + GET_GENERIC_GETLIST);
+  Request := TRESTRequest.Create(nil);
+  Response := TRESTResponse.Create(nil);
+  DataSetAdapter := TRESTResponseDataSetAdapter.Create(nil);
+  Result := TClientDataSet.Create(nil);
+  try
+    Request.Client := RestClient;
+    Request.Response := Response;
+    Request.Method := rmGET;
+    DataSetAdapter.Response := Response;
+    DataSetAdapter.Dataset := Result;
+    Request.Execute;
+  finally
+    DataSetAdapter.Free;
+    Response.Free;
+    Request.Free;
+    RestClient.Free;
+  end;
+end;
+
+function TBrickCampRemoteInterface.GetOne(const Resource: TResourceType): TJSONObject;
+var
+  RestClient: TRESTClient;
+  Request: TRESTRequest;
+  Response: TRESTResponse;
+begin
+  RestClient := TRESTClient.Create(BASEURL + RESOURCESTRINGS[Resource] + GET_GENERIC_GETONE);
+  Request := TRESTRequest.Create(nil);
+  Response := TRESTResponse.Create(nil);
+  try
+    Request.Client := RestClient;
+    Request.Response := Response;
+    Request.Method := rmGET;
+    Request.Execute;
+    Result := TJSONObject.ParseJSONValue(Response.Content) as TJSONObject;
+  finally
+    Response.Free;
+    Request.Free;
+    RestClient.Free;
+  end;
+end;
+
+function TBrickCampRemoteInterface.GetQuestionsByProduct(const ProductId: Integer): TClientDataSet;
+var
+  RestClient: TRESTClient;
+  Request: TRESTRequest;
+  Response: TRESTResponse;
+  DataSetAdapter: TRESTResponseDataSetAdapter;
+begin
+  RestClient := TRESTClient.Create(BASEURL + RESOURCESTRINGS[rQuestion] + GET_QUESTION_GETLISTBYPRODUCT + '/' + IntToStr(ProductId));
   Request := TRESTRequest.Create(nil);
   Response := TRESTResponse.Create(nil);
   DataSetAdapter := TRESTResponseDataSetAdapter.Create(nil);
@@ -102,7 +172,7 @@ var
   JSONObject: TJSONObject;
 begin
   Result := -1;
-  RestClient := TRESTClient.Create(USERBASEURL + GET_USER_ONEBYNAME + '/' + Name);
+  RestClient := TRESTClient.Create(BASEURL + RESOURCESTRINGS[rUser] + GET_USER_ONEBYNAME + '/' + Name);
   Request := TRESTRequest.Create(nil);
   Response := TRESTResponse.Create(nil);
   try
@@ -117,6 +187,50 @@ begin
     finally
       JSONObject.Free;
     end;
+  finally
+    Response.Free;
+    Request.Free;
+    RestClient.Free;
+  end;
+end;
+
+procedure TBrickCampRemoteInterface.Post(const Resource: TResourceType; const JSONObject: TJSONObject);
+var
+  RestClient: TRESTClient;
+  Request: TRESTRequest;
+  Response: TRESTResponse;
+begin
+  RestClient := TRESTClient.Create(BASEURL + RESOURCESTRINGS[Resource] + POST_GENERIC);
+  Request := TRESTRequest.Create(nil);
+  Response := TRESTResponse.Create(nil);
+  try
+    Request.Client := RestClient;
+    Request.Response := Response;
+    Request.Method := rmPost;
+    Request.Body.JSONWriter.WriteRaw(JSONObject.ToString);
+    Request.Execute;
+  finally
+    Response.Free;
+    Request.Free;
+    RestClient.Free;
+  end;
+end;
+
+procedure TBrickCampRemoteInterface.Put(const Resource: TResourceType; const JSONObject: TJSONObject);
+var
+  RestClient: TRESTClient;
+  Request: TRESTRequest;
+  Response: TRESTResponse;
+begin
+  RestClient := TRESTClient.Create(BASEURL + RESOURCESTRINGS[Resource] + PUT_GENERIC);
+  Request := TRESTRequest.Create(nil);
+  Response := TRESTResponse.Create(nil);
+  try
+    Request.Client := RestClient;
+    Request.Response := Response;
+    Request.Method := rmPut;
+    Request.Body.JSONWriter.WriteRaw(JSONObject.ToString);
+    Request.Execute;
   finally
     Response.Free;
     Request.Free;

@@ -151,6 +151,7 @@
         <DCCReference Include="Classes\BrickCamp.Resources.TEmployee.pas"/>
         <DCCReference Include="Interfaces\BrickCamp.Resources.IEmployee.pas"/>
         <DCCReference Include="Classes\BrickCamp.Resources.TProduct.pas"/>
+        <DCCReference Include="..\Model\BrickCamp.Model.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

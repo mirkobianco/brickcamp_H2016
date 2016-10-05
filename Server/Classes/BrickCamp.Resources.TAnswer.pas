@@ -15,6 +15,7 @@ uses
   MARS.Core.MessageBodyReaders,
   BrickCamp.Repositories.IAnswer,
   BrickCamp.Resources.IAnswer,
+  BrickCamp.Model,
   BrickCamp.Model.IAnswer,
   BrickCamp.Model.TAnswer;
 
@@ -34,8 +35,11 @@ type
     [PUT]
     procedure Update(const [BodyParam] Answer: TAnswer);
 
-    [DELETE, Path('/delete/{Id}')]
+    [DELETE, Path('/{Id}')]
     procedure Delete(const [PathParam] Id: Integer);
+
+    [GET, Path('/getlistbyquestionid/QuestionId')]
+    function GetListByQuestionId(const [PathParam] QuestionId: Integer): TJSONArray;
   end;
 
 implementation
@@ -65,6 +69,11 @@ end;
 function TAnswerResource.GetList: TJSONArray;
 begin
   result := GlobalContainer.Resolve<IAnswerRepository>.GetList;
+end;
+
+function TAnswerResource.GetListByQuestionId(const QuestionId: Integer): TJSONArray;
+begin
+  Result := GlobalContainer.Resolve<IAnswerRepository>.GetListByQuestionId(QuestionId);
 end;
 
 initialization

@@ -73,7 +73,8 @@ var
 implementation
 
 uses
-  System.JSON, BrickCamp.RemoteInterface, Data.DB;
+  System.JSON, BrickCamp.RemoteInterface, Data.DB,
+  BrickCamp.Model;
 
 {$R *.fmx}
 {$R *.LgXhdpiPh.fmx ANDROID}
@@ -193,7 +194,7 @@ var
 begin
   Brick := TBrickCampRemoteInterface.Create;
   try
-    FProductDataSet := Brick.GetProductDataset;
+    FProductDataSet := Brick.GetDataset(rProduct);
     bndProducts.DataSet := FProductDataSet;
   finally
     Brick.Free;

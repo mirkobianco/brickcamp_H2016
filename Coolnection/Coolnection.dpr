@@ -4,7 +4,8 @@ uses
   System.StartUpCopy,
   FMX.Forms,
   HeaderFooterFormwithNavigation in 'HeaderFooterFormwithNavigation.pas' {mCoolnection},
-  BrickCamp.RemoteInterface in 'BrickCamp.RemoteInterface.pas';
+  BrickCamp.RemoteInterface in 'BrickCamp.RemoteInterface.pas',
+  BrickCamp.Model in '..\Model\BrickCamp.Model.pas';
 
 {$R *.res}
 

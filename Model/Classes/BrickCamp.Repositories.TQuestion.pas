@@ -21,7 +21,7 @@ type
     procedure Insert(const Question: TQuestion);
     procedure Update(const Question: TQuestion);
     procedure Delete(const Id: Integer);
-    function GetListByProduct(const ProductId: Integer): TJSONArray;
+    function GetListByProductId(const ProductId: Integer): TJSONArray;
   end;
 
 implementation
@@ -54,13 +54,13 @@ begin
     Result.Add(ObjectToJson(LItem));
 end;
 
-function TQuestionRepository.GetListByProduct(const ProductId: Integer): TJSONArray;
+function TQuestionRepository.GetListByProductId(const ProductId: Integer): TJSONArray;
 var
   ProductIdCriteria: Prop;
   LList: IList<TQuestion>;
   LItem: TQuestion;
 begin
-  ProductIdCriteria := Prop.Create('NAME');
+  ProductIdCriteria := Prop.Create('ProductId');
   LList := FDb.GetSession.FindWhere<TQuestion>(ProductIdCriteria = ProductId);
 
   result := TJSONArray.Create;

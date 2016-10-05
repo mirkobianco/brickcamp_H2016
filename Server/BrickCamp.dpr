@@ -42,7 +42,8 @@ uses
   BrickCamp.TDB in 'Classes\BrickCamp.TDB.pas',
   BrickCamp.Resources.TEmployee in 'Classes\BrickCamp.Resources.TEmployee.pas',
   BrickCamp.Resources.IEmployee in 'Interfaces\BrickCamp.Resources.IEmployee.pas',
-  BrickCamp.Resources.TProduct in 'Classes\BrickCamp.Resources.TProduct.pas';
+  BrickCamp.Resources.TProduct in 'Classes\BrickCamp.Resources.TProduct.pas',
+  BrickCamp.Model in '..\Model\BrickCamp.Model.pas';
 
 {$R *.RES}
 
