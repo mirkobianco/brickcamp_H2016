@@ -42,7 +42,10 @@ uses
   BrickCamp.TDB in 'Classes\BrickCamp.TDB.pas',
   BrickCamp.Resources.TEmployee in 'Classes\BrickCamp.Resources.TEmployee.pas',
   BrickCamp.Resources.IEmployee in 'Interfaces\BrickCamp.Resources.IEmployee.pas',
-  BrickCamp.Resources.TProduct in 'Classes\BrickCamp.Resources.TProduct.pas';
+  BrickCamp.Resources.TProduct in 'Classes\BrickCamp.Resources.TProduct.pas',
+  BrickCamp.Common.JsonContract in 'Classes\BrickCamp.Common.JsonContract.pas',
+  BrickCamp.Common.Mapping in 'Classes\BrickCamp.Common.Mapping.pas',
+  BrickCamp.JsonUser in '..\Model\JsonEntities\BrickCamp.JsonUser.pas';
 
 {$R *.RES}
 
