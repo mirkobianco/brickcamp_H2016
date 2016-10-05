@@ -6,7 +6,8 @@ uses  Redis.Client,
       Redis.NetLib.INDY,
       Redis.Commons,
       Spring.Container.Injection,
-      Spring.Container.Common;
+      Spring.Container.Common,
+      BrickCamp.ISettings;
 
 type
 
@@ -23,6 +24,9 @@ type
   ///******** TRedisClientProvider *********///
   ///Provide the a wrapper to create a Redis Client and provide the settings to it
   TRedisClientProvider = class(TInterfacedObject,IRedisClientProvider)
+  protected
+  [Inject]
+    FSettings: IBrickCampSettings;
   public
     function NewRedisClient : IRedisClient;
   end;
