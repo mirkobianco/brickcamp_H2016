@@ -10,7 +10,7 @@ type
   ['{22C4E548-5FBE-47FE-9138-5A96FFE3DDE0}']
     function GetId: Integer;
     function GetQuestionId: Integer;
-    function GetUserId: string;
+    function GetUserId: Integer;
     function GetText: string;
     function GetRankIndex: SmallInt;
     procedure SetQuestionId(const Value: Integer);
