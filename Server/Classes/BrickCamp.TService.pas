@@ -49,6 +49,12 @@ uses
   BrickCamp.Repositories.TAnswer,
   BrickCamp.Resources.TAnswer,
   BrickCamp.Model.TAnswer,
+  BrickCamp.Repositories.TUser,
+  BrickCamp.Resources.TUser,
+  BrickCamp.Model.TUser,
+  BrickCamp.Repositories.TQuestion,
+  BrickCamp.Resources.TQuestion,
+  BrickCamp.Model.TQuestion,
   Brickcamp.Repository.Redis
   ;
 
@@ -139,6 +145,12 @@ begin
   GlobalContainer.RegisterType<TAnswerResource>;
   GlobalContainer.RegisterType<TAnswer>;
   GlobalContainer.RegisterType<TAnswerRepository>;
+  GlobalContainer.RegisterType<TUserResource>;
+  GlobalContainer.RegisterType<TUser>;
+  GlobalContainer.RegisterType<TUserRepository>;
+  GlobalContainer.RegisterType<TQuestionResource>;
+  GlobalContainer.RegisterType<TQuestion>;
+  GlobalContainer.RegisterType<TQuestionRepository>;
   GlobalContainer.RegisterType<TMARSEngine>;
   GlobalContainer.RegisterType<TMARShttpServerIndy>;
   GlobalContainer.RegisterType<TRedisClientProvider>;

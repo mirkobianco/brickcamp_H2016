@@ -137,6 +137,18 @@
         <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TAnswer.pas"/>
         <DCCReference Include="Interfaces\BrickCamp.Resources.IAnswer.pas"/>
         <DCCReference Include="Classes\BrickCamp.Resources.TAnswer.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IUser.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Repositories.IUser.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TUser.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TUser.pas"/>
+        <DCCReference Include="Interfaces\BrickCamp.Resources.IUser.pas"/>
+        <DCCReference Include="Classes\BrickCamp.Resources.TUser.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IQuestion.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Repositories.IQuestion.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TQuestion.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TQuestion.pas"/>
+        <DCCReference Include="Classes\BrickCamp.Resources.TQuestion.pas"/>
+        <DCCReference Include="Interfaces\BrickCamp.Resources.IQuestion.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

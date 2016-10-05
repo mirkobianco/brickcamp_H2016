@@ -28,7 +28,19 @@ uses
   BrickCamp.Repositories.IAnswer in '..\Model\Interfaces\BrickCamp.Repositories.IAnswer.pas',
   BrickCamp.Repositories.TAnswer in '..\Model\Classes\BrickCamp.Repositories.TAnswer.pas',
   BrickCamp.Resources.IAnswer in 'Interfaces\BrickCamp.Resources.IAnswer.pas',
-  BrickCamp.Resources.TAnswer in 'Classes\BrickCamp.Resources.TAnswer.pas';
+  BrickCamp.Resources.TAnswer in 'Classes\BrickCamp.Resources.TAnswer.pas',
+  BrickCamp.Model.IUser in '..\Model\Interfaces\BrickCamp.Model.IUser.pas',
+  BrickCamp.Repositories.IUser in '..\Model\Interfaces\BrickCamp.Repositories.IUser.pas',
+  BrickCamp.Model.TUser in '..\Model\Classes\BrickCamp.Model.TUser.pas',
+  BrickCamp.Repositories.TUser in '..\Model\Classes\BrickCamp.Repositories.TUser.pas',
+  BrickCamp.Resources.IUser in 'Interfaces\BrickCamp.Resources.IUser.pas',
+  BrickCamp.Resources.TUser in 'Classes\BrickCamp.Resources.TUser.pas',
+  BrickCamp.Model.IQuestion in '..\Model\Interfaces\BrickCamp.Model.IQuestion.pas',
+  BrickCamp.Repositories.IQuestion in '..\Model\Interfaces\BrickCamp.Repositories.IQuestion.pas',
+  BrickCamp.Model.TQuestion in '..\Model\Classes\BrickCamp.Model.TQuestion.pas',
+  BrickCamp.Repositories.TQuestion in '..\Model\Classes\BrickCamp.Repositories.TQuestion.pas',
+  BrickCamp.Resources.TQuestion in 'Classes\BrickCamp.Resources.TQuestion.pas',
+  BrickCamp.Resources.IQuestion in 'Interfaces\BrickCamp.Resources.IQuestion.pas';
 
 {$R *.RES}
 
