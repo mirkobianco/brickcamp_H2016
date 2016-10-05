@@ -60,7 +60,7 @@ var
   LList: IList<TQuestion>;
   LItem: TQuestion;
 begin
-  ProductIdCriteria := Prop.Create('ProductId');
+  ProductIdCriteria := Prop.Create('PRODUCT_ID');
   LList := FDb.GetSession.FindWhere<TQuestion>(ProductIdCriteria = ProductId);
 
   result := TJSONArray.Create;

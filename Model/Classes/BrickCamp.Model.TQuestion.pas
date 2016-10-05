@@ -31,7 +31,8 @@ type
     procedure SetText(const Value: string);
     procedure SetIsOpen(const Value: SmallInt);
   public
-    constructor Create(const Id: integer); reintroduce;
+    constructor Create; overload;
+    constructor Create(const Id: integer); overload;
 
     property ID: Integer read GetId;
 
@@ -52,6 +53,11 @@ implementation
 constructor TQuestion.Create(const Id: integer);
 begin
   FId := Id;
+end;
+
+constructor TQuestion.Create;
+begin
+
 end;
 
 function TQuestion.GetId: Integer;
