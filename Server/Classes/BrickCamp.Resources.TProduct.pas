@@ -34,7 +34,7 @@ type
     [PUT]
     procedure Update(const [BodyParam] Product: TProduct);
 
-    [GET, Path('/delete/{Id}')]
+    [DELETE, Path('/delete/{Id}')]
     procedure Delete(const [PathParam] Id: Integer);
   end;
 
