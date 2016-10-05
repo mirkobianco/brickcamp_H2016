@@ -17,11 +17,22 @@ type
     procedure SetUp; override;
   published
     procedure NewRedisClient_Defaults_Fails;
+    procedure NewRedisClient_ConnectionSpecified_Succeeds;
   end;
 
 implementation
 
 { TestTRedisEmployeeRepository }
+
+procedure TestTRedisEmployeeRepository.NewRedisClient_ConnectionSpecified_Succeeds;
+var
+  RedisClientProvider : IRedisClientProvider;
+  RedisClient : IRedisClient;
+begin
+  RedisClientProvider := GlobalContainer.Resolve<IRedisClientProvider>;
+  RedisClient := RedisClientProvider.NewRedisClient;
+  Check(Assigned(RedisClient),'Check test connection parameters in ini file');
+end;
 
 procedure TestTRedisEmployeeRepository.NewRedisClient_Defaults_Fails;
 var
@@ -29,9 +40,8 @@ var
   RedisClient : IRedisClient;
 begin
   RedisClientProvider := GlobalContainer.Resolve<IRedisClientProvider>;
-   //GlobalContainer.RegisterType<TEmployee>;
   RedisClient := RedisClientProvider.NewRedisClient;
-
+  Check(not Assigned(RedisClient),'Out of the box should not connect');
 end;
 
 procedure TestTRedisEmployeeRepository.SetUp;
