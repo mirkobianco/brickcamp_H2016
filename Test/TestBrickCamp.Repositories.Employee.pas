@@ -12,8 +12,12 @@ unit TestBrickCamp.Repositories.Employee;
 interface
 
 uses
-  TestFramework, BrickCamp.Model.Employee, Spring.Container, Spring.Collections,
-  BrickCamp.Repositories.Employee.Intf, BrickCamp.Repositories.Employee.Mock;
+  TestFramework,
+  Spring.Container,
+  Spring.Collections,
+  BrickCamp.Model.TEmployee,
+  BrickCamp.Repositories.IEmployee,
+  BrickCamp.Repositories.Employee.Mock;
 
 type
   // Test methods for class TMockEmployeeRepository
