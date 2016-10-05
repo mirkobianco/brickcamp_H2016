@@ -8,7 +8,7 @@ uses
 
 type
   IProductRepository = interface(IInterface)
-    ['{1E6661EB-80D8-4A04-A16C-E8EBE3E34660}']
+    ['{0AE577BE-875B-4C1D-B4D7-717F20B73480}']
     function GetOne(const Id: Integer): TProduct;
     function GetList: TJSONArray;
     procedure Insert(const Product: TProduct);

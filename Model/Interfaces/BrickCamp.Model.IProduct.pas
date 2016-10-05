@@ -7,7 +7,7 @@ uses
 
 type
   IProduct = interface(IInterface)
-  ['{CA35B767-9C87-4539-AFEF-36A371684A30}']
+  ['{C2DA14B4-A905-4665-85AE-5BE3A25B5C42}']
 
     function GetId: Integer;
     function GetName: string;
