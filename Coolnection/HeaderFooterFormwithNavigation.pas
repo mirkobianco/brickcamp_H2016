@@ -1,4 +1,4 @@
-unit HeaderFooterFormwithNavigation;
+﻿unit HeaderFooterFormwithNavigation;
 
 interface
 
@@ -9,7 +9,7 @@ uses
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
   System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.EngExt,
   Fmx.Bind.DBEngExt, Data.Bind.Components, Data.Bind.ObjectScope, FMX.ListView,
-  Data.Bind.GenData, IPPeerClient, Data.DB, REST.Client, MARS.Client.Client,
+  Data.Bind.GenData, IPPeerClient, REST.Client, MARS.Client.Client,
   REST.Response.Adapter, Data.Bind.DBScope, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet,
@@ -33,7 +33,6 @@ type
     btnLogin: TCornerButton;
     lvProducts: TListView;
     bndList: TBindingsList;
-    lnkPrNam1: TLinkFillControlToField;
     imgLogin: TImage;
     Panel1: TPanel;
     styCool: TStyleBook;
@@ -41,6 +40,8 @@ type
     bndProducts: TBindSourceDB;
     tbQuestions: TTabItem;
     lblBottom: TLabel;
+    lblProductId: TLabel;
+    LinkFillControlToPropertyText: TLinkFillControlToProperty;
     procedure FormCreate(Sender: TObject);
     procedure TitleActionUpdate(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
@@ -58,10 +59,11 @@ type
     function GetUserInfos(Login: string): integer;
 
     procedure ConfigureProductPage;
-    procedure ConfigureInterfaceForLoginPage;
+    procedure ConfigureLoginPage;
     procedure ConfigurePageQuestions;
   public
     procedure LoadProducts;
+    procedure LoadQuestions;
     procedure ConfigurePages;
   end;
 
@@ -71,7 +73,7 @@ var
 implementation
 
 uses
-  System.JSON, BrickCamp.RemoteInterface;
+  System.JSON, BrickCamp.RemoteInterface, Data.DB;
 
 {$R *.fmx}
 {$R *.LgXhdpiPh.fmx ANDROID}
@@ -95,7 +97,7 @@ begin
   tbcMain.ActiveTab := tbProduct;
 end;
 
-procedure TmCoolnection.ConfigureInterfaceForLoginPage;
+procedure TmCoolnection.ConfigureLoginPage;
 var
   IsPageControl: Boolean;
 begin
@@ -132,7 +134,7 @@ end;
 
 procedure TmCoolnection.ConfigurePages;
 begin
-  ConfigureInterfaceForLoginPage;
+  ConfigureLoginPage;
   ConfigureProductPage;
   ConfigurePageQuestions;
 end;
@@ -198,9 +200,25 @@ begin
   end;
 end;
 
+procedure TmCoolnection.LoadQuestions;
+var
+  Brick: TBrickCampRemoteInterface;
+begin
+  Brick := TBrickCampRemoteInterface.Create;
+  try
+    FUserId := Brick.LoginUser(Login);
+    bndProducts.DataSet := FProductDataSet;
+  finally
+    Brick.Free;
+  end;
+
+end;
+
 procedure TmCoolnection.lvProductsItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 begin
+  FProductDataSet.Locate('ID', StrToInt(lblProductId.Text), []);
+
   FProductId := FProductDataSet.FieldByName('ID').AsInteger;
   FProductDesc := FProductDataSet.FieldByName('DESCRIPTION').AsString;
   FProductName := FProductDataSet.FieldByName('NAME').AsString;

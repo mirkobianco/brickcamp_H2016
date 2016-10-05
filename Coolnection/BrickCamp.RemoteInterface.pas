@@ -11,6 +11,7 @@ type
   public
     function LoginUser(const Name: string): Integer;
     function GetProductDataset: TClientDataset;
+    function GetQuestionsForProduct(ProductId: Integer): TClientDataSet;
   end;
 
 implementation
