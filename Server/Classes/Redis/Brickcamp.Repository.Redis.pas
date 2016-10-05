@@ -7,19 +7,12 @@ uses  Redis.Client,
       Redis.Commons,
       Spring.Container.Injection,
       Spring.Container.Common,
-      BrickCamp.ISettings;
+      BrickCamp.ISettings,
+      BrickCamp.IRedisEmployeeRepository,
+      BrickCamp.IRedisClientProvider;
 
 type
 
-  IRedisEmployeeRepository = interface
-    ['{12C2DA6A-ADD0-4097-9FC5-115CCAA7797D}']
-    procedure Connnect;
-  end;
-
-  IRedisClientProvider = interface
-    ['{A0AA57D9-8808-4B65-9B00-FA13A8843C5C}']
-    function NewRedisClient : IRedisClient;
-  end;
 
   ///******** TRedisClientProvider *********///
   ///Provide the a wrapper to create a Redis Client and provide the settings to it
@@ -27,14 +20,16 @@ type
   protected
   [Inject]
     FSettings: IBrickCampSettings;
+    FIpV4Address : string;
   public
     function NewRedisClient : IRedisClient;
+    procedure Initialise;
   end;
 
   TRedisEmployeeRepository = class(TInterfacedObject,IRedisEmployeeRepository)
   protected var
     [Inject]
-    FRedis : IRedisClient;
+    FRedis : IRedisClientProvider;
   public
     procedure Connnect;
   end;
@@ -46,14 +41,19 @@ implementation
 
 procedure TRedisEmployeeRepository.Connnect;
 begin
-  FRedis := NewRedisClient('localhost');
+  //FRedis := NewRedisClient('localhost');
 end;
 
 { TRedisClientProvider }
 
+procedure TRedisClientProvider.Initialise;
+begin
+  FIpV4Address := FSettings.GetRedisIpAddress;
+end;
+
 function TRedisClientProvider.NewRedisClient: IRedisClient;
 begin
-
+  result := Redis.Client.NewRedisClient(FIpV4Address);
 end;
 
 end.

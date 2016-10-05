@@ -7,6 +7,8 @@ type
   ['{F65AA1C0-92AC-4DE6-8E78-910EFFE66D3E}']
 
     function GetDBStringConnection: string;
+    function GetRedisIpAddress: string;
+    function GetRedisIpPort: string;
   end;
 
 implementation

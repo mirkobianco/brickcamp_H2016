@@ -106,41 +106,27 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="BrickCamp.service.pas">
-            <Form>srvBrickCamp</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TService</DesignClass>
-        </DCCReference>
         <DCCReference Include="Interfaces\BrickCamp.IService.pas"/>
         <DCCReference Include="Interfaces\BrickCamp.ISettings.pas"/>
         <DCCReference Include="Interfaces\BrickCamp.IDB.pas"/>
-        <DCCReference Include="BrickCamp.services.pas"/>
-        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TEmployee.pas"/>
-        <DCCReference Include="Classes\BrickCamp.Resources.TEmployee.pas"/>
-        <DCCReference Include="Classes\BrickCamp.TDB.pas"/>
-        <DCCReference Include="Classes\BrickCamp.TService.pas"/>
-        <DCCReference Include="Classes\BrickCamp.TSettings.pas"/>
-        <DCCReference Include="Interfaces\BrickCamp.Resources.IEmployee.pas"/>
-        <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IEmployee.pas"/>
-        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TEmployee.pas"/>
-        <DCCReference Include="..\Model\Interfaces\BrickCamp.Repositories.IEmployee.pas"/>
         <DCCReference Include="Classes\Redis\Brickcamp.Repository.Redis.pas"/>
+        <DCCReference Include="Interfaces\Redis\BrickCamp.IRedisClientProvider.pas"/>
+        <DCCReference Include="Interfaces\Redis\BrickCamp.IRedisEmployeeRepository.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TAnswer.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TProduct.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TUser.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TAnswer.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TProduct.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TUser.pas"/>
         <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IProduct.pas"/>
         <DCCReference Include="..\Model\Interfaces\BrickCamp.Repositories.IProduct.pas"/>
-        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TProduct.pas"/>
-        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TProduct.pas"/>
         <DCCReference Include="Interfaces\BrickCamp.Resources.IProduct.pas"/>
-        <DCCReference Include="Classes\BrickCamp.Resources.TProduct.pas"/>
         <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IAnswer.pas"/>
-        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TAnswer.pas"/>
         <DCCReference Include="..\Model\Interfaces\BrickCamp.Repositories.IAnswer.pas"/>
-        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TAnswer.pas"/>
         <DCCReference Include="Interfaces\BrickCamp.Resources.IAnswer.pas"/>
         <DCCReference Include="Classes\BrickCamp.Resources.TAnswer.pas"/>
         <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IUser.pas"/>
         <DCCReference Include="..\Model\Interfaces\BrickCamp.Repositories.IUser.pas"/>
-        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TUser.pas"/>
-        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TUser.pas"/>
         <DCCReference Include="Interfaces\BrickCamp.Resources.IUser.pas"/>
         <DCCReference Include="Classes\BrickCamp.Resources.TUser.pas"/>
         <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IQuestion.pas"/>
@@ -149,6 +135,22 @@
         <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TQuestion.pas"/>
         <DCCReference Include="Classes\BrickCamp.Resources.TQuestion.pas"/>
         <DCCReference Include="Interfaces\BrickCamp.Resources.IQuestion.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Model.TEmployee.pas"/>
+        <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TEmployee.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Model.IEmployee.pas"/>
+        <DCCReference Include="..\Model\Interfaces\BrickCamp.Repositories.IEmployee.pas"/>
+        <DCCReference Include="BrickCamp.services.pas"/>
+        <DCCReference Include="BrickCamp.service.pas">
+            <Form>srvBrickCamp</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TService</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Classes\BrickCamp.TService.pas"/>
+        <DCCReference Include="Classes\BrickCamp.TSettings.pas"/>
+        <DCCReference Include="Classes\BrickCamp.TDB.pas"/>
+        <DCCReference Include="Classes\BrickCamp.Resources.TEmployee.pas"/>
+        <DCCReference Include="Interfaces\BrickCamp.Resources.IEmployee.pas"/>
+        <DCCReference Include="Classes\BrickCamp.Resources.TProduct.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
