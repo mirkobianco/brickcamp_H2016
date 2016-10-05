@@ -48,11 +48,15 @@ type
     Panel1: TPanel;
     styCool: TStyleBook;
     flanimLogo: TFloatAnimation;
+    rclUsers: TRESTClient;
+    lnkprprtytfldTag: TLinkPropertyToField;
     procedure FormCreate(Sender: TObject);
     procedure TitleActionUpdate(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
     procedure btnLoginClick(Sender: TObject);
     procedure tbcMainChange(Sender: TObject);
+    procedure lvProductsItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
   private
     procedure ConfigureProductPage;
     { Private declarations }
@@ -70,6 +74,9 @@ implementation
 {$R *.fmx}
 {$R *.LgXhdpiPh.fmx ANDROID}
 {$R *.iPhone4in.fmx IOS}
+
+uses
+  BrickCamp.RemoteInterface;
 
 procedure TmCoolnection.TitleActionUpdate(Sender: TObject);
 begin
@@ -144,6 +151,12 @@ end;
 procedure TmCoolnection.LoadProducts;
 begin
   rrqProducts.Execute;
+end;
+
+procedure TmCoolnection.lvProductsItemClick(const Sender: TObject;
+  const AItem: TListViewItem);
+begin
+  ShowMessage(IntToStr(AItem.Tag));
 end;
 
 procedure TmCoolnection.tbcMainChange(Sender: TObject);

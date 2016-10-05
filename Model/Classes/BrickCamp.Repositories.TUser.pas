@@ -68,7 +68,7 @@ begin
   NameCriteria := Prop.Create('NAME');
   List := FDb.GetSession.FindWhere<TUser>(NameCriteria = Name);
   if List.Count>=1 then
-    Result := List.First
+    Result := List.Extract(List.Last)
   else
   begin
     Result := GlobalContainer.Resolve<TUser>;

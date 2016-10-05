@@ -1,71 +1,72 @@
 ﻿[tbProduct]
-Coordinates=428,364,62,33
+Coordinates=428,364,70,36
 
 [btnLogin]
-Coordinates=508,364,58,33
+Coordinates=508,364,64,36
 
 [ToolBarLabel]
-Coordinates=427,10,80,51
+Coordinates=427,10,91,58
 
 [TitleAction]
-Coordinates=190,173,67,33
+Coordinates=190,173,75,36
 
 [TopToolBar]
-Coordinates=266,364,72,33
+Coordinates=266,364,82,36
 
 [TabItem1]
-Coordinates=187,364,59,33
+Coordinates=187,364,69,36
 
 [PreviousTabAction1]
-Coordinates=321,56,113,33
+Coordinates=321,56,130,36
 
 [btnBack]
-Coordinates=700,10,54,51
+Coordinates=700,10,61,58
 
 [tbcMain]
-Coordinates=358,364,53,33
+Coordinates=358,364,60,36
 
 [tbLogin]
-Coordinates=120,364,52,33
+Coordinates=120,364,57,36
 
 [btnNext]
-Coordinates=528,10,52,51
+Coordinates=528,10,59,58
 
 [NextTabAction1]
-Coordinates=321,166,92,33
+Coordinates=321,166,106,36
 
 [ActionList1]
-Coordinates=321,221,70,33
+Coordinates=321,221,78,36
 
 [BottomToolBar]
-Coordinates=10,364,89,33
+Coordinates=10,364,100,36
 
 [edtUserName]
-Coordinates=597,10,80,51
+Coordinates=597,10,93,58
 
 [lvProducts]
-Coordinates=120,140,116,195
+Coordinates=120,140,139,256
 Visible=True
+ExplicitSubNodes=Tag
 
 [rrpProducts]
-Coordinates=10,10,85,285
+Coordinates=10,10,101,344
 Visible=True
 
 [rclProducts]
-Coordinates=338,10,71,69
+Coordinates=338,10,79,80
 
 [rrqProducts]
-Coordinates=238,10,76,87
+Coordinates=238,10,90,102
 
 []
 Coordinates=114,240,57,58
 Visible=False
 
 [bnd1]
-Coordinates=130,197,40,33
+Coordinates=130,197,43,36
 
 [adpProducts]
-Coordinates=247,131,77,33
+Coordinates=247,131,87,36
 Visible=True
 LayerNames=adaps
 ExplicitSubNodes=
@@ -74,21 +75,36 @@ ExplicitSubNodes=
 ModelLayerNames=test;adaps
 
 [dsProducts]
-Coordinates=450,90,70,33
+Coordinates=450,90,79,36
 Visible=False
 
 [dsProductsName]
-Coordinates=130,317,99,33
+Coordinates=130,317,113,36
 
 [dsProductsDescription]
-Coordinates=247,276,127,33
+Coordinates=247,276,143,36
 
 [dsProductsPrice]
-Coordinates=366,109,96,33
+Coordinates=366,109,108,36
 
 [dsProductsID]
-Coordinates=204,438,81,33
+Coordinates=204,438,92,36
 
 [BindSourceDB1]
-Coordinates=410,210,92,141
+Coordinates=410,210,106,182
+
+[Panel1]
+Coordinates=297,419,54,36
+
+[flanimLogo]
+Coordinates=125,469,78,36
+
+[styCool]
+Coordinates=66,469,57,36
+
+[imgLogin]
+Coordinates=51,373,67,58
+
+[rclUsers]
+Coordinates=130,1,85,102
 
