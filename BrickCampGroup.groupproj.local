@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2016/10/04 17:52:21.644,C:\Dev\Delphi\hackaton2016\BrickCampTests.groupproj=C:\Dev\Delphi\hackaton2016\Test\BrickCampTests.groupproj</Transaction>
-    <Transaction>2016/10/04 17:53:53.606,C:\Dev\Delphi\hackaton2016\BrickCampGroup.groupproj=C:\Dev\Delphi\hackaton2016\BrickCampTests.groupproj</Transaction>
+    <Transaction>2016/10/04 17:52:21.000.644,C:\Dev\Delphi\hackaton2016\Test\BrickCampTests.groupproj=C:\Dev\Delphi\hackaton2016\BrickCampTests.groupproj</Transaction>
+    <Transaction>2016/10/04 17:53:53.000.606,C:\Dev\Delphi\hackaton2016\BrickCampTests.groupproj=C:\Dev\Delphi\hackaton2016\BrickCampGroup.groupproj</Transaction>
   </Transactions>
 	<Default.Personality>
 		<Projects ActiveProject="C:\Dev\Delphi\hackaton2016\Test\BrickCampTests.dproj"/>

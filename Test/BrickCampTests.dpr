@@ -20,7 +20,8 @@ uses
   BrickCamp.IDB in '..\Server\Interfaces\BrickCamp.IDB.pas',
   BrickCamp.Repositories.IEmployee in '..\Server\Interfaces\BrickCamp.Repositories.IEmployee.pas',
   BrickCamp.IService in '..\Server\Interfaces\BrickCamp.IService.pas',
-  BrickCamp.ISettings in '..\Server\Interfaces\BrickCamp.ISettings.pas';
+  BrickCamp.ISettings in '..\Server\Interfaces\BrickCamp.ISettings.pas',
+  BrickCamp.Repositories.TEmployee.Mock in '..\Mocks\BrickCamp.Repositories.TEmployee.Mock.pas';
 
 {$R *.RES}
 

@@ -17,7 +17,7 @@ uses
   Spring.Collections,
   BrickCamp.Model.TEmployee,
   BrickCamp.Repositories.IEmployee,
-  BrickCamp.Repositories.Employee.Mock;
+  BrickCamp.Repositories.TEmployee.Mock;
 
 type
   // Test methods for class TMockEmployeeRepository

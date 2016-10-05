@@ -3,7 +3,7 @@
         <ProjectGuid>{44E8B29F-B9D3-4AD2-B016-EFC208B1068B}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="BrickCamp.dproj">
+        <Projects Include="Server\BrickCamp.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Test\BrickCampTests.dproj">
@@ -18,13 +18,13 @@
         </BorlandProject>
     </ProjectExtensions>
     <Target Name="BrickCamp">
-        <MSBuild Projects="BrickCamp.dproj"/>
+        <MSBuild Projects="Server\BrickCamp.dproj"/>
     </Target>
     <Target Name="BrickCamp:Clean">
-        <MSBuild Projects="BrickCamp.dproj" Targets="Clean"/>
+        <MSBuild Projects="Server\BrickCamp.dproj" Targets="Clean"/>
     </Target>
     <Target Name="BrickCamp:Make">
-        <MSBuild Projects="BrickCamp.dproj" Targets="Make"/>
+        <MSBuild Projects="Server\BrickCamp.dproj" Targets="Make"/>
     </Target>
     <Target Name="BrickCampTests">
         <MSBuild Projects="Test\BrickCampTests.dproj"/>
