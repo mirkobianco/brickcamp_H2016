@@ -76,7 +76,7 @@ var
 implementation
 
 uses
-  System.JSON;
+  System.JSON, BrickCamp.RemoteInterface;
 
 {$R *.fmx}
 {$R *.LgXhdpiPh.fmx ANDROID}
