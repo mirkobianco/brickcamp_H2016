@@ -75,7 +75,7 @@ type
     FProductId: Integer;
     FProductDesc: string;
     FProductName: string;
-    function GetUserInfos(Login: string): integer;
+    procedure GetUserInfos(Login: string);
 
     procedure ConfigureProductPage;
     procedure ConfigureLoginPage;
@@ -94,7 +94,7 @@ var
 implementation
 
 uses
-  System.JSON, BrickCamp.RemoteInterface, System.UITypes,
+  MARS.Core.JSON, BrickCamp.RemoteInterface, System.UITypes,
   System.UIConsts,
   BrickCamp.Model;
 
@@ -115,8 +115,7 @@ end;
 
 procedure TmCoolnection.btnLoginClick(Sender: TObject);
 begin
-  FUserId := GetUserInfos(Trim(LowerCase(edtUserName.Text)));
-  LoadProducts;
+  GetUserInfos(Trim(LowerCase(edtUserName.Text)));
   tbcMain.ActiveTab := tbProduct;
 end;
 
@@ -172,6 +171,8 @@ begin
 
   ToolBarLabel.Text := 'Product ' + FProductName;
   lblBottom.Text := FProductDesc;
+
+  LoadQuestions;
 end;
 
 procedure TmCoolnection.ConfigurePages;
@@ -198,6 +199,7 @@ begin
   lblBottom.Visible := False;
 
   ToolBarLabel.Text := 'Welcome ' + FName;
+  LoadProducts;
 end;
 
 procedure TmCoolnection.FormCreate(Sender: TObject);
@@ -217,7 +219,7 @@ begin
   end;
 end;
 
-function TmCoolnection.GetUserInfos(Login: string): integer;
+procedure TmCoolnection.GetUserInfos(Login: string);
 var
   Brick: TBrickCampRemoteInterface;
 begin
@@ -247,11 +249,10 @@ end;
 procedure TmCoolnection.LoadQuestions;
 var
   Brick: TBrickCampRemoteInterface;
-  ProductId: Integer;
 begin
   Brick := TBrickCampRemoteInterface.Create;
   try
-    bndProducts.DataSet := Brick.GetQuestionsByProduct(ProductId);
+    bnd1.DataSet := Brick.GetQuestionsByProduct(FProductId);
   finally
     Brick.Free;
   end;
@@ -267,7 +268,6 @@ begin
   FProductName := FProductDataSet.FieldByName('NAME').AsString;
 
   tbcMain.ActiveTab := tbQuestions;
-  LoadQuestions;
 end;
 
 procedure TmCoolnection.pnlCancelClick(Sender: TObject);
@@ -289,10 +289,10 @@ begin
   Brick := TBrickCampRemoteInterface.Create;
   try
     JsonObject := TJSONObject.Create;
-    JsonObject.AddPair('TEXT', mmoAskQuestion.Text);
-    JsonObject.AddPair('PRODUCT_ID', IntToStr(FProductId));
-    JsonObject.AddPair('USER_ID', IntToStr(FUserId));
-    JsonObject.AddPair('ISOPEN', IntToStr(0));
+    JsonObject.WriteStringValue('TEXT', mmoAskQuestion.Text);
+    JsonObject.WriteIntegerValue('PRODUCTID', FProductId);
+    JsonObject.WriteIntegerValue('USERID', FUserId);
+    JsonObject.WriteIntegerValue('ISOPEN', 0);
     Brick.Post(rQuestion, JsonObject);
   finally
     Brick.Free;

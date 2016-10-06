@@ -5,6 +5,7 @@ interface
 uses
   System.Classes,
   System.SysUtils,
+  system.JSON,
   Spring.Container.Common,
   Spring.Container,
   MARS.Core.Registry,
@@ -21,6 +22,8 @@ uses
 type
   [Path('/question'), Produces(TMediaType.APPLICATION_JSON_UTF8)]
   TQuestionResource = class(TInterfacedObject, IQuestionResurce)
+  protected
+    function GetQuestionFromJSON(const Value: TJSONValue): TQuestion;
   public
     [GET, Path('/getone/{Id}')]
     function GetOne(const [PathParam] Id: Integer): TQuestion;
@@ -45,6 +48,22 @@ implementation
 
 { THelloWorldResource }
 
+function TQuestionResource.GetQuestionFromJSON(const Value: TJSONValue): TQuestion;
+var
+  JSONObject: TJSONObject;
+begin
+  Result := GlobalContainer.Resolve<TQuestion>;
+  JSONObject := TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject;
+  try
+    Result.ProductId := JSONObject.ReadIntegerValue('PRODUCTID', -1);
+    Result.UserId := JSONObject.ReadIntegerValue('USERID', -1);
+    Result.Text := JSONObject.ReadStringValue('TEXT', '');
+    Result.IsOpen := JSONObject.ReadIntegerValue('ISOPEN', -1);
+  finally
+    JSONObject.Free;
+  end;
+end;
+
 function TQuestionResource.GetOne(const Id: Integer): TQuestion;
 begin
   Result := GlobalContainer.Resolve<IQuestionRepository>.GetOne(Id);
@@ -59,30 +78,26 @@ procedure TQuestionResource.Insert(const Value: TJSONValue);
 var
   Question: TQuestion;
 begin
-  Question := GlobalContainer.Resolve<TQuestion>;
-  with (TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject) do
-  begin
-    Question.ProductId := StrToIntDef(GetValue('ProductId').Value, -1);
-    Question.UserId := StrToIntDef(GetValue('UserId').Value, -1);
-    Question.Text := GetValue('Text').Value;
-    Question.IsOpen := StrToIntDef(GetValue('IsOpen').Value, -1);
+  Question := GetQuestionFromJSON(Value);
+  try
+    if Assigned(Question) then
+      GlobalContainer.Resolve<IQuestionRepository>.Insert(Question);
+  finally
+    Question.Free;
   end;
-  GlobalContainer.Resolve<IQuestionRepository>.Insert(Question);
 end;
 
 procedure TQuestionResource.Update(const Value: TJSONValue);
 var
   Question: TQuestion;
 begin
-  Question := GlobalContainer.Resolve<TQuestion>;
-  with (TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject) do
-  begin
-    Question.ProductId := StrToIntDef(GetValue('ProductId').Value, -1);
-    Question.UserId := StrToIntDef(GetValue('UserId').Value, -1);
-    Question.Text := GetValue('Text').Value;
-    Question.IsOpen := StrToIntDef(GetValue('IsOpen').Value, -1);
+  Question := GetQuestionFromJSON(Value);
+  try
+    if Assigned(Question) then
+      GlobalContainer.Resolve<IQuestionRepository>.Update(Question);
+  finally
+    Question.Free;
   end;
-  GlobalContainer.Resolve<IQuestionRepository>.Update(Question);
 end;
 
 function TQuestionResource.GetList: TJSONArray;

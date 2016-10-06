@@ -59,7 +59,8 @@ uses
   BrickCamp.Resources.IProduct in '..\Server\Interfaces\BrickCamp.Resources.IProduct.pas',
   BrickCamp.Resources.IQuestion in '..\Server\Interfaces\BrickCamp.Resources.IQuestion.pas',
   BrickCamp.Resources.IUser in '..\Server\Interfaces\BrickCamp.Resources.IUser.pas',
-  BrickCamp.Repositories.TEmployee in '..\Model\Classes\BrickCamp.Repositories.TEmployee.pas';
+  BrickCamp.Repositories.TEmployee in '..\Model\Classes\BrickCamp.Repositories.TEmployee.pas',
+  BrickCamp.Model in '..\Model\BrickCamp.Model.pas';
 
 {$R *.RES}
 

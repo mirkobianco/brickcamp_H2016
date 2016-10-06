@@ -2,7 +2,8 @@ unit BrickCamp.JsonUser;
 
 interface
 uses
-  System.Sysutils, BrickCamp.Common.JsonContract;
+  System.Sysutils,
+  BrickCamp.Common.JsonContract;
 
 type
   TJsonUser = class(TJsonContractBase)

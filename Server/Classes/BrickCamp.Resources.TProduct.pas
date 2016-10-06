@@ -22,6 +22,8 @@ uses
 type
   [Path('/product'), Produces(TMediaType.APPLICATION_JSON_UTF8)]
   TProductResource = class(TInterfacedObject, IProductResurce)
+  protected
+    function GetProductFromJSON(const Value: TJSONValue): TProduct;
   public
     [GET, Path('/getone/{Id}')]
     function GetOne(const [PathParam] Id: Integer): TProduct;
@@ -48,6 +50,21 @@ begin
   Result := GlobalContainer.Resolve<IProductRepository>.GetOne(Id);
 end;
 
+function TProductResource.GetProductFromJSON(const Value: TJSONValue): TProduct;
+var
+  JSONObject: TJSONObject;
+begin
+  Result := GlobalContainer.Resolve<TProduct>;
+  JSONObject := TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject;
+  try
+    Result.Name := JSONObject.ReadStringValue('Name', '');
+    Result.Description := JSONObject.ReadStringValue('Description', '');
+    Result.Price := JSONObject.ReadDoubleValue('Price', 0.0);
+  finally
+    JSONObject.Free;
+  end;
+end;
+
 procedure TProductResource.Delete(const Id: Integer);
 begin
   GlobalContainer.Resolve<IProductRepository>.Delete(Id);
@@ -57,28 +74,26 @@ procedure TProductResource.Insert(const Value: TJSONValue);
 var
   Product: TProduct;
 begin
-  Product := GlobalContainer.Resolve<TProduct>;
-  with (TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject) do
-  begin
-    Product.Name := GetValue('Name').Value;
-    Product.Description := GetValue('Description').Value;
-    Product.Price := StrToFloatDef(GetValue('Price').Value, 0.0);
+  Product := GetProductFromJSON(Value);
+  try
+    if Assigned(Product) then
+      GlobalContainer.Resolve<IProductRepository>.Insert(Product);
+  finally
+    Product.Free;
   end;
-  GlobalContainer.Resolve<IProductRepository>.Insert(Product);
 end;
 
 procedure TProductResource.Update(const Value: TJSONValue);
 var
   Product: TProduct;
 begin
-  Product := GlobalContainer.Resolve<TProduct>;
-  with (TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject) do
-  begin
-    Product.Name := GetValue('Name').Value;
-    Product.Description := GetValue('Description').Value;
-    Product.Price := StrToFloatDef(GetValue('Price').Value, 0.0);
+  Product := GetProductFromJSON(Value);
+  try
+    if Assigned(Product) then
+      GlobalContainer.Resolve<IProductRepository>.Update(Product);
+  finally
+    Product.Free;
   end;
-  GlobalContainer.Resolve<IProductRepository>.Update(Product);
 end;
 
 function TProductResource.GetList: TJSONArray;

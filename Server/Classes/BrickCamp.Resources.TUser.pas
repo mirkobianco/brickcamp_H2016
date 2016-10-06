@@ -22,6 +22,8 @@ uses
 type
   [Path('/user'), Produces(TMediaType.APPLICATION_JSON_UTF8)]
   TUserResource = class(TInterfacedObject, IUserResurce)
+  protected
+    function GetUserFromJSON(const Value: TJSONValue): TUser;
   public
     [GET, Path('/getone/{Id}')]
     function GetOne(const [PathParam] Id: Integer): TUser;
@@ -56,6 +58,19 @@ begin
   Result := GlobalContainer.Resolve<IUserRepository>.GetOneByName(Name);
 end;
 
+function TUserResource.GetUserFromJSON(const Value: TJSONValue): TUser;
+var
+  JSONObject: TJSONObject;
+begin
+  Result := GlobalContainer.Resolve<TUser>;
+  JSONObject := TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject;
+  try
+    Result.Name := JSONObject.ReadStringValue('Name', '');
+  finally
+    JSONObject.Free;
+  end;
+end;
+
 procedure TUserResource.Delete(const Id: Integer);
 begin
   GlobalContainer.Resolve<IUserRepository>.Delete(Id);
@@ -65,20 +80,26 @@ procedure TUserResource.Insert(const Value: TJSONValue);
 var
   User: TUser;
 begin
-  User := GlobalContainer.Resolve<TUser>;
-  with (TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject) do
-    User.Name := GetValue('Name').Value;
-  GlobalContainer.Resolve<IUserRepository>.Insert(User);
+  User := GetUserFromJSON(Value);
+  try
+    if Assigned(User) then
+      GlobalContainer.Resolve<IUserRepository>.Insert(User);
+  finally
+    User.Free;
+  end;
 end;
 
 procedure TUserResource.Update(const Value: TJSONValue);
 var
   User: TUser;
 begin
-  User := GlobalContainer.Resolve<TUser>;
-  with (TJSONObject.ParseJSONValue(Value.ToJSON) as TJSONObject) do
-    User.Name := GetValue('Name').Value;
-  GlobalContainer.Resolve<IUserRepository>.Update(User);
+  User := GetUserFromJSON(Value);
+  try
+    if Assigned(User) then
+      GlobalContainer.Resolve<IUserRepository>.Update(User);
+  finally
+    User.Free;
+  end;
 end;
 
 function TUserResource.GetList: TJSONArray;

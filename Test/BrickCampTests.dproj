@@ -143,6 +143,7 @@
         <DCCReference Include="..\Server\Interfaces\BrickCamp.Resources.IQuestion.pas"/>
         <DCCReference Include="..\Server\Interfaces\BrickCamp.Resources.IUser.pas"/>
         <DCCReference Include="..\Model\Classes\BrickCamp.Repositories.TEmployee.pas"/>
+        <DCCReference Include="..\Model\BrickCamp.Model.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
